@@ -97,25 +97,23 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* 2. SERVICES & CAPABILITIES SECTION */}
-      <section className="py-20 md:py-28 px-6 bg-[#050505] text-white relative overflow-hidden border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
-              OUR CORE SERVICES & SOLUTIONS
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
-              Biotechnology Services & <span className="text-[#FF4D00]">Capabilities</span>
-            </h2>
-            <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
-              Explore our core scientific offerings — from nucleic acid and protein research to laboratory reagents, computational analysis, and professional training.
-            </p>
-          </div>
-          <ServicesStrip />
-        </div>
-      </section>
-
+{/* 2. SERVICES & CAPABILITIES SECTION */}
+<section className="py-20 md:py-28 px-6 bg-[#050505] text-white relative overflow-hidden border-t border-white/10">
+  <div className="max-w-[1400px] mx-auto relative z-10">
+    <div className="text-center max-w-3xl mx-auto mb-16">
+      <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
+        OUR CORE SERVICES & SOLUTIONS
+      </span>
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+        Biotechnology Services & <span className="text-[#FF4D00]">Capabilities</span>
+      </h2>
+      <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
+        Explore our core scientific offerings — from nucleic acid and protein research to laboratory reagents, computational analysis, and professional training.
+      </p>
+    </div>
+    <ServicesStrip />
+  </div>
+</section>
       {/* 2. WHO WE ARE & STATS SECTION */}
       <section className="py-24 md:py-32 px-6 bg-[#F5F5F3] relative overflow-hidden text-[#050505] border-t border-[#E5E5E5]/40">
         {/* Subtle Molecular / DNA Wave Graphics Background */}
