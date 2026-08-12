@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #080808;
+  --color-deep-black: #000000;
+  --color-background: #F5F5F3;
+  --color-white: #FFFFFF;
+  --color-accent: #FF4D00;
+  --color-accent-bright: #FF5A00;
+  --color-secondary: #6A6A6A;
+  --color-border: #D8D8D5;
+  --color-light-gray: #ECECE9;
+  
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+body {
+  @apply bg-background text-primary antialiased selection:bg-accent selection:text-white;
+}
+
+/* Base heading styles to ensure crisp rendering */
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight font-medium;
+}
+

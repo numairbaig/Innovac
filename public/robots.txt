@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /account/
+Disallow: /employee/
+Disallow: /collaborator/
+Disallow: /admin/
+
+Sitemap: https://innovacbiotech.com/sitemap.xml
