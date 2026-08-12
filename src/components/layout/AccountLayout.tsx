@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { 
   LayoutDashboard, 
@@ -23,6 +23,7 @@ import { SEO } from '../SEO';
 export function AccountLayout() {
   const { profile, signOut } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const navigation = [
@@ -118,10 +119,6 @@ export function AccountLayout() {
           </div>
           
           <div className="flex items-center gap-6">
-            <button className="p-2 text-[#6A6A6A] hover:bg-[#ECECE9]/60 hover:text-[#080808] rounded-full relative transition-colors">
-              <Bell size={20} />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#FF4D00] rounded-full border border-white"></span>
-            </button>
             <div className="flex items-center gap-3 border-l border-[#D8D8D5] pl-6">
               <div className="text-right hidden sm:block">
                 <p className="text-sm font-semibold text-[#080808] tracking-wide">{profile?.full_name || 'User Account'}</p>
@@ -131,6 +128,9 @@ export function AccountLayout() {
                 {profile?.full_name?.charAt(0) || 'U'}
               </div>
             </div>
+            <button onClick={() => navigate('/', { replace: true })} className="p-2 text-[#6A6A6A] hover:bg-[#ECECE9]/60 hover:text-[#080808] rounded-full" aria-label="Close Account">
+              <X size={20} />
+            </button>
           </div>
         </header>
 

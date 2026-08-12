@@ -20,7 +20,8 @@ export async function registerUser(email: string, password: string, metadata?: R
     email,
     password,
     options: {
-      data: metadata
+      data: metadata,
+      emailRedirectTo: `${import.meta.env.VITE_SITE_URL}/auth/confirmed`,
     }
   });
   if (error) throw error;

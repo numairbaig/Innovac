@@ -15,6 +15,8 @@ const Internships = React.lazy(() => import('./pages/Internships'));
 const Workshops = React.lazy(() => import('./pages/Workshops'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const Quote = React.lazy(() => import('./pages/Quote'));
+const Confirmed = React.lazy(() => import('./pages/auth/Confirmed'));
+const VerificationError = React.lazy(() => import('./pages/auth/VerificationError'));
 const Members = React.lazy(() => import('./pages/Members'));
 const ServiceDetail = React.lazy(() => import('./pages/ServiceDetail'));
 const ResearchDetail = React.lazy(() => import('./pages/ResearchDetail'));
@@ -102,6 +104,8 @@ const router = createBrowserRouter([
       { path: 'workshops', element: <Workshops /> },
       { path: 'contact', element: <Contact /> },
       { path: 'enquire', element: <Navigate to="/quote" replace /> },
+      { path: 'auth/confirmed', element: <Confirmed /> },
+      { path: 'auth/verification-error', element: <VerificationError /> },
       { path: 'quote', element: <Quote /> },
       { path: 'members', element: <Members /> },
       { path: 'employees', element: <Navigate to="/members" replace /> },
