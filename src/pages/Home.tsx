@@ -1,21 +1,140 @@
 import { getCtaPath } from '@/src/config/ctaConfig';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, useScroll } from 'motion/react';
 import { 
   FlaskConical, Dna, GraduationCap, Network, 
   ArrowRight, Search, Check, 
   MessageSquare, FileText, Activity, ShieldCheck, 
   ChevronRight, Beaker, TestTube, Thermometer,
-  Target, UsersRound
+  Target, UsersRound, Droplet, Layers, GitFork,
+  Link2, Zap, Pipette, Database, X
 } from 'lucide-react';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { ServicesStrip } from '@/src/components/ui/ServicesStrip';
 
+function MicroscopeCenterpiece() {
+  return (
+    <div className="relative w-full aspect-square max-w-[340px] lg:max-w-[400px] flex items-center justify-center mx-auto">
+      {/* Outer soft glowing orange circle */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,77,0,0.1)_0%,transparent_70%)] animate-pulse" />
+      
+      {/* Secondary glowing dotted rings */}
+      <div className="absolute w-[85%] h-[85%] rounded-full border border-[#FF4D00]/5 opacity-20 animate-[spin_180s_linear_infinite]" />
+      <div className="absolute w-[70%] h-[70%] rounded-full border border-dashed border-[#FF4D00]/10 opacity-30 animate-[spin_120s_linear_infinite]" />
+      
+      {/* Floating Beakers / Flasks */}
+      {/* Flask Left (Erlenmeyer) */}
+      <motion.div 
+        animate={{ y: [0, -10, 0], x: [0, 4, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-4 top-1/4 z-20 w-10 h-10 text-[#FF4D00] opacity-40 hover:opacity-80 transition-opacity"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
+          <path d="M6 3h12" />
+          <path d="M12 3v6" />
+          <path d="m14 9 5.89 9.82A2 2 0 0 1 18.2 22H5.8a2 2 0 0 1-1.7-3.18L10 9V3" />
+        </svg>
+      </motion.div>
+
+      {/* Tube Right (Test Tube) */}
+      <motion.div 
+        animate={{ y: [0, 12, 0], x: [0, -4, 0] }}
+        transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute right-4 top-1/3 z-20 w-8 h-8 text-[#FF4D00] opacity-35 hover:opacity-80 transition-opacity"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
+          <path d="M8 2h8" />
+          <path d="M10 2v17.5a2.5 2.5 0 0 0 5 0V2" />
+          <path d="M10 6h4" />
+          <path d="M10 11h4" />
+        </svg>
+      </motion.div>
+
+      {/* Beaker Bottom Left */}
+      <motion.div 
+        animate={{ y: [0, -8, 0], x: [0, -6, 0] }}
+        transition={{ duration: 8, delay: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-8 bottom-8 z-20 w-8 h-8 text-[#FF4D00] opacity-30 hover:opacity-80 transition-opacity"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
+          <path d="M19 22H5V4h14v18z" />
+          <path d="M5 8h14" />
+          <path d="M5 14h14" />
+        </svg>
+      </motion.div>
+
+      {/* Core Microscope Illustration */}
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="relative z-10 w-[200px] h-[260px] flex items-center justify-center"
+      >
+        <svg viewBox="0 0 100 120" fill="none" className="w-full h-full text-neutral-300 filter drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+          {/* Base */}
+          <path d="M25 105 h50 v6 a2 2 0 0 1-2 2 h-46 a2 2 0 0 1-2-2 z" fill="#1e1e1e" stroke="#444" strokeWidth="2" />
+          <path d="M30 105 h40 v-4 h-40 z" fill="#2d2d2d" stroke="#555" strokeWidth="1.5" />
+          
+          {/* Pillar / Arm */}
+          <path d="M62 101 c5-20 0-45-12-55 c-2-2-5-2-7 0 c-2 2-2 5 0 7 c8 8 12 25 8 48 z" fill="url(#metallic-grad)" stroke="#444" strokeWidth="2" />
+          
+          {/* Stage */}
+          <path d="M22 75 h46 l4 4 h-50 z" fill="#151515" stroke="#333" strokeWidth="1.5" />
+          <rect x="42" y="73" width="8" height="2" fill="#FF4D00" opacity="0.8" className="animate-pulse" />
+          
+          {/* Condenser / Light Source */}
+          <path d="M41 81 h10 v8 h-10 z" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
+          <path d="M43 89 h6 v3 h-6 z" fill="#FF4D00" opacity="0.3" />
+          
+          {/* Objectives Turret */}
+          <path d="M34 50 a12 12 0 0 1 24 0 z" fill="#252525" stroke="#444" strokeWidth="1.5" />
+          
+          {/* Objectives */}
+          <rect x="38" y="50" width="6" height="12" rx="1" fill="#3a3a3a" stroke="#FF4D00" strokeWidth="0.5" />
+          <rect x="47" y="50" width="8" height="15" rx="1.5" fill="#4a4a4a" stroke="#666" strokeWidth="0.5" />
+          <rect x="57" y="50" width="5" height="10" rx="1" fill="#3a3a3a" stroke="#FF4D00" strokeWidth="0.5" />
+          
+          {/* Coaxial Controls */}
+          <circle cx="61" cy="90" r="5" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
+          <circle cx="61" cy="90" r="2.5" fill="#FF4D00" />
+          
+          {/* Eyepiece / Body Tube */}
+          <path d="M37 25 l12 20 h6 l-12-20 z" fill="url(#metallic-grad)" stroke="#555" strokeWidth="1.5" />
+          <rect x="33" y="15" width="10" height="12" rx="1" fill="#1e1e1e" stroke="#444" strokeWidth="1.5" />
+          <rect x="35" y="10" width="6" height="5" fill="#333" stroke="#FF4D00" strokeWidth="0.5" />
+          
+          {/* Glowing Sample Laser */}
+          <line x1="51" y1="65" x2="51" y2="74" stroke="#FF4D00" strokeWidth="2.5" strokeLinecap="round" className="animate-pulse" />
+          <circle cx="51" cy="75" r="3" fill="#FF4D00" className="animate-ping" />
+          
+          {/* Gradients */}
+          <defs>
+            <linearGradient id="metallic-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3d3d3d" />
+              <stop offset="50%" stopColor="#6e6e6e" />
+              <stop offset="100%" stopColor="#242424" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Home() {
   const { scrollYProgress } = useScroll();
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const handleReagentClick = (name: string, path: string) => {
+    setSelectedId(name);
+    setTimeout(() => {
+      navigate(path);
+    }, 300);
+  };
 
   return (
     <div className="bg-background">
@@ -437,83 +556,257 @@ export default function Home() {
         </div>
         
         <div className="max-w-[1400px] mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-            <SectionHeading 
-              label="03 / Reagents" 
-              title="Laboratory Reagents\nFor Reliable Research." 
-              light 
-              highlightWord="Research." 
-              className="mb-0 md:mb-0"
-            />
-            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0" withArrow>VIEW ALL REAGENTS</Button>
-          </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Header block */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+            <div>
+              <span className="text-[#FF4D00] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
+                03 / Reagents
+              </span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] text-white">
+                Laboratory Reagents for<br />
+                Reliable <span className="text-[#FF4D00] font-medium">Research.</span>
+              </h2>
+              <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed max-w-2xl mt-6">
+                High-quality laboratory reagents and research supplies designed for reliable, reproducible scientific workflows.
+              </p>
+            </div>
             
-            {/* Left: Synthesis */}
-            <div className="lg:col-span-4">
-              <div className="flex items-center gap-3 mb-8 text-accent">
-                <Beaker size={24} />
-                <h3 className="text-xl font-medium uppercase tracking-widest">Synthesis</h3>
-              </div>
-              <ul className="space-y-4">
-                {["Deionized Water", "TRIzol", "TAE Buffer", "TBE Buffer", "Ethidium Bromide", "Media Formation"].map((item, i) => (
-                  <li key={i} className="group">
-                    <Link to={getCtaPath('REQUEST_QUOTE')} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
-                      <div className="flex items-center gap-4">
-                        <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
-                        <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
+            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0 group flex items-center gap-2 border-white/20 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors" withArrow>
+              VIEW ALL REAGENTS
+            </Button>
+          </div>
+
+          {/* Search interaction */}
+          <div className="mb-12 max-w-md relative">
+            <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-neutral-500 pointer-events-none">
+              <Search size={18} />
+            </span>
+            <input 
+              type="text"
+              placeholder="Search reagents..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-white/[0.03] border border-white/10 focus:border-[#FF4D00] outline-none rounded-xl pl-12 pr-10 py-3.5 text-sm text-white placeholder-neutral-500 transition-all font-light"
+            />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="absolute inset-y-0 right-0 pr-4 flex items-center text-neutral-400 hover:text-white transition-colors cursor-pointer"
+                title="Clear search"
+              >
+                <X size={16} />
+              </button>
+            )}
+          </div>
+
+          {/* Reagents Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Dynamic Rendering */}
+            {(() => {
+              const synthesisReagents = [
+                { name: "Deionized Water", type: "Ultrapure Solvent", icon: Droplet, path: "/reagents/synthesis" },
+                { name: "TRIzol", type: "RNA Extraction Reagent", icon: FlaskConical, path: "/reagents/synthesis" },
+                { name: "TAE Buffer", type: "Electrophoresis Buffer", icon: Dna, path: "/reagents/synthesis" },
+                { name: "TBE Buffer", type: "Electrophoresis Buffer", icon: Dna, path: "/reagents/synthesis" },
+                { name: "Ethidium Bromide", type: "Nucleic Acid Gel Stain", icon: FlaskConical, path: "/reagents/synthesis" },
+                { name: "Media Formation", type: "Prepared Growth Medium", icon: Layers, path: "/reagents/synthesis" },
+              ];
+              
+              const supplyReagents = [
+                { name: "Restriction Enzymes", type: "DNA Cleaving Enzyme", icon: GitFork, path: "/reagents/supply" },
+                { name: "Oligos", type: "Custom Oligonucleotides", icon: Link2, path: "/reagents/supply" },
+                { name: "Polymerases", type: "Amplification Enzyme", icon: Zap, path: "/reagents/supply" },
+                { name: "Master Mixes", type: "Ready-to-Use PCR Mix", icon: Pipette, path: "/reagents/supply" },
+                { name: "Media Supply", type: "Cell Culture Media Base", icon: Database, path: "/reagents/supply" },
+              ];
+
+              const filteredSynthesis = searchQuery
+                ? synthesisReagents.filter(r => r.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                : synthesisReagents;
+
+              const filteredSupply = searchQuery
+                ? supplyReagents.filter(r => r.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                : supplyReagents;
+
+              const hasNoResults = filteredSynthesis.length === 0 && filteredSupply.length === 0;
+
+              if (hasNoResults) {
+                return (
+                  <div className="col-span-12 text-center py-20 bg-white/[0.01] border border-white/5 rounded-[24px]">
+                    <Search size={40} className="mx-auto text-neutral-600 mb-4" />
+                    <h3 className="text-xl font-medium text-white mb-2">No reagents found</h3>
+                    <p className="text-neutral-400 text-sm mb-6 max-w-sm mx-auto">We couldn't find any reagents matching "{searchQuery}". Try revising your search query.</p>
+                    <button 
+                      onClick={() => setSearchQuery('')}
+                      className="px-5 py-2.5 bg-[#FF4D00] hover:bg-[#E64500] text-white font-semibold rounded-xl transition-colors cursor-pointer text-xs uppercase tracking-wider"
+                    >
+                      Clear Search Query
+                    </button>
+                  </div>
+                );
+              }
+
+              return (
+                <>
+                  {/* Synthesis List */}
+                  <div className="lg:col-span-4 flex flex-col w-full h-full">
+                    <div className="mb-6 group/title">
+                      <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
+                        <Beaker size={20} />
+                        <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Synthesis</h3>
                       </div>
-                      <ChevronRight size={18} className="text-neutral-600 group-hover:text-accent transition-colors transform group-hover:translate-x-1" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                      <div className="w-12 h-0.5 bg-[#FF4D00] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
+                    </div>
+                    
+                    {filteredSynthesis.length > 0 ? (
+                      <div className="space-y-3">
+                        {filteredSynthesis.map((reagent, i) => {
+                          const ReagentIcon = reagent.icon;
+                          const isSelected = selectedId === reagent.name;
+                          return (
+                            <motion.div
+                              key={reagent.name}
+                              initial={{ opacity: 0, y: 15 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: i * 0.05 }}
+                              onClick={() => handleReagentClick(reagent.name, reagent.path)}
+                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer ${
+                                isSelected 
+                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.1)]' 
+                                  : 'border-white/5 hover:border-[#FF4D00]/30 hover:bg-white/[0.04]'
+                              }`}
+                            >
+                              {/* Left border active highlight */}
+                              <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#FF4D00] transition-opacity duration-300 rounded-l-[14px] ${
+                                isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                              }`} />
+                              
+                              <div className="flex items-center gap-4 pl-1">
+                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                                  isSelected ? 'bg-[#FF4D00] text-white' : 'bg-white/[0.03] text-neutral-400 group-hover:bg-[#FF4D00]/10 group-hover:text-[#FF4D00]'
+                                }`}>
+                                  <ReagentIcon size={18} />
+                                </div>
+                                <div className="text-left">
+                                  <h4 className={`text-base font-semibold transition-colors duration-300 ${
+                                    isSelected ? 'text-[#FF4D00]' : 'text-neutral-200 group-hover:text-white'
+                                  }`}>{reagent.name}</h4>
+                                  <p className="text-[11px] text-neutral-500 font-light mt-0.5">{reagent.type}</p>
+                                </div>
+                              </div>
+                              <ChevronRight size={18} className={`transition-all duration-300 ${
+                                isSelected ? 'text-[#FF4D00] translate-x-1.5' : 'text-neutral-600 group-hover:text-[#FF4D00] group-hover:translate-x-1'
+                              }`} />
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="py-8 text-center bg-white/[0.01] border border-dashed border-white/5 rounded-[14px] text-neutral-500 text-sm">
+                        No synthesis reagents match query
+                      </div>
+                    )}
+                  </div>
 
-            {/* Center: Image */}
-            <div className="lg:col-span-4 hidden lg:flex justify-center px-4 relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505] z-10" />
-              <img 
-                src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2959&auto=format&fit=crop" 
-                alt="Laboratory Glassware" 
-                className="w-full h-[500px] object-cover mix-blend-screen opacity-80"
-              />
-            </div>
+                  {/* Center scientific visual centerpiece */}
+                  <div className="lg:col-span-4 hidden lg:flex justify-center items-center py-6">
+                    <MicroscopeCenterpiece />
+                  </div>
 
-            {/* Right: Supply */}
-            <div className="lg:col-span-4 flex flex-col h-full justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-8 text-accent">
-                  <Thermometer size={24} />
-                  <h3 className="text-xl font-medium uppercase tracking-widest">Supply</h3>
-                </div>
-                <ul className="space-y-4 mb-12">
-                  {["Restriction Enzymes", "Oligos", "Polymerases", "Master Mixes", "Media Supply"].map((item, i) => (
-                    <li key={i} className="group">
-                      <Link to={getCtaPath('REQUEST_QUOTE')} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
-                        <div className="flex items-center gap-4">
-                          <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
-                          <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
-                        </div>
-                        <ChevronRight size={18} className="text-neutral-600 group-hover:text-accent transition-colors transform group-hover:translate-x-1" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                  {/* Supply List */}
+                  <div className="lg:col-span-4 flex flex-col w-full h-full">
+                    <div className="mb-6 group/title">
+                      <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
+                        <Thermometer size={20} />
+                        <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Supply</h3>
+                      </div>
+                      <div className="w-12 h-0.5 bg-[#FF4D00] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
+                    </div>
+
+                    {filteredSupply.length > 0 ? (
+                      <div className="space-y-3">
+                        {filteredSupply.map((reagent, i) => {
+                          const ReagentIcon = reagent.icon;
+                          const isSelected = selectedId === reagent.name;
+                          return (
+                            <motion.div
+                              key={reagent.name}
+                              initial={{ opacity: 0, y: 15 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: i * 0.05 }}
+                              onClick={() => handleReagentClick(reagent.name, reagent.path)}
+                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer ${
+                                isSelected 
+                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.1)]' 
+                                  : 'border-white/5 hover:border-[#FF4D00]/30 hover:bg-white/[0.04]'
+                              }`}
+                            >
+                              {/* Left border active highlight */}
+                              <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#FF4D00] transition-opacity duration-300 rounded-l-[14px] ${
+                                isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                              }`} />
+                              
+                              <div className="flex items-center gap-4 pl-1">
+                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                                  isSelected ? 'bg-[#FF4D00] text-white' : 'bg-white/[0.03] text-neutral-400 group-hover:bg-[#FF4D00]/10 group-hover:text-[#FF4D00]'
+                                }`}>
+                                  <ReagentIcon size={18} />
+                                </div>
+                                <div className="text-left">
+                                  <h4 className={`text-base font-semibold transition-colors duration-300 ${
+                                    isSelected ? 'text-[#FF4D00]' : 'text-neutral-200 group-hover:text-white'
+                                  }`}>{reagent.name}</h4>
+                                  <p className="text-[11px] text-neutral-500 font-light mt-0.5">{reagent.type}</p>
+                                </div>
+                              </div>
+                              <ChevronRight size={18} className={`transition-all duration-300 ${
+                                isSelected ? 'text-[#FF4D00] translate-x-1.5' : 'text-neutral-600 group-hover:text-[#FF4D00] group-hover:translate-x-1'
+                              }`} />
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="py-8 text-center bg-white/[0.01] border border-dashed border-white/5 rounded-[14px] text-neutral-500 text-sm">
+                        No supply reagents match query
+                      </div>
+                    )}
+                  </div>
+                </>
+              );
+            })()}
+
+            {/* Premium Quality trust card spanning 12 columns */}
+            <div className="col-span-12 mt-12 bg-gradient-to-r from-white/[0.02] to-white/[0.04] border border-white/10 rounded-[32px] p-8 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-md">
+              {/* Subtle scientific grid pattern or decorative wavy lines on the right side */}
+              <div className="absolute right-0 top-0 bottom-0 w-[40%] opacity-15 pointer-events-none bg-[radial-gradient(circle_at_right,#FF4D00_0%,transparent_60%)]" />
+              <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-24 opacity-10 pointer-events-none hidden md:block">
+                {/* Mini sine-wave vector lines representing scientific patterns */}
+                <svg viewBox="0 0 200 100" fill="none" stroke="#FF4D00" strokeWidth="1.2" className="w-full h-full">
+                  <path d="M0,50 Q25,20 50,50 T100,50 T150,50 T200,50" />
+                  <path d="M0,60 Q25,30 50,60 T100,60 T150,60 T200,60" opacity="0.4" />
+                </svg>
               </div>
 
-              {/* Quality Card */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm mt-8">
-                <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mb-6">
-                  <ShieldCheck size={20} className="text-accent" />
+              <div className="flex items-center gap-6 relative z-10 flex-col md:flex-row text-center md:text-left">
+                <div className="w-16 h-16 bg-[#FF4D00]/10 rounded-2xl flex items-center justify-center text-[#FF4D00] border border-[#FF4D00]/30 shrink-0 shadow-[0_0_15px_rgba(255,77,0,0.15)]">
+                  <ShieldCheck size={32} />
                 </div>
-                <h4 className="text-xl font-medium mb-3">Quality You Can Trust</h4>
-                <p className="text-neutral-400 text-sm mb-6 leading-relaxed">
-                  High-quality reagents and laboratory supplies for accurate, reliable and reproducible research outcomes.
-                </p>
-                <Link to={getCtaPath('REQUEST_QUOTE')} className="text-accent text-sm font-semibold tracking-wide hover:text-white transition-colors flex items-center gap-2 group">
-                  REQUEST A QUOTE <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF4D00] mb-2">Quality You Can Trust</h4>
+                  <p className="text-neutral-300 text-lg font-light max-w-2xl leading-relaxed">
+                    High-quality reagents and laboratory supplies for accurate, reliable and reproducible research outcomes.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative z-10 shrink-0 w-full md:w-auto">
+                <Link to={getCtaPath('REQUEST_QUOTE')} className="w-full md:w-auto bg-[#FF4D00] hover:bg-[#E64500] text-white border-none py-4 px-8 rounded-xl font-semibold flex items-center justify-center gap-3 group transition-all duration-300 hover:shadow-[0_4px_20px_rgba(255,77,0,0.25)] text-sm uppercase tracking-wider">
+                  REQUEST A QUOTE <ArrowRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
                 </Link>
               </div>
             </div>
