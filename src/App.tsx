@@ -91,7 +91,7 @@ const router = createBrowserRouter([
       { path: 'services', element: <Services /> },
       { path: 'services/:id', element: <ServiceDetail /> },
       { path: 'research/:topic', element: <ResearchDetail /> },
-      { path: 'reagents/:category', element: <ReagentDetail /> },
+      { path: 'reagents/:slug', element: <ReagentDetail /> },
       { path: 'team', element: <Team /> },
       { path: 'careers', element: <Careers /> },
       { path: 'courses', element: <Courses /> },

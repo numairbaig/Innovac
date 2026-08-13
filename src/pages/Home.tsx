@@ -459,7 +459,7 @@ export default function Home() {
               <ul className="space-y-4">
                 {["Deionized Water", "TRIzol", "TAE Buffer", "TBE Buffer", "Ethidium Bromide", "Media Formation"].map((item, i) => (
                   <li key={i} className="group">
-                    <Link to={getCtaPath('REQUEST_QUOTE')} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
+                    <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
                       <div className="flex items-center gap-4">
                         <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
                         <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
@@ -491,7 +491,7 @@ export default function Home() {
                 <ul className="space-y-4 mb-12">
                   {["Restriction Enzymes", "Oligos", "Polymerases", "Master Mixes", "Media Supply"].map((item, i) => (
                     <li key={i} className="group">
-                      <Link to={getCtaPath('REQUEST_QUOTE')} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
+                      <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
                         <div className="flex items-center gap-4">
                           <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
                           <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
