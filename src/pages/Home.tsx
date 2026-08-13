@@ -245,25 +245,25 @@ export default function Home() {
 
               {/* Image Collage (3 side-by-side vertical panels) */}
               <div className="grid grid-cols-3 gap-3 md:gap-4 w-full">
-                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-white relative">
+                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-[#F5F5F3] relative flex items-center justify-center p-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1513828583845-9be990a71028?q=80&w=600&auto=format&fit=crop" 
-                    alt="Biotechnology research facility" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                    src="/who_we_are_1.png" 
+                    alt="Reliable Quality" 
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" 
                   />
                 </div>
-                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-white relative">
+                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-[#F5F5F3] relative flex items-center justify-center p-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600&auto=format&fit=crop" 
-                    alt="Laboratory pipetting experiment" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                    src="/who_we_are_2.png" 
+                    alt="Research Driven" 
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" 
                   />
                 </div>
-                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-white relative">
+                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-[#F5F5F3] relative flex items-center justify-center p-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=600&auto=format&fit=crop" 
-                    alt="DNA molecular structure" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                    src="/who_we_are_3.png" 
+                    alt="Support Every Step" 
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" 
                   />
                 </div>
               </div>
