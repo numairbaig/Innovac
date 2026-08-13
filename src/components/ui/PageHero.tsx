@@ -11,7 +11,7 @@ interface PageHeroProps {
 
 export function PageHero({ label, title, description, className }: PageHeroProps) {
   return (
-    <section className={cn("pt-40 pb-20 md:pt-48 md:pb-32 px-6 bg-deep-black text-white border-b border-white/5", className)}>
+    <section className={cn("pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-deep-black text-white border-b border-white/5", className)}>
       <div className="max-w-[1400px] mx-auto">
         <motion.p 
           initial={{ opacity: 0, y: 10 }}

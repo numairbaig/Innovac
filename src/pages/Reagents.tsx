@@ -59,7 +59,7 @@ export default function Reagents() {
       />
 
       {/* SECTION 01 — REAGENTS HERO */}
-      <section className="relative w-full pt-32 pb-24 lg:pt-48 lg:pb-32 px-6 bg-[#050505] text-white overflow-hidden">
+      <section className="relative w-full pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-[#050505] text-white overflow-hidden">
         {/* Subtle Radial Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#050505]" />
@@ -74,7 +74,7 @@ export default function Reagents() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-12">
+              <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
                 <ChevronRight size={12} />
                 <span className="text-white">Reagents</span>
