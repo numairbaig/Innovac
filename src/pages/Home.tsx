@@ -15,109 +15,266 @@ import { Button } from '@/src/components/ui/Button';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { ServicesStrip } from '@/src/components/ui/ServicesStrip';
 
+function PremiumReagentIcon({ name }: { name: string }) {
+  switch (name) {
+    case "Deionized Water":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="water-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00F0FF" />
+              <stop offset="100%" stopColor="#0047FF" />
+            </linearGradient>
+          </defs>
+          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" fill="url(#water-grad)" opacity="0.85" />
+          <path d="M12 5v10m-3-3h6" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+        </svg>
+      );
+    case "TRIzol":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="trizol-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFD600" />
+              <stop offset="100%" stopColor="#FF5C00" />
+            </linearGradient>
+          </defs>
+          <rect x="7" y="9" width="10" height="12" rx="2" fill="url(#trizol-grad)" opacity="0.85" />
+          <rect x="10" y="5" width="4" height="4" fill="#E5E5E5" />
+          <rect x="9" y="3" width="6" height="2" fill="white" />
+          <line x1="9" y1="12" x2="15" y2="12" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+        </svg>
+      );
+    case "TAE Buffer":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="tae-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00D1FF" />
+              <stop offset="100%" stopColor="#0077FF" />
+            </linearGradient>
+          </defs>
+          <path d="M12 3h0m-2 0h4M12 3v5m-5.89 9.82A2 2 0 0 0 7.8 21h8.4a2 2 0 0 0 1.7-2.82L14 9V3h-4v6z" stroke="url(#tae-grad)" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M8.5 16.5l7 0l-1.5-3.5l-4 0z" fill="url(#tae-grad)" opacity="0.8" />
+          <circle cx="11" cy="18" r="1" fill="white" opacity="0.6" />
+          <circle cx="13" cy="15" r="0.8" fill="white" opacity="0.5" />
+        </svg>
+      );
+    case "TBE Buffer":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="tbe-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#C300FF" />
+              <stop offset="100%" stopColor="#7F00FF" />
+            </linearGradient>
+          </defs>
+          <path d="M12 3h0m-2 0h4M12 3v5m-5.89 9.82A2 2 0 0 0 7.8 21h8.4a2 2 0 0 0 1.7-2.82L14 9V3h-4v6z" stroke="url(#tbe-grad)" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M8.5 16.5l7 0l-1.5-3.5l-4 0z" fill="url(#tbe-grad)" opacity="0.8" />
+          <circle cx="11" cy="18" r="1" fill="white" opacity="0.6" />
+          <circle cx="13" cy="15" r="0.8" fill="white" opacity="0.5" />
+        </svg>
+      );
+    case "Ethidium Bromide":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="etbr-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF2A00" />
+              <stop offset="100%" stopColor="#FF7A00" />
+            </linearGradient>
+          </defs>
+          <rect x="9" y="8" width="6" height="12" rx="1.5" stroke="url(#etbr-grad)" strokeWidth="1.5" />
+          <rect x="9" y="12" width="6" height="8" rx="0.5" fill="url(#etbr-grad)" opacity="0.8" />
+          <path d="M12 3v5m-2-5h4" stroke="white" strokeWidth="1.5" />
+          <circle cx="12" cy="15" r="1" fill="white" opacity="0.6" />
+        </svg>
+      );
+    case "Media Formation":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="media-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00FF66" />
+              <stop offset="100%" stopColor="#009944" />
+            </linearGradient>
+          </defs>
+          <circle cx="12" cy="12" r="9" stroke="url(#media-grad)" strokeWidth="1.5" />
+          <circle cx="12" cy="12" r="7" fill="url(#media-grad)" opacity="0.6" />
+          <circle cx="9" cy="10" r="1.5" fill="white" opacity="0.8" />
+          <circle cx="14" cy="14" r="2" fill="white" opacity="0.8" />
+          <circle cx="15" cy="9" r="1" fill="white" opacity="0.6" />
+        </svg>
+      );
+    case "Restriction Enzymes":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="enz-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00F0FF" />
+              <stop offset="100%" stopColor="#FF4D00" />
+            </linearGradient>
+          </defs>
+          <path d="M4.5 10.5C8 10.5 10 13.5 12 13.5s4-3 7.5-3M4.5 13.5C8 13.5 10 10.5 12 10.5s4 3 7.5 3" stroke="url(#enz-grad)" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="8" y1="11.5" x2="8" y2="12.5" stroke="white" strokeWidth="1" />
+          <line x1="16" y1="11.5" x2="16" y2="12.5" stroke="white" strokeWidth="1" />
+          <circle cx="12" cy="12" r="3" fill="#FF4D00" opacity="0.9" className="animate-pulse" />
+        </svg>
+      );
+    case "Oligos":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="oligo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00F0FF" />
+              <stop offset="100%" stopColor="#0072FF" />
+            </linearGradient>
+          </defs>
+          <path d="M4.5 7.5c3.5 0 5.5 9 7.5 9s4-9 7.5-9M4.5 16.5c3.5 0 5.5-9 7.5-9s4 9 7.5 9" stroke="url(#oligo-grad)" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="7" y1="10.5" x2="7" y2="13.5" stroke="white" strokeWidth="1.2" opacity="0.5" />
+          <line x1="12" y1="8" x2="12" y2="16" stroke="white" strokeWidth="1.2" opacity="0.5" />
+          <line x1="17" y1="10.5" x2="17" y2="13.5" stroke="white" strokeWidth="1.2" opacity="0.5" />
+        </svg>
+      );
+    case "Polymerases":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="poly-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00E5FF" />
+              <stop offset="100%" stopColor="#00A896" />
+            </linearGradient>
+          </defs>
+          <circle cx="12" cy="12" r="5" fill="url(#poly-grad)" opacity="0.8" />
+          <circle cx="7" cy="9" r="3.5" fill="url(#poly-grad)" opacity="0.6" />
+          <circle cx="17" cy="15" r="4" fill="url(#poly-grad)" opacity="0.7" />
+          <circle cx="16" cy="7" r="3" fill="white" opacity="0.4" />
+          <circle cx="8" cy="16" r="2.5" fill="white" opacity="0.4" />
+        </svg>
+      );
+    case "Master Mixes":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="mm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#E000FF" />
+              <stop offset="100%" stopColor="#8700FF" />
+            </linearGradient>
+          </defs>
+          <path d="M8 4h8M9 4v10l3 6l3-6V4" stroke="url(#mm-grad)" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M10 11l2 4l2-4V5H10z" fill="url(#mm-grad)" opacity="0.8" />
+          <circle cx="12" cy="10" r="1" fill="white" opacity="0.6" />
+        </svg>
+      );
+    case "Media Supply":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <defs>
+            <linearGradient id="supply-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF9F00" />
+              <stop offset="100%" stopColor="#FF5B00" />
+            </linearGradient>
+          </defs>
+          <rect x="7" y="8" width="10" height="13" rx="1.5" fill="url(#supply-grad)" opacity="0.85" />
+          <rect x="9" y="4" width="6" height="4" fill="#3A3A3A" />
+          <rect x="8" y="2" width="8" height="2" fill="white" />
+          <rect x="9" y="11" width="6" height="6" fill="white" opacity="0.9" />
+          <line x1="10" y1="13" x2="14" y2="13" stroke="#FF5B00" strokeWidth="1" />
+          <line x1="10" y1="15" x2="13" y2="15" stroke="#FF5B00" strokeWidth="1" />
+        </svg>
+      );
+    default:
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+          <circle cx="12" cy="12" r="10" stroke="#FF4D00" strokeWidth="1.5" />
+        </svg>
+      );
+  }
+}
+
 function MicroscopeCenterpiece() {
   return (
-    <div className="relative w-full aspect-square max-w-[340px] lg:max-w-[400px] flex items-center justify-center mx-auto">
+    <div className="relative w-full aspect-square max-w-[340px] lg:max-w-[420px] flex items-center justify-center mx-auto">
       {/* Outer soft glowing orange circle */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,77,0,0.1)_0%,transparent_70%)] animate-pulse" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,77,0,0.08)_0%,transparent_70%)] animate-pulse" />
       
       {/* Secondary glowing dotted rings */}
-      <div className="absolute w-[85%] h-[85%] rounded-full border border-[#FF4D00]/5 opacity-20 animate-[spin_180s_linear_infinite]" />
-      <div className="absolute w-[70%] h-[70%] rounded-full border border-dashed border-[#FF4D00]/10 opacity-30 animate-[spin_120s_linear_infinite]" />
+      <div className="absolute w-[95%] h-[95%] rounded-full border border-[#FF4D00]/5 opacity-20 animate-[spin_180s_linear_infinite]" />
+      <div className="absolute w-[75%] h-[75%] rounded-full border border-dashed border-[#FF4D00]/10 opacity-30 animate-[spin_120s_linear_infinite]" />
       
       {/* Floating Beakers / Flasks */}
       {/* Flask Left (Erlenmeyer) */}
       <motion.div 
-        animate={{ y: [0, -10, 0], x: [0, 4, 0] }}
+        animate={{ y: [0, -12, 0], x: [0, 6, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-4 top-1/4 z-20 w-10 h-10 text-[#FF4D00] opacity-40 hover:opacity-80 transition-opacity"
+        className="absolute left-2 top-1/4 z-20 w-10 h-10 text-[#FF4D00] opacity-50 hover:opacity-90 transition-opacity"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
-          <path d="M6 3h12" />
-          <path d="M12 3v6" />
-          <path d="m14 9 5.89 9.82A2 2 0 0 1 18.2 22H5.8a2 2 0 0 1-1.7-3.18L10 9V3" />
+        <svg viewBox="0 0 24 24" fill="none" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
+          <defs>
+            <linearGradient id="flask-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF9F00" />
+              <stop offset="100%" stopColor="#FF4D00" />
+            </linearGradient>
+          </defs>
+          <path d="M6 3h12" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M12 3v6" stroke="#FF4D00" strokeWidth="1.5" />
+          <path d="m14 9 5.89 9.82A2 2 0 0 1 18.2 22H5.8a2 2 0 0 1-1.7-3.18L10 9V3" stroke="#FF4D00" strokeWidth="1.5" />
+          <path d="M8.5 16.5h7l-1.5-3.5h-4z" fill="url(#flask-grad)" opacity="0.8" />
         </svg>
       </motion.div>
 
       {/* Tube Right (Test Tube) */}
       <motion.div 
-        animate={{ y: [0, 12, 0], x: [0, -4, 0] }}
+        animate={{ y: [0, 14, 0], x: [0, -4, 0] }}
         transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-4 top-1/3 z-20 w-8 h-8 text-[#FF4D00] opacity-35 hover:opacity-80 transition-opacity"
+        className="absolute right-2 top-1/3 z-20 w-8 h-8 text-[#8700FF] opacity-45 hover:opacity-90 transition-opacity"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
-          <path d="M8 2h8" />
-          <path d="M10 2v17.5a2.5 2.5 0 0 0 5 0V2" />
-          <path d="M10 6h4" />
-          <path d="M10 11h4" />
+        <svg viewBox="0 0 24 24" fill="none" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(135,0,255,0.3)]">
+          <defs>
+            <linearGradient id="tube-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#E000FF" />
+              <stop offset="100%" stopColor="#8700FF" />
+            </linearGradient>
+          </defs>
+          <path d="M8 2h8" stroke="#8700FF" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M10 2v17.5a2.5 2.5 0 0 0 5 0V2" stroke="#8700FF" strokeWidth="1.5" />
+          <path d="M10 11h4" stroke="#8700FF" strokeWidth="1.5" />
+          <path d="M10 6h4" stroke="#8700FF" strokeWidth="1.5" />
+          <path d="M10 14h4v4h-4z" fill="url(#tube-grad)" opacity="0.8" />
         </svg>
       </motion.div>
 
       {/* Beaker Bottom Left */}
       <motion.div 
-        animate={{ y: [0, -8, 0], x: [0, -6, 0] }}
+        animate={{ y: [0, -10, 0], x: [0, -8, 0] }}
         transition={{ duration: 8, delay: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-8 bottom-8 z-20 w-8 h-8 text-[#FF4D00] opacity-30 hover:opacity-80 transition-opacity"
+        className="absolute left-6 bottom-8 z-20 w-8 h-8 text-[#0077FF] opacity-40 hover:opacity-90 transition-opacity"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
-          <path d="M19 22H5V4h14v18z" />
-          <path d="M5 8h14" />
-          <path d="M5 14h14" />
+        <svg viewBox="0 0 24 24" fill="none" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(0,119,255,0.3)]">
+          <defs>
+            <linearGradient id="beaker-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00D1FF" />
+              <stop offset="100%" stopColor="#0077FF" />
+            </linearGradient>
+          </defs>
+          <path d="M19 22H5V4h14v18z" stroke="#0077FF" strokeWidth="1.5" />
+          <path d="M5 8h14" stroke="#0077FF" strokeWidth="1.5" />
+          <path d="M5 14h14" stroke="#0077FF" strokeWidth="1.5" />
+          <path d="M5 16h14v4H5z" fill="url(#beaker-grad)" opacity="0.8" />
         </svg>
       </motion.div>
 
-      {/* Core Microscope Illustration */}
+      {/* Core 3D Microscope PNG Illustration */}
       <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="relative z-10 w-[200px] h-[260px] flex items-center justify-center"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="relative z-10 w-[240px] h-[240px] flex items-center justify-center"
       >
-        <svg viewBox="0 0 100 120" fill="none" className="w-full h-full text-neutral-300 filter drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
-          {/* Base */}
-          <path d="M25 105 h50 v6 a2 2 0 0 1-2 2 h-46 a2 2 0 0 1-2-2 z" fill="#1e1e1e" stroke="#444" strokeWidth="2" />
-          <path d="M30 105 h40 v-4 h-40 z" fill="#2d2d2d" stroke="#555" strokeWidth="1.5" />
-          
-          {/* Pillar / Arm */}
-          <path d="M62 101 c5-20 0-45-12-55 c-2-2-5-2-7 0 c-2 2-2 5 0 7 c8 8 12 25 8 48 z" fill="url(#metallic-grad)" stroke="#444" strokeWidth="2" />
-          
-          {/* Stage */}
-          <path d="M22 75 h46 l4 4 h-50 z" fill="#151515" stroke="#333" strokeWidth="1.5" />
-          <rect x="42" y="73" width="8" height="2" fill="#FF4D00" opacity="0.8" className="animate-pulse" />
-          
-          {/* Condenser / Light Source */}
-          <path d="M41 81 h10 v8 h-10 z" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
-          <path d="M43 89 h6 v3 h-6 z" fill="#FF4D00" opacity="0.3" />
-          
-          {/* Objectives Turret */}
-          <path d="M34 50 a12 12 0 0 1 24 0 z" fill="#252525" stroke="#444" strokeWidth="1.5" />
-          
-          {/* Objectives */}
-          <rect x="38" y="50" width="6" height="12" rx="1" fill="#3a3a3a" stroke="#FF4D00" strokeWidth="0.5" />
-          <rect x="47" y="50" width="8" height="15" rx="1.5" fill="#4a4a4a" stroke="#666" strokeWidth="0.5" />
-          <rect x="57" y="50" width="5" height="10" rx="1" fill="#3a3a3a" stroke="#FF4D00" strokeWidth="0.5" />
-          
-          {/* Coaxial Controls */}
-          <circle cx="61" cy="90" r="5" fill="#2a2a2a" stroke="#555" strokeWidth="1" />
-          <circle cx="61" cy="90" r="2.5" fill="#FF4D00" />
-          
-          {/* Eyepiece / Body Tube */}
-          <path d="M37 25 l12 20 h6 l-12-20 z" fill="url(#metallic-grad)" stroke="#555" strokeWidth="1.5" />
-          <rect x="33" y="15" width="10" height="12" rx="1" fill="#1e1e1e" stroke="#444" strokeWidth="1.5" />
-          <rect x="35" y="10" width="6" height="5" fill="#333" stroke="#FF4D00" strokeWidth="0.5" />
-          
-          {/* Glowing Sample Laser */}
-          <line x1="51" y1="65" x2="51" y2="74" stroke="#FF4D00" strokeWidth="2.5" strokeLinecap="round" className="animate-pulse" />
-          <circle cx="51" cy="75" r="3" fill="#FF4D00" className="animate-ping" />
-          
-          {/* Gradients */}
-          <defs>
-            <linearGradient id="metallic-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3d3d3d" />
-              <stop offset="50%" stopColor="#6e6e6e" />
-              <stop offset="100%" stopColor="#242424" />
-            </linearGradient>
-          </defs>
-        </svg>
+        <img 
+          src="/reagents_microscope.png" 
+          alt="Microscope" 
+          className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(255,77,0,0.25)] select-none"
+        />
       </motion.div>
     </div>
   );
@@ -129,10 +286,10 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const handleReagentClick = (name: string, path: string) => {
+  const handleReagentClick = (name: string, slug: string) => {
     setSelectedId(name);
     setTimeout(() => {
-      navigate(path);
+      navigate(`/reagents/${slug}`);
     }, 300);
   };
 
@@ -411,7 +568,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 4. REAGENTS SECTION (Dark) */}
       <section className="py-24 md:py-32 px-6 bg-[#050505] text-white relative overflow-hidden">
         {/* Subtle molecular pattern background */}
@@ -427,7 +583,7 @@ export default function Home() {
               <span className="text-[#FF4D00] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
                 03 / Reagents
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] text-white">
+              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-light tracking-tight leading-[1.05] text-white">
                 Laboratory Reagents for<br />
                 Reliable <span className="text-[#FF4D00] font-medium">Research.</span>
               </h2>
@@ -464,26 +620,26 @@ export default function Home() {
             )}
           </div>
 
-          {/* Reagents Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-start">
+          {/* Reagent Explorer Container */}
+          <div className="border border-white/5 bg-white/[0.01] rounded-[32px] p-6 sm:p-8 lg:p-12 backdrop-blur-md relative overflow-hidden mb-12 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
             
             {/* Dynamic Rendering */}
             {(() => {
               const synthesisReagents = [
-                { name: "Deionized Water", type: "Ultrapure Solvent", icon: Droplet, path: "/reagents/synthesis" },
-                { name: "TRIzol", type: "RNA Extraction Reagent", icon: FlaskConical, path: "/reagents/synthesis" },
-                { name: "TAE Buffer", type: "Electrophoresis Buffer", icon: Dna, path: "/reagents/synthesis" },
-                { name: "TBE Buffer", type: "Electrophoresis Buffer", icon: Dna, path: "/reagents/synthesis" },
-                { name: "Ethidium Bromide", type: "Nucleic Acid Gel Stain", icon: FlaskConical, path: "/reagents/synthesis" },
-                { name: "Media Formation", type: "Prepared Growth Medium", icon: Layers, path: "/reagents/synthesis" },
+                { name: "Deionized Water", type: "Ultrapure Solvent", slug: "deionized-water" },
+                { name: "TRIzol", type: "RNA Extraction Reagent", slug: "trizol" },
+                { name: "TAE Buffer", type: "Electrophoresis Buffer", slug: "tae-buffer" },
+                { name: "TBE Buffer", type: "Electrophoresis Buffer", slug: "tbe-buffer" },
+                { name: "Ethidium Bromide", type: "Nucleic Acid Gel Stain", slug: "ethidium-bromide" },
+                { name: "Media Formation", type: "Prepared Growth Medium", slug: "media-formation" },
               ];
               
               const supplyReagents = [
-                { name: "Restriction Enzymes", type: "DNA Cleaving Enzyme", icon: GitFork, path: "/reagents/supply" },
-                { name: "Oligos", type: "Custom Oligonucleotides", icon: Link2, path: "/reagents/supply" },
-                { name: "Polymerases", type: "Amplification Enzyme", icon: Zap, path: "/reagents/supply" },
-                { name: "Master Mixes", type: "Ready-to-Use PCR Mix", icon: Pipette, path: "/reagents/supply" },
-                { name: "Media Supply", type: "Cell Culture Media Base", icon: Database, path: "/reagents/supply" },
+                { name: "Restriction Enzymes", type: "DNA Cleaving Enzyme", slug: "restriction-enzymes" },
+                { name: "Oligos", type: "Custom Oligonucleotides", slug: "oligos" },
+                { name: "Polymerases", type: "Amplification Enzyme", slug: "polymerases" },
+                { name: "Master Mixes", type: "Ready-to-Use PCR Mix", slug: "master-mixes" },
+                { name: "Media Supply", type: "Cell Culture Media Base", slug: "media-supply" },
               ];
 
               const filteredSynthesis = searchQuery
@@ -498,7 +654,7 @@ export default function Home() {
 
               if (hasNoResults) {
                 return (
-                  <div className="col-span-12 text-center py-20 bg-white/[0.01] border border-white/5 rounded-[24px]">
+                  <div className="text-center py-20 bg-white/[0.01] border border-white/5 rounded-[24px]">
                     <Search size={40} className="mx-auto text-neutral-600 mb-4" />
                     <h3 className="text-xl font-medium text-white mb-2">No reagents found</h3>
                     <p className="text-neutral-400 text-sm mb-6 max-w-sm mx-auto">We couldn't find any reagents matching "{searchQuery}". Try revising your search query.</p>
@@ -513,8 +669,9 @@ export default function Home() {
               }
 
               return (
-                <>
-                  {/* Synthesis List */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                  
+                  {/* Left Column: Synthesis */}
                   <div className="lg:col-span-4 flex flex-col w-full h-full">
                     <div className="mb-6 group/title">
                       <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
@@ -527,7 +684,6 @@ export default function Home() {
                     {filteredSynthesis.length > 0 ? (
                       <div className="space-y-3">
                         {filteredSynthesis.map((reagent, i) => {
-                          const ReagentIcon = reagent.icon;
                           const isSelected = selectedId === reagent.name;
                           return (
                             <motion.div
@@ -536,10 +692,10 @@ export default function Home() {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: true }}
                               transition={{ delay: i * 0.05 }}
-                              onClick={() => handleReagentClick(reagent.name, reagent.path)}
-                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer ${
+                              onClick={() => handleReagentClick(reagent.name, reagent.slug)}
+                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer hover:-translate-y-0.5 shadow-sm hover:shadow-[0_0_15px_rgba(255,77,0,0.05)] ${
                                 isSelected 
-                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.1)]' 
+                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.15)]' 
                                   : 'border-white/5 hover:border-[#FF4D00]/30 hover:bg-white/[0.04]'
                               }`}
                             >
@@ -552,7 +708,7 @@ export default function Home() {
                                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
                                   isSelected ? 'bg-[#FF4D00] text-white' : 'bg-white/[0.03] text-neutral-400 group-hover:bg-[#FF4D00]/10 group-hover:text-[#FF4D00]'
                                 }`}>
-                                  <ReagentIcon size={18} />
+                                  <PremiumReagentIcon name={reagent.name} />
                                 </div>
                                 <div className="text-left">
                                   <h4 className={`text-base font-semibold transition-colors duration-300 ${
@@ -575,16 +731,12 @@ export default function Home() {
                     )}
                   </div>
 
-                  {/* Center scientific visual centerpiece */}
-                  <div className="lg:col-span-4 hidden lg:flex justify-center items-center py-6">
-                    <img 
-                      src="/reagents_microscope.png" 
-                      alt="Microscope" 
-                      className="w-full max-w-[320px] h-auto object-contain opacity-95 drop-shadow-[0_20px_50px_rgba(255,77,0,0.15)] select-none"
-                    />
+                  {/* Center Column: Microscope Centerpiece */}
+                  <div className="lg:col-span-4 flex justify-center items-center py-6 lg:py-0 w-full">
+                    <MicroscopeCenterpiece />
                   </div>
 
-                  {/* Supply List */}
+                  {/* Right Column: Supply */}
                   <div className="lg:col-span-4 flex flex-col w-full h-full">
                     <div className="mb-6 group/title">
                       <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
@@ -597,7 +749,6 @@ export default function Home() {
                     {filteredSupply.length > 0 ? (
                       <div className="space-y-3">
                         {filteredSupply.map((reagent, i) => {
-                          const ReagentIcon = reagent.icon;
                           const isSelected = selectedId === reagent.name;
                           return (
                             <motion.div
@@ -606,10 +757,10 @@ export default function Home() {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: true }}
                               transition={{ delay: i * 0.05 }}
-                              onClick={() => handleReagentClick(reagent.name, reagent.path)}
-                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer ${
+                              onClick={() => handleReagentClick(reagent.name, reagent.slug)}
+                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer hover:-translate-y-0.5 shadow-sm hover:shadow-[0_0_15px_rgba(255,77,0,0.05)] ${
                                 isSelected 
-                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.1)]' 
+                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.15)]' 
                                   : 'border-white/5 hover:border-[#FF4D00]/30 hover:bg-white/[0.04]'
                               }`}
                             >
@@ -622,7 +773,7 @@ export default function Home() {
                                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
                                   isSelected ? 'bg-[#FF4D00] text-white' : 'bg-white/[0.03] text-neutral-400 group-hover:bg-[#FF4D00]/10 group-hover:text-[#FF4D00]'
                                 }`}>
-                                  <ReagentIcon size={18} />
+                                  <PremiumReagentIcon name={reagent.name} />
                                 </div>
                                 <div className="text-left">
                                   <h4 className={`text-base font-semibold transition-colors duration-300 ${
@@ -644,42 +795,63 @@ export default function Home() {
                       </div>
                     )}
                   </div>
-                </>
+                  
+                </div>
               );
             })()}
+          </div>
 
-            {/* Premium Quality trust card spanning 12 columns */}
-            <div className="col-span-12 mt-12 bg-gradient-to-r from-white/[0.02] to-white/[0.04] border border-white/10 rounded-[32px] p-8 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-md">
-              {/* Subtle scientific grid pattern or decorative wavy lines on the right side */}
-              <div className="absolute right-0 top-0 bottom-0 w-[40%] opacity-15 pointer-events-none bg-[radial-gradient(circle_at_right,#FF4D00_0%,transparent_60%)]" />
-              <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-24 opacity-10 pointer-events-none hidden md:block">
-                {/* Mini sine-wave vector lines representing scientific patterns */}
-                <svg viewBox="0 0 200 100" fill="none" stroke="#FF4D00" strokeWidth="1.2" className="w-full h-full">
-                  <path d="M0,50 Q25,20 50,50 T100,50 T150,50 T200,50" />
-                  <path d="M0,60 Q25,30 50,60 T100,60 T150,60 T200,60" opacity="0.4" />
-                </svg>
-              </div>
-
-              <div className="flex items-center gap-6 relative z-10 flex-col md:flex-row text-center md:text-left">
-                <div className="w-16 h-16 bg-[#FF4D00]/10 rounded-2xl flex items-center justify-center text-[#FF4D00] border border-[#FF4D00]/30 shrink-0 shadow-[0_0_15px_rgba(255,77,0,0.15)]">
-                  <ShieldCheck size={32} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF4D00] mb-2">Quality You Can Trust</h4>
-                  <p className="text-neutral-300 text-lg font-light max-w-2xl leading-relaxed">
-                    High-quality reagents and laboratory supplies for accurate, reliable and reproducible research outcomes.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="relative z-10 shrink-0 w-full md:w-auto">
-                <Link to={getCtaPath('REQUEST_QUOTE')} className="w-full md:w-auto bg-[#FF4D00] hover:bg-[#E64500] text-white border-none py-4 px-8 rounded-xl font-semibold flex items-center justify-center gap-3 group transition-all duration-300 hover:shadow-[0_4px_20px_rgba(255,77,0,0.25)] text-sm uppercase tracking-wider">
-                  REQUEST A QUOTE <ArrowRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
-                </Link>
-              </div>
+          {/* Premium Quality trust card spanning 12 columns */}
+          <div className="bg-gradient-to-r from-white/[0.02] to-white/[0.04] border border-white/10 rounded-[32px] p-8 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-md shadow-md hover:shadow-[0_10px_30px_rgba(255,77,0,0.03)] transition-all duration-500">
+            {/* Subtle scientific grid pattern or decorative wavy lines on the right side */}
+            <div className="absolute right-0 top-0 bottom-0 w-[40%] opacity-15 pointer-events-none bg-[radial-gradient(circle_at_right,#FF4D00_0%,transparent_60%)]" />
+            <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-24 opacity-10 pointer-events-none hidden md:block">
+              {/* Mini sine-wave vector lines representing scientific patterns */}
+              <svg viewBox="0 0 200 100" fill="none" stroke="#FF4D00" strokeWidth="1.2" className="w-full h-full">
+                <path d="M0,50 Q25,20 50,50 T100,50 T150,50 T200,50" />
+                <path d="M0,60 Q25,30 50,60 T100,60 T150,60 T200,60" opacity="0.4" />
+              </svg>
             </div>
 
+            <div className="flex items-center gap-6 relative z-10 flex-col md:flex-row text-center md:text-left">
+              <div className="w-16 h-16 bg-[#FF4D00]/10 rounded-2xl flex items-center justify-center text-[#FF4D00] border border-[#FF4D00]/30 shrink-0 shadow-[0_0_15px_rgba(255,77,0,0.15)]">
+                <ShieldCheck size={32} />
+              </div>
+              <div>
+                <h4 className="text-xl font-medium text-white mb-2">Quality You Can Trust</h4>
+                <p className="text-neutral-400 text-sm max-w-2xl leading-relaxed">
+                  High-quality reagents and laboratory supplies for accurate, reliable and reproducible research outcomes.
+                </p>
+              </div>
+            </div>
+            
+            <div className="relative z-10 shrink-0 w-full md:w-auto">
+              <Link to={getCtaPath('REQUEST_QUOTE')} className="w-full md:w-auto bg-[#FF4D00] hover:bg-[#E64500] text-white border-none py-4 px-8 rounded-xl font-semibold flex items-center justify-center gap-3 group transition-all duration-300 hover:shadow-[0_4px_20px_rgba(255,77,0,0.25)] text-sm uppercase tracking-wider">
+                REQUEST A QUOTE <ArrowRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+            </div>
           </div>
+
+          {/* Trust Features Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 border-t border-white/5 pt-16">
+            {[
+              { title: "Reliable Quality", desc: "Quality-focused scientific solutions.", icon: ShieldCheck },
+              { title: "Research Driven", desc: "Focused on practical scientific impact.", icon: Target },
+              { title: "Support Every Step", desc: "From planning to project support.", icon: UsersRound },
+              { title: "Trusted by Researchers", desc: "Supporting scientists and organizations.", icon: FlaskConical }
+            ].map((feature, i) => (
+              <div key={i} className="flex items-start gap-4 group/feature">
+                <div className="w-10 h-10 rounded-xl bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0 shadow-[0_0_10px_rgba(255,77,0,0.05)] group-hover/feature:border-[#FF4D00]/50 transition-colors">
+                  <feature.icon size={20} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-white mb-1 group-hover/feature:text-[#FF4D00] transition-colors">{feature.title}</h4>
+                  <p className="text-xs text-neutral-400 font-light leading-relaxed">{feature.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
