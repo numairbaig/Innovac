@@ -130,147 +130,124 @@ export default function Home() {
         </div>
 
         <div className="max-w-[1400px] mx-auto relative z-10">
-          
-          <div className="border border-[#E5E5E5]/60 bg-white md:rounded-[32px] overflow-hidden shadow-sm flex flex-col">
+          <div className="flex flex-col lg:flex-row w-full gap-16 lg:gap-24">
             
-            <div className="flex flex-col lg:flex-row w-full">
-              
-              {/* PRIMARY CONTENT AREA */}
+            {/* LEFT COLUMN: PRIMARY CONTENT AREA */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full lg:w-[45%] flex flex-col"
+            >
+              {/* Section Label */}
+              <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-8 block">
+                01 / WHO WE ARE
+              </span>
+
+              {/* Main Heading */}
+              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-8">
+                Science That<br />
+                Moves Research<br />
+                <span className="text-[#FF4D00] italic pr-4">Forward.</span>
+              </h2>
+
+              {/* Company Descriptions */}
+              <div className="space-y-4 mb-12 max-w-xl">
+                <p className="text-base leading-relaxed text-[#050505] font-medium">
+                  INNOVAC BIOTECHNOLOGIES provides biotechnology, molecular biology, protein research, reagents, computational biology, internship, and professional training solutions.
+                </p>
+                <p className="text-sm leading-relaxed text-neutral-500 font-light">
+                  Our goal is to empower researchers and organizations with practical scientific services and innovative biotechnology solutions.
+                </p>
+              </div>
+
+              {/* Connected Values List */}
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full lg:w-7/12 flex flex-col p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-[#E5E5E5]/60"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  visible: { transition: { staggerChildren: 0.15 } }
+                }}
+                className="flex flex-col border-t border-[#E5E5E5]/60 mb-12"
               >
-                {/* Section Label */}
-                <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-8 block">
-                  01 / WHO WE ARE
-                </span>
-
-                {/* Main Heading */}
-                <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-8">
-                  Science That<br />
-                  Moves Research<br />
-                  <span className="text-[#FF4D00] italic pr-4">Forward.</span>
-                </h2>
-
-                {/* Company Descriptions */}
-                <div className="space-y-4 mb-12 max-w-xl">
-                  <p className="text-base leading-relaxed text-[#050505] font-medium">
-                    INNOVAC BIOTECHNOLOGIES provides biotechnology, molecular biology, protein research, reagents, computational biology, internship, and professional training solutions.
-                  </p>
-                  <p className="text-sm leading-relaxed text-neutral-500 font-light">
-                    Our goal is to empower researchers and organizations with practical scientific services and innovative biotechnology solutions.
-                  </p>
-                </div>
-
-                {/* Connected Values List */}
-                <motion.div 
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={{
-                    visible: { transition: { staggerChildren: 0.15 } }
-                  }}
-                  className="flex flex-col border-t border-[#E5E5E5]/60 mb-12"
-                >
-                  {[
-                    { title: 'RELIABLE QUALITY', desc: 'Quality-focused scientific solutions.', icon: ShieldCheck },
-                    { title: 'RESEARCH DRIVEN', desc: 'Focused on practical scientific impact.', icon: Target },
-                    { title: 'SUPPORT EVERY STEP', desc: 'From planning to project support.', icon: UsersRound },
-                  ].map((item, idx) => (
-                    <motion.div 
-                      key={idx}
-                      variants={{
-                        hidden: { opacity: 0, x: -10 },
-                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
-                      }}
-                      className="flex items-start gap-4 py-5 border-b border-[#E5E5E5]/60 group/value transition-colors hover:bg-neutral-50/50"
-                    >
-                      <div className="w-8 h-8 rounded-full border border-[#E5E5E5] bg-white flex items-center justify-center shrink-0 group-hover/value:border-[#FF4D00] transition-colors mt-0.5">
-                        <item.icon size={14} className="text-[#050505] group-hover/value:text-[#FF4D00] transition-colors" />
-                      </div>
-                      <div>
-                        <h4 className="text-[11px] font-bold text-[#050505] uppercase tracking-widest mb-1 group-hover/value:text-[#FF4D00] transition-colors">{item.title}</h4>
-                        <p className="text-xs text-neutral-500 font-light">{item.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* Learn More Button */}
-                <div className="mt-auto">
-                  <Link 
-                    to="/about-us" 
-                    className="inline-flex items-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none"
-                  >
-                    <span>LEARN MORE ABOUT US</span>
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </motion.div>
-
-              {/* RIGHT COLUMN: Supporting Blocks Grid */}
-              <div className="w-full lg:w-5/12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
                 {[
-                  { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', icon: Network },
-                  { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', icon: GraduationCap },
-                  { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', icon: FlaskConical },
-                  { num: '20+', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', icon: Dna },
-                ].map((block, i) => (
+                  { title: 'RELIABLE QUALITY', desc: 'Quality-focused scientific solutions.', icon: ShieldCheck },
+                  { title: 'RESEARCH DRIVEN', desc: 'Focused on practical scientific impact.', icon: Target },
+                  { title: 'SUPPORT EVERY STEP', desc: 'From planning to project support.', icon: UsersRound },
+                ].map((item, idx) => (
                   <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 0.1 * i }}
-                    className={`p-8 lg:p-10 flex flex-col relative group/block bg-white hover:bg-neutral-50 transition-colors border-[#E5E5E5]/60
-                      ${i === 0 ? 'border-b sm:border-r' : i === 1 ? 'border-b' : i === 2 ? 'border-b sm:border-b-0 sm:border-r' : ''}
-                    `}
+                    key={idx}
+                    variants={{
+                      hidden: { opacity: 0, x: -10 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                    }}
+                    className="flex items-start gap-4 py-5 border-b border-[#E5E5E5]/60 group/value transition-colors hover:bg-black/5"
                   >
-                    <div className="absolute top-8 right-8 text-[#E5E5E5] group-hover/block:text-[#FF4D00]/10 transition-colors duration-500">
-                      <block.icon size={64} strokeWidth={1} className="opacity-30" />
+                    <div className="w-8 h-8 rounded-full border border-[#E5E5E5] bg-white flex items-center justify-center shrink-0 group-hover/value:border-[#FF4D00] transition-colors mt-0.5">
+                      <item.icon size={14} className="text-[#050505] group-hover/value:text-[#FF4D00] transition-colors" />
                     </div>
-                    <div className="relative z-10 flex flex-col h-full justify-between">
-                      <div>
-                         <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
-                         <div className="w-6 h-[1px] bg-[#E5E5E5] group-hover/block:bg-[#FF4D00] my-4 transition-colors" />
-                      </div>
-                      <div className="mt-16 sm:mt-24">
-                        <h3 className="text-[11px] font-bold text-[#050505] uppercase tracking-widest mb-2">{block.title}</h3>
-                        <p className="text-xs text-neutral-500 font-light max-w-[180px] leading-relaxed">{block.desc}</p>
-                      </div>
+                    <div>
+                      <h4 className="text-[11px] font-bold text-[#050505] uppercase tracking-widest mb-1 group-hover/value:text-[#FF4D00] transition-colors">{item.title}</h4>
+                      <p className="text-xs text-neutral-500 font-light">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
+              {/* Learn More Button */}
+              <div className="mt-auto">
+                <Link 
+                  to="/about-us" 
+                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-6 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
+                >
+                  <span>LEARN MORE ABOUT US</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Supporting Blocks Grid */}
+            <div className="w-full lg:w-[55%] grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 lg:gap-y-16 mt-8 lg:mt-0">
+              {[
+                { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
+                { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
+                { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
+                { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
+              ].map((block, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: 0.1 * i }}
+                  className="flex flex-col group/block"
+                >
+                  <div className="mb-2">
+                     <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
+                     <div className="w-6 h-[1px] bg-[#050505]/20 group-hover/block:bg-[#FF4D00] mt-3 mb-5 transition-colors" />
+                  </div>
+                  
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    {block.img ? (
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors">
+                        <img src={block.img} alt={block.title} className="w-full h-full object-contain group-hover/block:scale-110 transition-transform duration-500" />
+                      </div>
+                    ) : (
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors relative overflow-hidden">
+                        <div className="absolute inset-0 bg-[#F5F5F3] opacity-50" />
+                      </div>
+                    )}
+                    <div className="pt-1">
+                      <h3 className="text-[11px] sm:text-xs font-bold text-[#050505] uppercase tracking-widest mb-1.5 leading-tight">{block.title}</h3>
+                      <p className="text-[11px] sm:text-xs text-neutral-500 font-light leading-relaxed">{block.desc}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-            {/* BOTTOM IMAGE STRIP */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="grid grid-cols-1 sm:grid-cols-3 border-t border-[#E5E5E5]/60 bg-[#F5F5F3]"
-            >
-              {[
-                { img: '/who_we_are_1.png', alt: 'Reliable Quality' },
-                { img: '/who_we_are_2.png', alt: 'Research Driven' },
-                { img: '/who_we_are_3.png', alt: 'Support Every Step' }
-              ].map((img, i) => (
-                <div key={i} className={`aspect-[4/3] sm:aspect-auto sm:h-48 lg:h-56 relative p-8 md:p-12 flex items-center justify-center group/img overflow-hidden border-[#E5E5E5]/60 ${i < 2 ? 'border-b sm:border-b-0 sm:border-r' : ''}`}>
-                  <img 
-                    src={img.img} 
-                    alt={img.alt} 
-                    className="w-full h-full object-contain drop-shadow-sm group-hover/img:scale-110 transition-transform duration-700 ease-out" 
-                  />
-                </div>
-              ))}
-            </motion.div>
-            
           </div>
         </div>
       </section>
