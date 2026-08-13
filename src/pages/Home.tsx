@@ -420,19 +420,6 @@ export default function Home() {
         </div>
         
         <div className="max-w-[1400px] mx-auto relative z-10">
-<<<<<<< HEAD
-=======
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-            <SectionHeading 
-              label="03 / Reagents" 
-              title="Laboratory Reagents\nFor Reliable Research." 
-              light 
-              highlightWord="Research." 
-              className="mb-0 md:mb-0"
-            />
-            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0 w-full sm:w-auto" withArrow>VIEW ALL REAGENTS</Button>
-          </div>
->>>>>>> 8cffe425185edb12729bdb0b517020f35c29bdd3
           
           {/* Header block */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
@@ -449,7 +436,6 @@ export default function Home() {
               </p>
             </div>
             
-<<<<<<< HEAD
             <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0 group flex items-center gap-2 border-white/20 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors" withArrow>
               VIEW ALL REAGENTS
             </Button>
@@ -534,21 +520,6 @@ export default function Home() {
                       <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
                         <Beaker size={20} />
                         <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Synthesis</h3>
-=======
-            {/* Left: Synthesis */}
-            <div className="lg:col-span-4">
-              <div className="flex items-center gap-3 mb-8 text-accent">
-                <Beaker size={24} />
-                <h3 className="text-xl font-medium uppercase tracking-widest">Synthesis</h3>
-              </div>
-              <ul className="space-y-4">
-                {["Deionized Water", "TRIzol", "TAE Buffer", "TBE Buffer", "Ethidium Bromide", "Media Formation"].map((item, i) => (
-                  <li key={i} className="group">
-                    <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
-                      <div className="flex items-center gap-4">
-                        <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
-                        <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
->>>>>>> 8cffe425185edb12729bdb0b517020f35c29bdd3
                       </div>
                       <div className="w-12 h-0.5 bg-[#FF4D00] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
                     </div>
@@ -604,10 +575,13 @@ export default function Home() {
                     )}
                   </div>
 
-<<<<<<< HEAD
                   {/* Center scientific visual centerpiece */}
                   <div className="lg:col-span-4 hidden lg:flex justify-center items-center py-6">
-                    <MicroscopeCenterpiece />
+                    <img 
+                      src="/reagents_microscope.png" 
+                      alt="Microscope" 
+                      className="w-full max-w-[320px] h-auto object-contain opacity-95 drop-shadow-[0_20px_50px_rgba(255,77,0,0.15)] select-none"
+                    />
                   </div>
 
                   {/* Supply List */}
@@ -684,37 +658,6 @@ export default function Home() {
                   <path d="M0,50 Q25,20 50,50 T100,50 T150,50 T200,50" />
                   <path d="M0,60 Q25,30 50,60 T100,60 T150,60 T200,60" opacity="0.4" />
                 </svg>
-=======
-            {/* Center: Image */}
-            <div className="lg:col-span-4 hidden lg:flex items-center justify-center px-4 relative">
-              <img 
-                src="/reagents_microscope.png" 
-                alt="Microscope" 
-                className="w-full max-w-[320px] h-auto object-contain opacity-95 drop-shadow-[0_20px_50px_rgba(255,77,0,0.15)] select-none"
-              />
-            </div>
-
-            {/* Right: Supply */}
-            <div className="lg:col-span-4 flex flex-col h-full justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-8 text-accent">
-                  <Thermometer size={24} />
-                  <h3 className="text-xl font-medium uppercase tracking-widest">Supply</h3>
-                </div>
-                <ul className="space-y-4 mb-12">
-                  {["Restriction Enzymes", "Oligos", "Polymerases", "Master Mixes", "Media Supply"].map((item, i) => (
-                    <li key={i} className="group">
-                      <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
-                        <div className="flex items-center gap-4">
-                          <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
-                          <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
-                        </div>
-                        <ChevronRight size={18} className="text-neutral-600 group-hover:text-accent transition-colors transform group-hover:translate-x-1" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
->>>>>>> 8cffe425185edb12729bdb0b517020f35c29bdd3
               </div>
 
               <div className="flex items-center gap-6 relative z-10 flex-col md:flex-row text-center md:text-left">
