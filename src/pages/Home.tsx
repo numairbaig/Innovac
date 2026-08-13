@@ -15,15 +15,15 @@ import { Button } from '@/src/components/ui/Button';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { ServicesStrip } from '@/src/components/ui/ServicesStrip';
 
-function PremiumReagentIcon({ name }: { name: string }) {
+function PremiumReagentIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
   switch (name) {
     case "Deionized Water":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="water-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00F0FF" />
-              <stop offset="100%" stopColor="#0047FF" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" fill="url(#water-grad)" opacity="0.85" />
@@ -32,11 +32,11 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "TRIzol":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="trizol-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFD600" />
-              <stop offset="100%" stopColor="#FF5C00" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <rect x="7" y="9" width="10" height="12" rx="2" fill="url(#trizol-grad)" opacity="0.85" />
@@ -47,11 +47,11 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "TAE Buffer":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="tae-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00D1FF" />
-              <stop offset="100%" stopColor="#0077FF" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <path d="M12 3h0m-2 0h4M12 3v5m-5.89 9.82A2 2 0 0 0 7.8 21h8.4a2 2 0 0 0 1.7-2.82L14 9V3h-4v6z" stroke="url(#tae-grad)" strokeWidth="1.5" strokeLinecap="round" />
@@ -62,11 +62,11 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "TBE Buffer":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="tbe-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#C300FF" />
-              <stop offset="100%" stopColor="#7F00FF" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <path d="M12 3h0m-2 0h4M12 3v5m-5.89 9.82A2 2 0 0 0 7.8 21h8.4a2 2 0 0 0 1.7-2.82L14 9V3h-4v6z" stroke="url(#tbe-grad)" strokeWidth="1.5" strokeLinecap="round" />
@@ -77,11 +77,11 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "Ethidium Bromide":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="etbr-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2A00" />
-              <stop offset="100%" stopColor="#FF7A00" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <rect x="9" y="8" width="6" height="12" rx="1.5" stroke="url(#etbr-grad)" strokeWidth="1.5" />
@@ -92,11 +92,11 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "Media Formation":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="media-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00FF66" />
-              <stop offset="100%" stopColor="#009944" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <circle cx="12" cy="12" r="9" stroke="url(#media-grad)" strokeWidth="1.5" />
@@ -108,26 +108,26 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "Restriction Enzymes":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="enz-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00F0FF" />
-              <stop offset="100%" stopColor="#FF4D00" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <path d="M4.5 10.5C8 10.5 10 13.5 12 13.5s4-3 7.5-3M4.5 13.5C8 13.5 10 10.5 12 10.5s4 3 7.5 3" stroke="url(#enz-grad)" strokeWidth="1.5" strokeLinecap="round" />
           <line x1="8" y1="11.5" x2="8" y2="12.5" stroke="white" strokeWidth="1" />
           <line x1="16" y1="11.5" x2="16" y2="12.5" stroke="white" strokeWidth="1" />
-          <circle cx="12" cy="12" r="3" fill="#FF4D00" opacity="0.9" className="animate-pulse" />
+          <circle cx="12" cy="12" r="3" fill="#20C77A" opacity="0.9" className="animate-pulse" />
         </svg>
       );
     case "Oligos":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="oligo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00F0FF" />
-              <stop offset="100%" stopColor="#0072FF" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <path d="M4.5 7.5c3.5 0 5.5 9 7.5 9s4-9 7.5-9M4.5 16.5c3.5 0 5.5-9 7.5-9s4 9 7.5 9" stroke="url(#oligo-grad)" strokeWidth="1.5" strokeLinecap="round" />
@@ -138,11 +138,11 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "Polymerases":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="poly-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00E5FF" />
-              <stop offset="100%" stopColor="#00A896" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <circle cx="12" cy="12" r="5" fill="url(#poly-grad)" opacity="0.8" />
@@ -154,11 +154,11 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "Master Mixes":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="mm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#E000FF" />
-              <stop offset="100%" stopColor="#8700FF" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <path d="M8 4h8M9 4v10l3 6l3-6V4" stroke="url(#mm-grad)" strokeWidth="1.5" strokeLinecap="round" />
@@ -168,25 +168,25 @@ function PremiumReagentIcon({ name }: { name: string }) {
       );
     case "Media Supply":
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
           <defs>
             <linearGradient id="supply-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF9F00" />
-              <stop offset="100%" stopColor="#FF5B00" />
+              <stop offset="0%" stopColor="#6EE7A8" />
+              <stop offset="100%" stopColor="#20C77A" />
             </linearGradient>
           </defs>
           <rect x="7" y="8" width="10" height="13" rx="1.5" fill="url(#supply-grad)" opacity="0.85" />
           <rect x="9" y="4" width="6" height="4" fill="#3A3A3A" />
           <rect x="8" y="2" width="8" height="2" fill="white" />
           <rect x="9" y="11" width="6" height="6" fill="white" opacity="0.9" />
-          <line x1="10" y1="13" x2="14" y2="13" stroke="#FF5B00" strokeWidth="1" />
-          <line x1="10" y1="15" x2="13" y2="15" stroke="#FF5B00" strokeWidth="1" />
+          <line x1="10" y1="13" x2="14" y2="13" stroke="#20C77A" strokeWidth="1" />
+          <line x1="10" y1="15" x2="13" y2="15" stroke="#20C77A" strokeWidth="1" />
         </svg>
       );
     default:
       return (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <circle cx="12" cy="12" r="10" stroke="#FF4D00" strokeWidth="1.5" />
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
+          <circle cx="12" cy="12" r="10" stroke="#20C77A" strokeWidth="1.5" />
         </svg>
       );
   }
@@ -195,75 +195,13 @@ function PremiumReagentIcon({ name }: { name: string }) {
 function MicroscopeCenterpiece() {
   return (
     <div className="relative w-full aspect-square max-w-[340px] lg:max-w-[420px] flex items-center justify-center mx-auto">
-      {/* Outer soft glowing orange circle */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,77,0,0.08)_0%,transparent_70%)] animate-pulse" />
+      {/* Outer soft glowing emerald circle */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(32,199,122,0.12)_0%,transparent_70%)] animate-pulse" />
       
       {/* Secondary glowing dotted rings */}
-      <div className="absolute w-[95%] h-[95%] rounded-full border border-[#FF4D00]/5 opacity-20 animate-[spin_180s_linear_infinite]" />
-      <div className="absolute w-[75%] h-[75%] rounded-full border border-dashed border-[#FF4D00]/10 opacity-30 animate-[spin_120s_linear_infinite]" />
+      <div className="absolute w-[95%] h-[95%] rounded-full border border-[#20C77A]/5 opacity-20 animate-[spin_180s_linear_infinite]" />
+      <div className="absolute w-[75%] h-[75%] rounded-full border border-dashed border-[#20C77A]/10 opacity-30 animate-[spin_120s_linear_infinite]" />
       
-      {/* Floating Beakers / Flasks */}
-      {/* Flask Left (Erlenmeyer) */}
-      <motion.div 
-        animate={{ y: [0, -12, 0], x: [0, 6, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-2 top-1/4 z-20 w-10 h-10 text-[#FF4D00] opacity-50 hover:opacity-90 transition-opacity"
-      >
-        <svg viewBox="0 0 24 24" fill="none" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(255,77,0,0.3)]">
-          <defs>
-            <linearGradient id="flask-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF9F00" />
-              <stop offset="100%" stopColor="#FF4D00" />
-            </linearGradient>
-          </defs>
-          <path d="M6 3h12" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M12 3v6" stroke="#FF4D00" strokeWidth="1.5" />
-          <path d="m14 9 5.89 9.82A2 2 0 0 1 18.2 22H5.8a2 2 0 0 1-1.7-3.18L10 9V3" stroke="#FF4D00" strokeWidth="1.5" />
-          <path d="M8.5 16.5h7l-1.5-3.5h-4z" fill="url(#flask-grad)" opacity="0.8" />
-        </svg>
-      </motion.div>
-
-      {/* Tube Right (Test Tube) */}
-      <motion.div 
-        animate={{ y: [0, 14, 0], x: [0, -4, 0] }}
-        transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-2 top-1/3 z-20 w-8 h-8 text-[#8700FF] opacity-45 hover:opacity-90 transition-opacity"
-      >
-        <svg viewBox="0 0 24 24" fill="none" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(135,0,255,0.3)]">
-          <defs>
-            <linearGradient id="tube-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#E000FF" />
-              <stop offset="100%" stopColor="#8700FF" />
-            </linearGradient>
-          </defs>
-          <path d="M8 2h8" stroke="#8700FF" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M10 2v17.5a2.5 2.5 0 0 0 5 0V2" stroke="#8700FF" strokeWidth="1.5" />
-          <path d="M10 11h4" stroke="#8700FF" strokeWidth="1.5" />
-          <path d="M10 6h4" stroke="#8700FF" strokeWidth="1.5" />
-          <path d="M10 14h4v4h-4z" fill="url(#tube-grad)" opacity="0.8" />
-        </svg>
-      </motion.div>
-
-      {/* Beaker Bottom Left */}
-      <motion.div 
-        animate={{ y: [0, -10, 0], x: [0, -8, 0] }}
-        transition={{ duration: 8, delay: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-6 bottom-8 z-20 w-8 h-8 text-[#0077FF] opacity-40 hover:opacity-90 transition-opacity"
-      >
-        <svg viewBox="0 0 24 24" fill="none" className="w-full h-full filter drop-shadow-[0_0_8px_rgba(0,119,255,0.3)]">
-          <defs>
-            <linearGradient id="beaker-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00D1FF" />
-              <stop offset="100%" stopColor="#0077FF" />
-            </linearGradient>
-          </defs>
-          <path d="M19 22H5V4h14v18z" stroke="#0077FF" strokeWidth="1.5" />
-          <path d="M5 8h14" stroke="#0077FF" strokeWidth="1.5" />
-          <path d="M5 14h14" stroke="#0077FF" strokeWidth="1.5" />
-          <path d="M5 16h14v4H5z" fill="url(#beaker-grad)" opacity="0.8" />
-        </svg>
-      </motion.div>
-
       {/* Core 3D Microscope PNG Illustration */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
@@ -273,7 +211,7 @@ function MicroscopeCenterpiece() {
         <img 
           src="/reagents_microscope.png" 
           alt="Microscope" 
-          className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(255,77,0,0.25)] select-none"
+          className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(32,199,122,0.25)] select-none"
         />
       </motion.div>
     </div>
@@ -568,60 +506,68 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* 4. REAGENTS SECTION (Dark) */}
-      <section className="py-24 md:py-32 px-6 bg-[#050505] text-white relative overflow-hidden">
-        {/* Subtle molecular pattern background */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] bg-[length:40px_40px]" />
+      {/* 4. REAGENTS SECTION (Dark Green Theme) */}
+      <section className="py-16 md:py-32 px-4 sm:px-6 bg-[#06140F] text-[#F2F7F4] relative overflow-hidden">
+        {/* Subtle molecular pattern background - more visible on desktop */}
+        <div className="absolute inset-0 opacity-5 lg:opacity-12">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#183A2B_1px,transparent_1px)] bg-[length:40px_40px]" />
         </div>
         
         <div className="max-w-[1400px] mx-auto relative z-10">
           
           {/* Header block */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-8">
             <div>
-              <span className="text-[#FF4D00] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
-                03 / Reagents
+              <span className="text-[#20C77A] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
+                03 / REAGENTS
               </span>
-              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-light tracking-tight leading-[1.05] text-white">
+              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-light tracking-tight leading-[1.05] text-[#F2F7F4]">
                 Laboratory Reagents for<br />
-                Reliable <span className="text-[#FF4D00] font-medium">Research.</span>
+                Reliable <span className="text-[#20C77A] font-medium">Research.</span>
               </h2>
-              <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed max-w-2xl mt-6">
+              <p className="text-[#A8B8AF] text-base md:text-lg font-light leading-relaxed max-w-2xl mt-6">
                 High-quality laboratory reagents and research supplies designed for reliable, reproducible scientific workflows.
               </p>
             </div>
             
-            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0 group flex items-center gap-2 border-white/20 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors" withArrow>
+            {/* View All Reagents Button - Visible only on mobile here */}
+            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} className="md:hidden shrink-0 group flex items-center justify-center gap-2 bg-[#20C77A] text-[#04110B] hover:bg-[#2ae08c] hover:text-[#04110B] border-none hover:shadow-[0_0_20px_rgba(32,199,122,0.25)] transition-all duration-300" withArrow>
               VIEW ALL REAGENTS
             </Button>
           </div>
 
-          {/* Search interaction */}
-          <div className="mb-12 max-w-md relative">
-            <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-neutral-500 pointer-events-none">
-              <Search size={18} />
-            </span>
-            <input 
-              type="text"
-              placeholder="Search reagents..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/[0.03] border border-white/10 focus:border-[#FF4D00] outline-none rounded-xl pl-12 pr-10 py-3.5 text-sm text-white placeholder-neutral-500 transition-all font-light"
-            />
-            {searchQuery && (
-              <button 
-                onClick={() => setSearchQuery('')}
-                className="absolute inset-y-0 right-0 pr-4 flex items-center text-neutral-400 hover:text-white transition-colors cursor-pointer"
-                title="Clear search"
-              >
-                <X size={16} />
-              </button>
-            )}
+          {/* Search + View All Reagents Row (perfectly aligned baseline on desktop) */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 md:mb-12">
+            <div className="w-full md:max-w-md relative">
+              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-[#A8B8AF] pointer-events-none">
+                <Search size={18} />
+              </span>
+              <input 
+                type="text"
+                placeholder="Search reagents..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-[#0C2419] border border-[#1A3B2B] focus:border-[#20C77A] focus:ring-1 focus:ring-[#20C77A]/30 outline-none rounded-xl pl-12 pr-10 py-3.5 text-sm text-[#F2F7F4] placeholder-[#71837A] transition-all font-light"
+              />
+              {searchQuery && (
+                <button 
+                  onClick={() => setSearchQuery('')}
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-[#A8B8AF] hover:text-white transition-colors cursor-pointer"
+                  title="Clear search"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+
+            {/* View All Reagents Button - Visible only on desktop here */}
+            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} className="hidden md:flex shrink-0 group flex items-center gap-2 bg-[#20C77A] text-[#04110B] hover:bg-[#2ae08c] hover:text-[#04110B] border-none hover:shadow-[0_0_20px_rgba(32,199,122,0.25)] transition-all duration-300" withArrow>
+              VIEW ALL REAGENTS
+            </Button>
           </div>
 
           {/* Reagent Explorer Container */}
-          <div className="border border-white/5 bg-white/[0.01] rounded-[32px] p-6 sm:p-8 lg:p-12 backdrop-blur-md relative overflow-hidden mb-12 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
+          <div className="border border-[#1A3B2B] bg-[#0C2419]/50 rounded-[24px] sm:rounded-[32px] p-4 sm:p-8 lg:p-12 backdrop-blur-md relative overflow-hidden mb-8 md:mb-12 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
             
             {/* Dynamic Rendering */}
             {(() => {
@@ -654,13 +600,13 @@ export default function Home() {
 
               if (hasNoResults) {
                 return (
-                  <div className="text-center py-20 bg-white/[0.01] border border-white/5 rounded-[24px]">
-                    <Search size={40} className="mx-auto text-neutral-600 mb-4" />
-                    <h3 className="text-xl font-medium text-white mb-2">No reagents found</h3>
-                    <p className="text-neutral-400 text-sm mb-6 max-w-sm mx-auto">We couldn't find any reagents matching "{searchQuery}". Try revising your search query.</p>
+                  <div className="text-center py-20 bg-[#0C2419]/30 border border-[#1A3B2B] rounded-[24px]">
+                    <Search size={40} className="mx-auto text-[#71837A] mb-4" />
+                    <h3 className="text-xl font-medium text-[#F2F7F4] mb-2">No reagents found</h3>
+                    <p className="text-[#A8B8AF] text-sm mb-6 max-w-sm mx-auto">We couldn't find any reagents matching "{searchQuery}". Try revising your search query.</p>
                     <button 
                       onClick={() => setSearchQuery('')}
-                      className="px-5 py-2.5 bg-[#FF4D00] hover:bg-[#E64500] text-white font-semibold rounded-xl transition-colors cursor-pointer text-xs uppercase tracking-wider"
+                      className="px-5 py-2.5 bg-[#20C77A] hover:bg-[#2ae08c] text-[#04110B] font-semibold rounded-xl transition-colors cursor-pointer text-xs uppercase tracking-wider"
                     >
                       Clear Search Query
                     </button>
@@ -674,15 +620,15 @@ export default function Home() {
                   {/* Left Column: Synthesis */}
                   <div className="lg:col-span-4 flex flex-col w-full h-full">
                     <div className="mb-6 group/title">
-                      <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
+                      <div className="flex items-center gap-3 mb-2 text-[#20C77A]">
                         <Beaker size={20} />
                         <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Synthesis</h3>
                       </div>
-                      <div className="w-12 h-0.5 bg-[#FF4D00] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
+                      <div className="w-12 h-0.5 bg-[#20C77A] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
                     </div>
                     
                     {filteredSynthesis.length > 0 ? (
-                      <div className="space-y-3">
+                      <div className="space-y-4">
                         {filteredSynthesis.map((reagent, i) => {
                           const isSelected = selectedId === reagent.name;
                           return (
@@ -693,39 +639,39 @@ export default function Home() {
                               viewport={{ once: true }}
                               transition={{ delay: i * 0.05 }}
                               onClick={() => handleReagentClick(reagent.name, reagent.slug)}
-                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer hover:-translate-y-0.5 shadow-sm hover:shadow-[0_0_15px_rgba(255,77,0,0.05)] ${
+                              className={`group relative flex items-center justify-between p-4 sm:p-5 lg:p-6 rounded-[16px] sm:rounded-[20px] bg-[#0C2419] border transition-all duration-300 cursor-pointer hover:-translate-y-1 shadow-sm hover:shadow-[0_4px_20px_rgba(32,199,122,0.08)] ${
                                 isSelected 
-                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.15)]' 
-                                  : 'border-white/5 hover:border-[#FF4D00]/30 hover:bg-white/[0.04]'
+                                  ? 'border-[#20C77A] bg-[#103322] shadow-[0_0_15px_rgba(32,199,122,0.15)]' 
+                                  : 'border-[#1A3B2B] hover:border-[#20C77A]/30 hover:bg-[#103322]'
                               }`}
                             >
                               {/* Left border active highlight */}
-                              <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#FF4D00] transition-opacity duration-300 rounded-l-[14px] ${
+                              <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#20C77A] transition-opacity duration-300 rounded-l-[16px] sm:rounded-l-[20px] ${
                                 isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                               }`} />
                               
-                              <div className="flex items-center gap-4 pl-1">
-                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-                                  isSelected ? 'bg-[#FF4D00] text-white' : 'bg-white/[0.03] text-neutral-400 group-hover:bg-[#FF4D00]/10 group-hover:text-[#FF4D00]'
+                              <div className="flex items-center gap-4 sm:gap-5 pl-1">
+                                <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center transition-colors duration-300 ${
+                                  isSelected ? 'bg-[#20C77A] text-[#04110B]' : 'bg-[#081C14] text-[#A8B8AF] group-hover:bg-[#20C77A]/10 group-hover:text-[#20C77A]'
                                 }`}>
-                                  <PremiumReagentIcon name={reagent.name} />
+                                  <PremiumReagentIcon name={reagent.name} className="w-5.5 h-5.5 sm:w-7 sm:h-7" />
                                 </div>
                                 <div className="text-left">
-                                  <h4 className={`text-base font-semibold transition-colors duration-300 ${
-                                    isSelected ? 'text-[#FF4D00]' : 'text-neutral-200 group-hover:text-white'
+                                  <h4 className={`text-base sm:text-lg font-semibold transition-colors duration-300 ${
+                                    isSelected ? 'text-[#20C77A]' : 'text-[#F2F7F4] group-hover:text-white'
                                   }`}>{reagent.name}</h4>
-                                  <p className="text-[11px] text-neutral-500 font-light mt-0.5">{reagent.type}</p>
+                                  <p className="text-xs text-[#71837A] font-light mt-1">{reagent.type}</p>
                                 </div>
                               </div>
-                              <ChevronRight size={18} className={`transition-all duration-300 ${
-                                isSelected ? 'text-[#FF4D00] translate-x-1.5' : 'text-neutral-600 group-hover:text-[#FF4D00] group-hover:translate-x-1'
+                              <ChevronRight size={22} className={`transition-all duration-300 ${
+                                isSelected ? 'text-[#20C77A] translate-x-1.5' : 'text-[#71837A] group-hover:text-[#20C77A] group-hover:translate-x-1'
                               }`} />
                             </motion.div>
                           );
                         })}
                       </div>
                     ) : (
-                      <div className="py-8 text-center bg-white/[0.01] border border-dashed border-white/5 rounded-[14px] text-neutral-500 text-sm">
+                      <div className="py-8 text-center bg-[#0C2419]/20 border border-dashed border-[#1A3B2B] rounded-[14px] text-[#71837A] text-sm">
                         No synthesis reagents match query
                       </div>
                     )}
@@ -739,15 +685,15 @@ export default function Home() {
                   {/* Right Column: Supply */}
                   <div className="lg:col-span-4 flex flex-col w-full h-full">
                     <div className="mb-6 group/title">
-                      <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
+                      <div className="flex items-center gap-3 mb-2 text-[#20C77A]">
                         <Thermometer size={20} />
                         <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Supply</h3>
                       </div>
-                      <div className="w-12 h-0.5 bg-[#FF4D00] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
+                      <div className="w-12 h-0.5 bg-[#20C77A] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
                     </div>
 
                     {filteredSupply.length > 0 ? (
-                      <div className="space-y-3">
+                      <div className="space-y-4">
                         {filteredSupply.map((reagent, i) => {
                           const isSelected = selectedId === reagent.name;
                           return (
@@ -758,39 +704,39 @@ export default function Home() {
                               viewport={{ once: true }}
                               transition={{ delay: i * 0.05 }}
                               onClick={() => handleReagentClick(reagent.name, reagent.slug)}
-                              className={`group relative flex items-center justify-between p-4 rounded-[14px] bg-white/[0.02] border transition-all duration-300 cursor-pointer hover:-translate-y-0.5 shadow-sm hover:shadow-[0_0_15px_rgba(255,77,0,0.05)] ${
+                              className={`group relative flex items-center justify-between p-4 sm:p-5 lg:p-6 rounded-[16px] sm:rounded-[20px] bg-[#0C2419] border transition-all duration-300 cursor-pointer hover:-translate-y-1 shadow-sm hover:shadow-[0_4px_20px_rgba(32,199,122,0.08)] ${
                                 isSelected 
-                                  ? 'border-[#FF4D00] bg-[#FF4D00]/10 shadow-[0_0_15px_rgba(255,77,0,0.15)]' 
-                                  : 'border-white/5 hover:border-[#FF4D00]/30 hover:bg-white/[0.04]'
+                                  ? 'border-[#20C77A] bg-[#103322] shadow-[0_0_15px_rgba(32,199,122,0.15)]' 
+                                  : 'border-[#1A3B2B] hover:border-[#20C77A]/30 hover:bg-[#103322]'
                               }`}
                             >
                               {/* Left border active highlight */}
-                              <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#FF4D00] transition-opacity duration-300 rounded-l-[14px] ${
+                              <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#20C77A] transition-opacity duration-300 rounded-l-[16px] sm:rounded-l-[20px] ${
                                 isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                               }`} />
                               
-                              <div className="flex items-center gap-4 pl-1">
-                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-                                  isSelected ? 'bg-[#FF4D00] text-white' : 'bg-white/[0.03] text-neutral-400 group-hover:bg-[#FF4D00]/10 group-hover:text-[#FF4D00]'
+                              <div className="flex items-center gap-4 sm:gap-5 pl-1">
+                                <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center transition-colors duration-300 ${
+                                  isSelected ? 'bg-[#20C77A] text-[#04110B]' : 'bg-[#081C14] text-[#A8B8AF] group-hover:bg-[#20C77A]/10 group-hover:text-[#20C77A]'
                                 }`}>
-                                  <PremiumReagentIcon name={reagent.name} />
+                                  <PremiumReagentIcon name={reagent.name} className="w-5.5 h-5.5 sm:w-7 sm:h-7" />
                                 </div>
                                 <div className="text-left">
-                                  <h4 className={`text-base font-semibold transition-colors duration-300 ${
-                                    isSelected ? 'text-[#FF4D00]' : 'text-neutral-200 group-hover:text-white'
+                                  <h4 className={`text-base sm:text-lg font-semibold transition-colors duration-300 ${
+                                    isSelected ? 'text-[#20C77A]' : 'text-[#F2F7F4] group-hover:text-white'
                                   }`}>{reagent.name}</h4>
-                                  <p className="text-[11px] text-neutral-500 font-light mt-0.5">{reagent.type}</p>
+                                  <p className="text-xs text-[#71837A] font-light mt-1">{reagent.type}</p>
                                 </div>
                               </div>
-                              <ChevronRight size={18} className={`transition-all duration-300 ${
-                                isSelected ? 'text-[#FF4D00] translate-x-1.5' : 'text-neutral-600 group-hover:text-[#FF4D00] group-hover:translate-x-1'
+                              <ChevronRight size={22} className={`transition-all duration-300 ${
+                                isSelected ? 'text-[#20C77A] translate-x-1.5' : 'text-[#71837A] group-hover:text-[#20C77A] group-hover:translate-x-1'
                               }`} />
                             </motion.div>
                           );
                         })}
                       </div>
                     ) : (
-                      <div className="py-8 text-center bg-white/[0.01] border border-dashed border-white/5 rounded-[14px] text-neutral-500 text-sm">
+                      <div className="py-8 text-center bg-[#0C2419]/20 border border-dashed border-[#1A3B2B] rounded-[14px] text-[#71837A] text-sm">
                         No supply reagents match query
                       </div>
                     )}
@@ -801,39 +747,68 @@ export default function Home() {
             })()}
           </div>
 
-          {/* Premium Quality trust card spanning 12 columns */}
-          <div className="bg-gradient-to-r from-white/[0.02] to-white/[0.04] border border-white/10 rounded-[32px] p-8 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-md shadow-md hover:shadow-[0_10px_30px_rgba(255,77,0,0.03)] transition-all duration-500">
+          {/* Premium Quality trust card spanning 12 columns with slow ambient green glow animation */}
+          <div className="bg-gradient-to-r from-[#081C14] to-[#0C2419] border border-[#1A3B2B] rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-md shadow-md hover:shadow-[0_10px_30px_rgba(32,199,122,0.03)] transition-all duration-500">
+            {/* Ambient slow rotating emerald orbs */}
+            <motion.div 
+              animate={{
+                x: [-15, 15, -15],
+                y: [-8, 8, -8],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-[radial-gradient(circle,#20C77A_0%,transparent_70%)] opacity-[0.06] pointer-events-none blur-2xl z-0"
+            />
+            <motion.div 
+              animate={{
+                x: [15, -15, 15],
+                y: [8, -8, 8],
+                scale: [1.1, 0.9, 1.1],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1
+              }}
+              className="absolute -left-16 -bottom-16 w-72 h-72 rounded-full bg-[radial-gradient(circle,#20C77A_0%,transparent_70%)] opacity-[0.05] pointer-events-none blur-2xl z-0"
+            />
+
             {/* Subtle scientific grid pattern or decorative wavy lines on the right side */}
-            <div className="absolute right-0 top-0 bottom-0 w-[40%] opacity-15 pointer-events-none bg-[radial-gradient(circle_at_right,#FF4D00_0%,transparent_60%)]" />
+            <div className="absolute right-0 top-0 bottom-0 w-[40%] opacity-15 pointer-events-none bg-[radial-gradient(circle_at_right,#20C77A_0%,transparent_60%)]" />
             <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-24 opacity-10 pointer-events-none hidden md:block">
               {/* Mini sine-wave vector lines representing scientific patterns */}
-              <svg viewBox="0 0 200 100" fill="none" stroke="#FF4D00" strokeWidth="1.2" className="w-full h-full">
+              <svg viewBox="0 0 200 100" fill="none" stroke="#20C77A" strokeWidth="1.2" className="w-full h-full">
                 <path d="M0,50 Q25,20 50,50 T100,50 T150,50 T200,50" />
                 <path d="M0,60 Q25,30 50,60 T100,60 T150,60 T200,60" opacity="0.4" />
               </svg>
             </div>
 
             <div className="flex items-center gap-6 relative z-10 flex-col md:flex-row text-center md:text-left">
-              <div className="w-16 h-16 bg-[#FF4D00]/10 rounded-2xl flex items-center justify-center text-[#FF4D00] border border-[#FF4D00]/30 shrink-0 shadow-[0_0_15px_rgba(255,77,0,0.15)]">
+              <div className="w-16 h-16 bg-[#20C77A]/10 rounded-2xl flex items-center justify-center text-[#20C77A] border border-[#20C77A]/30 shrink-0 shadow-[0_0_15px_rgba(32,199,122,0.15)] animate-pulse">
                 <ShieldCheck size={32} />
               </div>
-              <div>
-                <h4 className="text-xl font-medium text-white mb-2">Quality You Can Trust</h4>
-                <p className="text-neutral-400 text-sm max-w-2xl leading-relaxed">
+              <div className="relative z-10">
+                <h4 className="text-xl font-medium text-[#F2F7F4] mb-2">Quality You Can Trust</h4>
+                <p className="text-[#A8B8AF] text-sm max-w-2xl leading-relaxed">
                   High-quality reagents and laboratory supplies for accurate, reliable and reproducible research outcomes.
                 </p>
               </div>
             </div>
             
             <div className="relative z-10 shrink-0 w-full md:w-auto">
-              <Link to={getCtaPath('REQUEST_QUOTE')} className="w-full md:w-auto bg-[#FF4D00] hover:bg-[#E64500] text-white border-none py-4 px-8 rounded-xl font-semibold flex items-center justify-center gap-3 group transition-all duration-300 hover:shadow-[0_4px_20px_rgba(255,77,0,0.25)] text-sm uppercase tracking-wider">
+              <Link to={getCtaPath('REQUEST_QUOTE')} className="w-full md:w-auto bg-[#20C77A] hover:bg-[#2ae08c] text-[#04110B] border-none py-4 px-8 rounded-xl font-semibold flex items-center justify-center gap-3 group transition-all duration-300 hover:shadow-[0_4px_20px_rgba(32,199,122,0.25)] text-sm uppercase tracking-wider">
                 REQUEST A QUOTE <ArrowRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
               </Link>
             </div>
           </div>
 
-          {/* Trust Features Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 border-t border-white/5 pt-16">
+          {/* Trust Features Grid - tighter width and alignment on desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 md:mt-16 border-t border-[#1A3B2B] pt-12 md:pt-16 lg:max-w-5xl lg:mx-auto lg:gap-12">
             {[
               { title: "Reliable Quality", desc: "Quality-focused scientific solutions.", icon: ShieldCheck },
               { title: "Research Driven", desc: "Focused on practical scientific impact.", icon: Target },
@@ -841,12 +816,12 @@ export default function Home() {
               { title: "Trusted by Researchers", desc: "Supporting scientists and organizations.", icon: FlaskConical }
             ].map((feature, i) => (
               <div key={i} className="flex items-start gap-4 group/feature">
-                <div className="w-10 h-10 rounded-xl bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0 shadow-[0_0_10px_rgba(255,77,0,0.05)] group-hover/feature:border-[#FF4D00]/50 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#0C2419] border border-[#1A3B2B] flex items-center justify-center text-[#20C77A] shrink-0 shadow-[0_0_10px_rgba(32,199,122,0.05)] group-hover/feature:border-[#20C77A]/50 transition-colors">
                   <feature.icon size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-white mb-1 group-hover/feature:text-[#FF4D00] transition-colors">{feature.title}</h4>
-                  <p className="text-xs text-neutral-400 font-light leading-relaxed">{feature.desc}</p>
+                  <h4 className="text-sm font-semibold text-[#F2F7F4] mb-1 group-hover/feature:text-[#20C77A] transition-colors">{feature.title}</h4>
+                  <p className="text-xs text-[#A8B8AF] font-light leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -1017,32 +992,32 @@ export default function Home() {
       </section>
 
       {/* 8. CTA SECTION */}
-      <section className="py-32 md:py-40 px-6 bg-[#050505] text-white relative overflow-hidden border-t border-white/10 border-b border-white/10">
+      <section className="py-20 md:py-32 px-4 sm:px-6 bg-[#06140F] text-[#F2F7F4] relative overflow-hidden border-t border-[#1A3B2B] border-b border-[#1A3B2B]">
         {/* DNA background image */}
         <div className="absolute inset-0 opacity-30 mix-blend-screen">
           <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2874&auto=format&fit=crop" alt="DNA Background" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/90 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#06140F] via-[#06140F]/90 to-transparent z-10" />
         
         <div className="max-w-[1400px] mx-auto relative z-20 flex flex-col md:flex-row items-center justify-between gap-12">
           
           <div className="flex items-start gap-8 max-w-3xl">
-            <div className="w-24 h-24 rounded-full border border-white/20 bg-white/5 flex items-center justify-center flex-shrink-0 hidden md:flex">
-              <Dna size={40} className="text-accent" />
+            <div className="w-24 h-24 rounded-full border border-[#1A3B2B] bg-[#0C2419] flex items-center justify-center flex-shrink-0 hidden md:flex">
+              <Dna size={40} className="text-[#20C77A]" />
             </div>
             <div>
-              <h2 className="text-[clamp(2rem,7vw,4.375rem)] font-medium tracking-tight mb-6 leading-[1.1]">
-                Have a <span className="text-accent">Research</span><br/>Challenge?
+              <h2 className="text-[clamp(2rem,7vw,4.375rem)] font-medium tracking-tight text-[#F2F7F4] mb-6 leading-[1.1]">
+                Have a <span className="text-[#20C77A]">Research</span><br/>Challenge?
               </h2>
-              <p className="text-base sm:text-lg text-neutral-400 mb-0 max-w-xl font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#A8B8AF] mb-0 max-w-xl font-light leading-relaxed">
                 Tell us what you are working on and our team can help identify the right biotechnology, laboratory, research, or training solution.
               </p>
             </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-            <Button href={getCtaPath('REQUEST_QUOTE')} size="lg" withArrow className="w-full sm:w-auto">REQUEST A QUOTE</Button>
-            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="dark" size="lg" withArrow className="w-full sm:w-auto">
+            <Button href={getCtaPath('REQUEST_QUOTE')} size="lg" withArrow className="w-full sm:w-auto bg-[#20C77A] text-[#04110B] hover:bg-[#2ae08c] hover:text-[#04110B] border-none hover:shadow-[0_0_20px_rgba(32,199,122,0.3)] transition-all duration-300">REQUEST A QUOTE</Button>
+            <Button href={getCtaPath('CONSULTATION_REQUEST')} size="lg" withArrow className="w-full sm:w-auto bg-[#0C2419] border border-[#1A3B2B] text-[#F2F7F4] hover:border-[#20C77A] hover:text-[#20C77A] hover:bg-[#103322] transition-colors duration-300">
               CONTACT US
             </Button>
           </div>
