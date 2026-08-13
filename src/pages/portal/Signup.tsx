@@ -56,9 +56,6 @@ export default function PortalSignup() {
       }
 
       setSuccess(true);
-      setTimeout(() => {
-        navigate('/portal/login');
-      }, 3000);
     } catch (err: any) {
       setError(err.message || 'Failed to sign up');
     } finally {
@@ -73,100 +70,115 @@ export default function PortalSignup() {
         <h1 className="text-2xl font-bold mb-6 text-center text-neutral-900">Member Registration</h1>
         
         {error && <div className="bg-red-50 text-red-600 p-3 mb-4 text-sm border border-red-200">{error}</div>}
-        {success && (
-          <div className="bg-green-50 text-green-700 p-3 mb-4 text-sm border border-green-200">
-            Account created successfully! Redirecting to login page...
+        {success ? (
+          <div className="text-center py-4 space-y-4">
+            <div className="p-4 bg-green-50 text-green-800 border border-green-200 rounded-lg text-sm font-medium text-left">
+              Account created successfully! A verification link has been sent to your email address. Please verify your email before logging in.
+            </div>
+            <p className="text-xs text-neutral-600 font-light">
+              We sent a verification link to <strong className="font-semibold text-neutral-900">{email}</strong>.
+            </p>
+            <div className="pt-2">
+              <Link 
+                to="/login" 
+                className="w-full inline-block text-center bg-[#FF4D00] text-white font-semibold py-2.5 rounded hover:bg-[#E64500] transition-colors text-xs uppercase tracking-wider"
+              >
+                PROCEED TO LOGIN →
+              </Link>
+            </div>
           </div>
+        ) : (
+          <>
+            <form onSubmit={handleSignup} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-neutral-700 mb-1">Full Name</label>
+                <input 
+                  type="text" 
+                  required
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
+                  placeholder="Dr. Sarah Jenkins"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-neutral-700 mb-1">Email Address</label>
+                <input 
+                  type="email" 
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
+                  placeholder="s.jenkins@innovacbiotech.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-neutral-700 mb-1">Password</label>
+                <input 
+                  type="password" 
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
+                  placeholder="••••••••"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-neutral-700 mb-1">Role / Portal Access</label>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value as Role)}
+                  className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded bg-white"
+                >
+                  <option value="EMPLOYEE">Employee Portal</option>
+                  <option value="COLLABORATOR">Collaborator Portal</option>
+                  <option value="ADMIN">Administrator Portal</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-neutral-700 mb-1">Department</label>
+                  <input 
+                    type="text" 
+                    value={department}
+                    onChange={(e) => setDepartment(e.target.value)}
+                    className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
+                    placeholder="R&D, Molecular"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-neutral-700 mb-1">Position</label>
+                  <input 
+                    type="text" 
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                    className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
+                    placeholder="Lead Scientist"
+                  />
+                </div>
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={loading}
+                className="w-full bg-[#FF4D00] text-white font-semibold py-2 hover:bg-[#E64500] transition-colors disabled:opacity-50 mt-4 rounded"
+              >
+                {loading ? 'Creating Account...' : 'SIGN UP →'}
+              </button>
+            </form>
+
+            <div className="mt-6 text-center text-sm text-neutral-600">
+              Already have an account?{' '}
+              <Link to="/portal/login" className="text-[#FF4D00] font-medium hover:underline">
+                Log In
+              </Link>
+            </div>
+          </>
         )}
-
-        <form onSubmit={handleSignup} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Full Name</label>
-            <input 
-              type="text" 
-              required
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
-              placeholder="Dr. Sarah Jenkins"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Email Address</label>
-            <input 
-              type="email" 
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
-              placeholder="s.jenkins@innovacbiotech.com"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Password</label>
-            <input 
-              type="password" 
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
-              placeholder="••••••••"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Role / Portal Access</label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value as Role)}
-              className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded bg-white"
-            >
-              <option value="EMPLOYEE">Employee Portal</option>
-              <option value="COLLABORATOR">Collaborator Portal</option>
-              <option value="ADMIN">Administrator Portal</option>
-            </select>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-neutral-700 mb-1">Department</label>
-              <input 
-                type="text" 
-                value={department}
-                onChange={(e) => setDepartment(e.target.value)}
-                className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
-                placeholder="R&D, Molecular"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-neutral-700 mb-1">Position</label>
-              <input 
-                type="text" 
-                value={position}
-                onChange={(e) => setPosition(e.target.value)}
-                className="w-full px-4 py-2 border border-neutral-300 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] outline-none rounded" 
-                placeholder="Lead Scientist"
-              />
-            </div>
-          </div>
-
-          <button 
-            type="submit" 
-            disabled={loading}
-            className="w-full bg-[#FF4D00] text-white font-semibold py-2 hover:bg-[#E64500] transition-colors disabled:opacity-50 mt-4 rounded"
-          >
-            {loading ? 'Creating Account...' : 'SIGN UP →'}
-          </button>
-        </form>
-
-        <div className="mt-6 text-center text-sm text-neutral-600">
-          Already have an account?{' '}
-          <Link to="/portal/login" className="text-[#FF4D00] font-medium hover:underline">
-            Log In
-          </Link>
-        </div>
       </div>
     </div>
   );

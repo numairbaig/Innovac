@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, Mail, Phone, Building2, X, Bell } from 'lucide-react';
+import { User, Mail, Phone, Building2, X, Bell, ArrowRight, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { useAuth } from '../../contexts/AuthContext';
-import { registerUser } from '../../lib/auth';
+import { registerUser, resendVerificationEmail } from '../../lib/auth';
 import { supabase } from '../../lib/supabase';
 import { 
   AuthLayout, AuthCard, InputField, PasswordField, 
@@ -22,6 +22,8 @@ export default function PublicSignup() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [resending, setResending] = useState(false);
+  const [resendMessage, setResendMessage] = useState('');
 
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ export default function PublicSignup() {
     setLoading(true);
     setError('');
     setSuccess(false);
+    setResendMessage('');
 
     try {
       const data = await registerUser(email, password, {
@@ -77,9 +80,7 @@ export default function PublicSignup() {
       }
 
       setSuccess(true);
-      setTimeout(() => {
-        navigate('/account/profile', { replace: true });
-      }, 2000);
+      // DO NOT silently redirect to login or profile page - display verification banner
     } catch (err: any) {
       console.error('Signup error:', err);
       setError(err.message || 'Failed to create account. Please check details and try again.');
@@ -87,6 +88,82 @@ export default function PublicSignup() {
       setLoading(false);
     }
   };
+
+  const handleResend = async () => {
+    if (!email) return;
+    setResending(true);
+    setResendMessage('');
+    try {
+      await resendVerificationEmail(email);
+      setResendMessage('Verification link sent! Please check your inbox.');
+    } catch (err: any) {
+      setResendMessage(err.message || 'Failed to resend verification email.');
+    } finally {
+      setResending(false);
+    }
+  };
+
+  if (success) {
+    return (
+      <AuthLayout page="signup">
+        <SEO title="Account Created | INNOVAC BIOTECHNOLOGIES" noindex={true} />
+        <AuthCard maxWidth="600px">
+          <div className="text-center py-4">
+            <div className="w-16 h-16 bg-green-50 border border-green-200 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+              <Mail size={32} />
+            </div>
+            <h1 className="text-2xl font-bold tracking-tight text-[#050505] uppercase mb-2">
+              Account Created Successfully!
+            </h1>
+            <div className="w-12 h-1 bg-[#FF4D00] mx-auto mt-2 mb-6" />
+
+            <div className="p-4 mb-6 bg-green-50 border border-green-200 text-green-800 rounded-xl text-sm font-semibold leading-relaxed text-left flex items-start gap-3">
+              <CheckCircle2 size={20} className="text-green-600 shrink-0 mt-0.5" />
+              <div>
+                Account created successfully! A verification link has been sent to your email address. Please verify your email before logging in.
+              </div>
+            </div>
+
+            <p className="text-neutral-600 text-sm font-light leading-relaxed mb-6">
+              We sent a verification link to <strong className="font-semibold text-[#050505]">{email}</strong>. Please check your inbox and click the link to confirm your account.
+            </p>
+
+            {resendMessage && (
+              <div className="p-3 mb-6 bg-blue-50 border border-blue-200 text-blue-700 rounded-xl text-xs font-semibold">
+                {resendMessage}
+              </div>
+            )}
+
+            <div className="space-y-3 pt-2">
+              <Link 
+                to="/login" 
+                className="w-full bg-[#FF4D00] hover:bg-[#FF5A00] text-white h-[46px] rounded-[10px] text-xs font-bold uppercase tracking-widest transition-all duration-200 flex items-center justify-center gap-2 shadow-sm"
+              >
+                <span>PROCEED TO LOGIN</span>
+                <ArrowRight size={14} />
+              </Link>
+
+              <button
+                type="button"
+                onClick={handleResend}
+                disabled={resending}
+                className="w-full bg-white border border-[#D8D8D5] hover:border-[#050505] text-[#050505] h-[44px] rounded-[10px] text-xs font-bold uppercase tracking-widest transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+              >
+                {resending ? (
+                  <span>Sending Verification Link...</span>
+                ) : (
+                  <>
+                    <RefreshCw size={14} />
+                    <span>Resend Verification Link</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </AuthCard>
+      </AuthLayout>
+    );
+  }
 
   return (
     <AuthLayout page="signup">

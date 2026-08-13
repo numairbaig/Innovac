@@ -2,6 +2,7 @@ import { supabase } from './supabase';
 
 /**
  * Signs in a user with email and password using Supabase.
+ * Blocks unverified users from authenticating or retaining a session.
  */
 export async function loginUser(email: string, password: string) {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -9,19 +10,46 @@ export async function loginUser(email: string, password: string) {
     password
   });
   if (error) throw error;
+
+  // Block login for unverified accounts
+  if (data.user && !data.user.email_confirmed_at) {
+    await supabase.auth.signOut();
+    const unverifiedErr: any = new Error('Your email address is not verified. Please check your inbox to confirm your account.');
+    unverifiedErr.isUnverified = true;
+    unverifiedErr.unverifiedEmail = email;
+    throw unverifiedErr;
+  }
+
   return data;
 }
 
 /**
- * Registers a new user with email, password, and optional profile metadata (e.g. fullName, institution).
+ * Registers a new user with email, password, and optional profile metadata.
  */
 export async function registerUser(email: string, password: string, metadata?: Record<string, any>) {
+  const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: metadata,
-      emailRedirectTo: `${import.meta.env.VITE_SITE_URL}/auth/confirmed`,
+      emailRedirectTo: `${siteUrl}/auth/confirmed`,
+    }
+  });
+  if (error) throw error;
+  return data;
+}
+
+/**
+ * Resends the signup email verification link to the given email address.
+ */
+export async function resendVerificationEmail(email: string) {
+  const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
+  const { data, error } = await supabase.auth.resend({
+    type: 'signup',
+    email,
+    options: {
+      emailRedirectTo: `${siteUrl}/auth/confirmed`,
     }
   });
   if (error) throw error;

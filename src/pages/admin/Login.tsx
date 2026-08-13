@@ -19,8 +19,14 @@ export default function AdminLogin() {
     setError('');
     
     try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+
+      if (data.user && !data.user.email_confirmed_at) {
+        await supabase.auth.signOut();
+        throw new Error('Your email address is not verified. Please check your inbox to confirm your account.');
+      }
+
       navigate('/admin/dashboard');
     } catch (err: any) {
       setError(err.message || 'Failed to sign in');

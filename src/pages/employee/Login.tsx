@@ -22,6 +22,11 @@ export default function EmployeeLogin() {
       const { data, error: loginError } = await supabase.auth.signInWithPassword({ email, password });
       if (loginError) throw loginError;
 
+      if (data.user && !data.user.email_confirmed_at) {
+        await supabase.auth.signOut();
+        throw new Error('Your email address is not verified. Please check your inbox to confirm your account.');
+      }
+
       // Check if user is employee or admin
       const role = data.user?.user_metadata?.role;
       if (role !== 'EMPLOYEE' && role !== 'SUPERVISOR' && role !== 'ADMIN' && role !== 'SUPER_ADMIN') {

@@ -19,7 +19,7 @@ export function ProtectedRoute({ allowedRoles }: ProtectedRouteProps) {
     );
   }
 
-  if (!user) {
+  if (!user || (user && !user.email_confirmed_at)) {
     // Redirect to the appropriate login page based on the current path
     let loginPath = '/login';
     if (location.pathname.startsWith('/admin')) {
@@ -29,7 +29,7 @@ export function ProtectedRoute({ allowedRoles }: ProtectedRouteProps) {
     } else if (location.pathname.startsWith('/collaborator')) {
       loginPath = '/collaborator/login';
     }
-    return <Navigate to={loginPath} state={{ from: location }} replace />;
+    return <Navigate to={loginPath} state={{ from: location, unverified: true }} replace />;
   }
 
   if (allowedRoles && profile) {
