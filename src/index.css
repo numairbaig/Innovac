@@ -23,3 +23,14 @@ h1, h2, h3, h4, h5, h6 {
   @apply tracking-tight font-medium;
 }
 
+/* Prevent horizontal overflow globally */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}

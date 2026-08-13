@@ -59,7 +59,7 @@ export default function Reagents() {
       />
 
       {/* SECTION 01 — REAGENTS HERO */}
-      <section className="relative w-full pt-32 pb-24 lg:pt-48 lg:pb-32 px-6 bg-[#050505] text-white overflow-hidden">
+      <section className="relative w-full pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-[#050505] text-white overflow-hidden">
         {/* Subtle Radial Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#050505]" />
@@ -74,7 +74,7 @@ export default function Reagents() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-12">
+              <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
                 <ChevronRight size={12} />
                 <span className="text-white">Reagents</span>
@@ -257,32 +257,36 @@ export default function Reagents() {
                   key={reagent.id} 
                   className="bg-white border border-[#D8D8D5] rounded-[20px] overflow-hidden group hover:shadow-xl transition-all duration-300 relative flex flex-col"
                 >
-                  <div className="h-56 overflow-hidden bg-neutral-100 border-b border-[#D8D8D5]">
-                    <img 
-                      src={reagent.image} 
-                      alt={reagent.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <div className="flex justify-between items-start mb-4">
-                      <span className="text-[11px] font-semibold text-neutral-500 uppercase tracking-widest bg-neutral-100 px-3 py-1 rounded-full">
-                        {reagent.category}
-                      </span>
-                      <TestTube2 size={18} className="text-[#FF4D00] opacity-50" />
+                  <Link to={`/reagents/${reagent.slug}`} className="flex flex-col flex-grow">
+                    <div className="h-56 overflow-hidden bg-neutral-100 border-b border-[#D8D8D5]">
+                      <img 
+                        src={reagent.image} 
+                        alt={reagent.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    <h4 className="text-xl font-medium text-[#050505] mb-3">{reagent.name}</h4>
-                    <p className="text-sm text-neutral-600 mb-8 leading-relaxed line-clamp-3">
-                      {reagent.description}
-                    </p>
-                    <div className="mt-auto flex items-center justify-between cursor-pointer">
-                      <span className="text-xs font-bold tracking-wider text-[#FF4D00] uppercase">Request a Quote</span>
-                      <div className="w-8 h-8 rounded-full bg-[#FF4D00]/10 flex items-center justify-center group-hover:bg-[#FF4D00] transition-colors">
-                        <ArrowRight size={14} className="text-[#FF4D00] group-hover:text-white transition-colors" />
+                    <div className="p-8 flex flex-col flex-grow">
+                      <div className="flex justify-between items-start mb-4">
+                        <span className="text-[11px] font-semibold text-neutral-500 uppercase tracking-widest bg-neutral-100 px-3 py-1 rounded-full">
+                          {reagent.category}
+                        </span>
+                        <TestTube2 size={18} className="text-[#FF4D00] opacity-50" />
                       </div>
+                      <h4 className="text-xl font-medium text-[#050505] mb-3">{reagent.name}</h4>
+                      <p className="text-sm text-neutral-600 mb-6 leading-relaxed line-clamp-3">
+                        {reagent.description}
+                      </p>
                     </div>
+                  </Link>
+                  <div className="px-8 pb-8 mt-auto flex items-center justify-between z-10 relative">
+                    <Link to={getCtaPath('REQUEST_QUOTE')} className="flex items-center justify-between w-full group/btn cursor-pointer">
+                      <span className="text-xs font-bold tracking-wider text-[#FF4D00] uppercase">Request a Quote</span>
+                      <div className="w-8 h-8 rounded-full bg-[#FF4D00]/10 flex items-center justify-center group-hover/btn:bg-[#FF4D00] transition-colors">
+                        <ArrowRight size={14} className="text-[#FF4D00] group-hover/btn:text-white transition-colors" />
+                      </div>
+                    </Link>
                   </div>
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FF4D00] rounded-[20px] pointer-events-none transition-colors duration-300" />
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FF4D00] rounded-[20px] pointer-events-none transition-colors duration-300 z-0" />
                 </motion.div>
               ))}
             </div>
@@ -309,17 +313,17 @@ export default function Reagents() {
                   Prepared for<br /><span className="text-[#FF4D00] font-medium">Scientific Precision.</span>
                 </h2>
               </div>
-              <ul className="flex flex-col">
+              <div className="flex flex-col">
                 {['Deionized Water', 'TRIzol', 'TAE Buffer', 'TBE Buffer', 'Ethidium Bromide', 'Media Formation'].map((item, i) => (
-                  <li key={item} className="group flex items-center justify-between py-6 border-b border-white/10 hover:border-[#FF4D00] transition-colors cursor-pointer">
+                  <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} key={item} className="group flex items-center justify-between py-6 border-b border-white/10 hover:border-[#FF4D00] transition-colors cursor-pointer">
                     <div className="flex items-center gap-8">
                       <span className="text-xl font-medium text-neutral-600 group-hover:text-[#FF4D00] transition-colors">0{i + 1}</span>
                       <span className="text-2xl font-light text-white group-hover:text-white transition-colors">{item}</span>
                     </div>
                     <ArrowRight className="text-neutral-600 group-hover:text-[#FF4D00] transform group-hover:translate-x-2 transition-all" />
-                  </li>
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </div>
             <div className="relative h-[600px] rounded-3xl overflow-hidden hidden lg:block">
               <img 
@@ -355,16 +359,16 @@ export default function Reagents() {
                 <p className="text-neutral-600 text-lg leading-relaxed mb-10">
                   A selection of laboratory supplies supporting molecular biology and biotechnology research workflows.
                 </p>
-                <ul className="space-y-4 mb-12">
+                <div className="space-y-4 mb-12">
                   {['Restriction Enzymes', 'Oligos', 'Polymerases', 'Master Mixes', 'Media Supply'].map(item => (
-                    <li key={item} className="flex items-center gap-4">
-                      <div className="w-8 h-8 rounded-full bg-white border border-[#D8D8D5] flex items-center justify-center">
+                    <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} key={item} className="flex items-center gap-4 group cursor-pointer">
+                      <div className="w-8 h-8 rounded-full bg-white border border-[#D8D8D5] flex items-center justify-center group-hover:border-[#FF4D00] transition-colors">
                         <Check size={14} className="text-[#FF4D00]" />
                       </div>
-                      <span className="text-lg font-medium text-[#050505]">{item}</span>
-                    </li>
+                      <span className="text-lg font-medium text-[#050505] group-hover:text-[#FF4D00] transition-colors">{item}</span>
+                    </Link>
                   ))}
-                </ul>
+                </div>
                 <Button variant="primary" className="bg-[#FF4D00] hover:bg-[#E64500] text-white px-8 py-4">
                   REQUEST SUPPLY INFORMATION &rarr;
                 </Button>

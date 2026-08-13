@@ -19,7 +19,7 @@ export default function Services() {
       <SEO title="Biotechnology Services | INNOVAC BIOTECHNOLOGIES" description="Explore biotechnology, nucleic acid, protein, peptide, molecular biology, bioinformatics, and computational research services from INNOVAC BIOTECHNOLOGIES." />
       
       {/* 1. SERVICES HERO */}
-      <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 px-6 bg-[#050505] text-white overflow-hidden">
+      <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-[#050505] text-white overflow-hidden">
         {/* Subtle Radial Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#050505]" />
@@ -28,13 +28,13 @@ export default function Services() {
         </div>
 
         <div className="max-w-[1400px] mx-auto relative z-20">
-          <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-12">
+          <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight size={12} />
             <span className="text-white">Services</span>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 lg:mt-0 w-full">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-4 lg:mt-0 w-full">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

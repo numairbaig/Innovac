@@ -167,17 +167,17 @@ export default function Home() {
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8">
+              <h1 className="text-[clamp(2.25rem,8vw,4.75rem)] font-medium tracking-tight leading-[1.05] mb-8">
                 Advanced Biotechnology,<br /> Molecular Biology &<br /> <span className="text-accent">Research Solutions.</span>
               </h1>
               
-              <p className="text-lg text-neutral-300 max-w-2xl mb-12 leading-relaxed font-light">
+              <p className="text-base sm:text-lg text-neutral-300 max-w-full sm:max-w-2xl mb-12 leading-relaxed font-light">
                 Empowering researchers, laboratories, universities, and biotechnology organizations with reliable laboratory services, research solutions, reagents, computational analysis, internships, and professional scientific training.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 mb-20 lg:mb-0">
-                <Button href={getCtaPath('EXPLORE_SERVICES')} size="lg" withArrow>EXPLORE SERVICES</Button>
-                <Button href={getCtaPath('REQUEST_QUOTE')} variant="dark" size="lg" withArrow>REQUEST A QUOTE</Button>
+              <div className="flex flex-col sm:flex-row gap-4 mb-20 lg:mb-0 w-full sm:w-auto">
+                <Button href={getCtaPath('EXPLORE_SERVICES')} size="lg" withArrow className="w-full sm:w-auto">EXPLORE SERVICES</Button>
+                <Button href={getCtaPath('REQUEST_QUOTE')} variant="dark" size="lg" withArrow className="w-full sm:w-auto">REQUEST A QUOTE</Button>
               </div>
             </motion.div>
 
@@ -208,7 +208,7 @@ export default function Home() {
                 <img
                   src="/hero-scientist.png"
                   alt="Biotechnology scientist with microscope, DNA helix, and laboratory equipment"
-                  className="w-full max-w-[480px] lg:max-w-[540px] h-auto object-contain drop-shadow-2xl select-none"
+                  className="w-full max-w-[360px] sm:max-w-[480px] lg:max-w-[540px] h-auto object-contain drop-shadow-2xl select-none mx-auto"
                   draggable={false}
                 />
               </motion.div>
@@ -223,7 +223,7 @@ export default function Home() {
       <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
         OUR CORE SERVICES & SOLUTIONS
       </span>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+      <h2 className="text-[clamp(1.75rem,6vw,3.75rem)] font-bold tracking-tight text-white mb-6 leading-tight">
         Biotechnology Services & <span className="text-[#FF4D00]">Capabilities</span>
       </h2>
       <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
@@ -234,7 +234,7 @@ export default function Home() {
   </div>
 </section>
       {/* 2. WHO WE ARE & STATS SECTION */}
-      <section className="py-24 md:py-32 px-6 bg-[#F5F5F3] relative overflow-hidden text-[#050505] border-t border-[#E5E5E5]/40">
+      <section className="py-20 md:py-24 px-6 bg-[#F5F5F3] relative overflow-hidden text-[#050505] border-t border-[#E5E5E5]/40">
         {/* Subtle Molecular / DNA Wave Graphics Background */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 select-none" aria-hidden="true">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -249,34 +249,31 @@ export default function Home() {
         </div>
 
         <div className="max-w-[1400px] mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-12 items-start w-full">
+          <div className="flex flex-col lg:flex-row w-full gap-12 lg:gap-20">
             
-            {/* LEFT COLUMN: Content and Scientific Images Collage */}
+            {/* LEFT COLUMN: PRIMARY CONTENT AREA */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full lg:w-[46%] flex flex-col h-full"
+              className="w-full lg:w-[45%] flex flex-col"
             >
               {/* Section Label */}
-              <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-6 block">
+              <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-4 sm:mb-6 block">
                 01 / WHO WE ARE
               </span>
 
               {/* Main Heading */}
-              <h2 className="text-5xl md:text-6xl lg:text-[62px] font-bold text-[#050505] leading-[1.05] tracking-tight">
+              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-6">
                 Science That<br />
                 Moves Research<br />
-                <span className="text-[#FF4D00]">Forward.</span>
+                <span className="text-[#FF4D00] italic pr-4">Forward.</span>
               </h2>
 
-              {/* Orange horizontal line */}
-              <div className="w-10 h-1 bg-[#FF4D00] mt-6 mb-8" />
-
               {/* Company Descriptions */}
-              <div className="space-y-4 mb-8 text-neutral-800">
-                <p className="text-base leading-relaxed font-normal">
+              <div className="space-y-4 mb-8 sm:mb-10 max-w-xl">
+                <p className="text-base leading-relaxed text-[#050505] font-medium">
                   INNOVAC BIOTECHNOLOGIES provides biotechnology, molecular biology, protein research, reagents, computational biology, internship, and professional training solutions.
                 </p>
                 <p className="text-sm leading-relaxed text-neutral-500 font-light">
@@ -284,202 +281,69 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Trust & Value Points */}
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1
-                    }
-                  }
-                }}
-                className="flex flex-col sm:flex-row gap-6 mb-10 w-full"
-              >
-                {/* Point 01 */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 15 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                  }}
-                  className="flex items-start gap-3 flex-1"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[#FF4D00]/5 flex items-center justify-center shrink-0">
-                    <ShieldCheck size={20} className="text-[#FF4D00]" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[#050505] uppercase tracking-wider mb-1">RELIABLE QUALITY</h4>
-                    <p className="text-[11px] text-neutral-500 leading-normal font-light">Quality-focused scientific solutions.</p>
-                  </div>
-                </motion.div>
-
-                {/* Point 02 */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 15 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                  }}
-                  className="flex items-start gap-3 flex-1"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[#FF4D00]/5 flex items-center justify-center shrink-0">
-                    <Target size={20} className="text-[#FF4D00]" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[#050505] uppercase tracking-wider mb-1">RESEARCH DRIVEN</h4>
-                    <p className="text-[11px] text-neutral-500 leading-normal font-light">Focused on practical scientific impact.</p>
-                  </div>
-                </motion.div>
-
-                {/* Point 03 */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 15 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                  }}
-                  className="flex items-start gap-3 flex-1"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[#FF4D00]/5 flex items-center justify-center shrink-0">
-                    <UsersRound size={20} className="text-[#FF4D00]" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[#050505] uppercase tracking-wider mb-1">SUPPORT EVERY STEP</h4>
-                    <p className="text-[11px] text-neutral-500 leading-normal font-light">From planning to project support.</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* Learn More Button */}
-              <div className="mb-12 text-left">
+              {/* Learn More Button (Mobile only) */}
+              <div className="mt-8 sm:mt-12 flex justify-start w-full lg:hidden">
                 <Link 
                   to="/about-us" 
-                  className="inline-flex items-center gap-2 bg-[#050505] hover:bg-[#FF4D00] text-white rounded-[10px] px-6 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none select-none"
+                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
                 >
                   <span>LEARN MORE ABOUT US</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
                 </Link>
-              </div>
-
-              {/* Image Collage (3 side-by-side vertical panels) */}
-              <div className="grid grid-cols-3 gap-3 md:gap-4 w-full">
-                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-white relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1513828583845-9be990a71028?q=80&w=600&auto=format&fit=crop" 
-                    alt="Biotechnology research facility" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                  />
-                </div>
-                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-white relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600&auto=format&fit=crop" 
-                    alt="Laboratory pipetting experiment" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                  />
-                </div>
-                <div className="aspect-[3/4] overflow-hidden rounded-[16px] group border border-[#E5E5E5] bg-white relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=600&auto=format&fit=crop" 
-                    alt="DNA molecular structure" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                  />
-                </div>
               </div>
             </motion.div>
 
-            {/* RIGHT COLUMN: 2x2 capability cards grid */}
-            <div className="w-full lg:w-[54%]">
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.15
-                    }
-                  }
-                }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full pt-4"
-              >
-                {/* Card 01 - Areas */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-                  }}
-                  className="bg-white rounded-[24px] border border-[#E5E5E5] p-8 md:p-10 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#FF4D00] hover:shadow-md group"
-                >
-                  <div className="w-14 h-14 rounded-full bg-[#FF4D00]/5 group-hover:bg-[#FF4D00]/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                    <FlaskConical size={24} className="text-[#FF4D00]" />
-                  </div>
-                  <span className="text-5xl font-medium text-[#050505] tracking-tight mb-2">03</span>
-                  <div className="w-8 h-[2px] bg-[#FF4D00] my-3" />
-                  <h3 className="text-base font-semibold text-[#050505] tracking-tight mb-2">Core Scientific Areas</h3>
-                  <p className="text-xs text-neutral-500 font-light leading-relaxed max-w-[240px]">
-                    Focused expertise across key scientific and biotechnology domains.
-                  </p>
-                </motion.div>
+            {/* RIGHT COLUMN: Supporting Blocks Grid */}
+            <div className="w-full lg:w-[55%] flex flex-col mt-12 lg:mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12 content-start">
+                {[
+                  { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
+                  { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
+                  { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
+                  { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
+                ].map((block, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.1 * i }}
+                    className="flex flex-col group/block"
+                  >
+                    <div className="mb-2">
+                       <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
+                       <div className="w-6 h-[1px] bg-[#050505]/20 group-hover/block:bg-[#FF4D00] mt-3 mb-5 transition-colors" />
+                    </div>
+                    
+                    <div className="flex items-start gap-4 sm:gap-5">
+                      {block.img ? (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors">
+                          <img src={block.img} alt={block.title} className="w-full h-full object-contain group-hover/block:scale-110 transition-transform duration-500" />
+                        </div>
+                      ) : (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors relative overflow-hidden">
+                          <div className="absolute inset-0 bg-[#F5F5F3] opacity-50" />
+                        </div>
+                      )}
+                      <div className="pt-1">
+                        <h3 className="text-[11px] sm:text-xs font-bold text-[#050505] uppercase tracking-widest mb-1.5 leading-tight">{block.title}</h3>
+                        <p className="text-[11px] sm:text-xs text-neutral-500 font-light leading-relaxed">{block.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
 
-                {/* Card 02 - Services */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-                  }}
-                  className="bg-white rounded-[24px] border border-[#E5E5E5] p-8 md:p-10 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#FF4D00] hover:shadow-md group"
+              {/* Learn More Button (Desktop only) */}
+              <div className="hidden lg:flex justify-center w-full mt-10 sm:mt-12">
+                <Link 
+                  to="/about-us" 
+                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
                 >
-                  <div className="w-14 h-14 rounded-full bg-[#FF4D00]/5 group-hover:bg-[#FF4D00]/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                    <Dna size={24} className="text-[#FF4D00]" />
-                  </div>
-                  <span className="text-5xl font-medium text-[#050505] tracking-tight mb-2">20+</span>
-                  <div className="w-8 h-[2px] bg-[#FF4D00] my-3" />
-                  <h3 className="text-base font-semibold text-[#050505] tracking-tight mb-2">Service Categories</h3>
-                  <p className="text-xs text-neutral-500 font-light leading-relaxed max-w-[240px]">
-                    A broad range of services supporting research and laboratory needs.
-                  </p>
-                </motion.div>
-
-                {/* Card 03 - Training */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-                  }}
-                  className="bg-white rounded-[24px] border border-[#E5E5E5] p-8 md:p-10 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#FF4D00] hover:shadow-md group"
-                >
-                  <div className="w-14 h-14 rounded-full bg-[#FF4D00]/5 group-hover:bg-[#FF4D00]/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                    <GraduationCap size={24} className="text-[#FF4D00]" />
-                  </div>
-                  <span className="text-5xl font-medium text-[#050505] tracking-tight mb-2">02</span>
-                  <div className="w-8 h-[2px] bg-[#FF4D00] my-3" />
-                  <h3 className="text-base font-semibold text-[#050505] tracking-tight mb-2">Training Pathways</h3>
-                  <p className="text-xs text-neutral-500 font-light leading-relaxed max-w-[240px]">
-                    Internship, workshop, and professional learning opportunities.
-                  </p>
-                </motion.div>
-
-                {/* Card 04 - Integrated Platform */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-                  }}
-                  className="bg-white rounded-[24px] border border-[#E5E5E5] p-8 md:p-10 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#FF4D00] hover:shadow-md group"
-                >
-                  <div className="w-14 h-14 rounded-full bg-[#FF4D00]/5 group-hover:bg-[#FF4D00]/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                    <Network size={24} className="text-[#FF4D00]" />
-                  </div>
-                  <span className="text-5xl font-medium text-[#050505] tracking-tight mb-2">01</span>
-                  <div className="w-8 h-[2px] bg-[#FF4D00] my-3" />
-                  <h3 className="text-base font-semibold text-[#050505] tracking-tight mb-2">Integrated Research Platform</h3>
-                  <p className="text-xs text-neutral-500 font-light leading-relaxed max-w-[240px]">
-                    Connected scientific services, research support, and expertise.
-                  </p>
-                </motion.div>
-              </motion.div>
+                  <span>LEARN MORE ABOUT US</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
+                </Link>
+              </div>
             </div>
 
           </div>
@@ -496,14 +360,14 @@ export default function Home() {
               highlightWord="Research."
               className="mb-0 md:mb-0"
             />
-            <Button href={getCtaPath('EXPLORE_SERVICES')} variant="outline" className="shrink-0" withArrow>VIEW ALL SERVICES</Button>
+            <Button href={getCtaPath('EXPLORE_SERVICES')} variant="outline" className="shrink-0 w-full sm:w-auto" withArrow>VIEW ALL SERVICES</Button>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Card 1 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?q=80&w=2925&auto=format&fit=crop" alt="DNA" className="w-full h-full object-cover" />
+                <img src="/service_1.jpg" alt="DNA" className="w-full h-full object-cover object-center" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -518,7 +382,7 @@ export default function Home() {
             {/* Card 2 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="https://images.unsplash.com/photo-1559757175-9b93db5f8cb4?q=80&w=2831&auto=format&fit=crop" alt="Protein" className="w-full h-full object-cover" />
+                <img src="/service_2.jpg" alt="Protein" className="w-full h-full object-cover object-center" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -533,7 +397,7 @@ export default function Home() {
             {/* Card 3 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2960&auto=format&fit=crop" alt="Computational" className="w-full h-full object-cover" />
+                <img src="/service_3.jpg" alt="Computational" className="w-full h-full object-cover object-center" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -556,6 +420,19 @@ export default function Home() {
         </div>
         
         <div className="max-w-[1400px] mx-auto relative z-10">
+<<<<<<< HEAD
+=======
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+            <SectionHeading 
+              label="03 / Reagents" 
+              title="Laboratory Reagents\nFor Reliable Research." 
+              light 
+              highlightWord="Research." 
+              className="mb-0 md:mb-0"
+            />
+            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0 w-full sm:w-auto" withArrow>VIEW ALL REAGENTS</Button>
+          </div>
+>>>>>>> 8cffe425185edb12729bdb0b517020f35c29bdd3
           
           {/* Header block */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
@@ -572,6 +449,7 @@ export default function Home() {
               </p>
             </div>
             
+<<<<<<< HEAD
             <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0 group flex items-center gap-2 border-white/20 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors" withArrow>
               VIEW ALL REAGENTS
             </Button>
@@ -656,6 +534,21 @@ export default function Home() {
                       <div className="flex items-center gap-3 mb-2 text-[#FF4D00]">
                         <Beaker size={20} />
                         <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Synthesis</h3>
+=======
+            {/* Left: Synthesis */}
+            <div className="lg:col-span-4">
+              <div className="flex items-center gap-3 mb-8 text-accent">
+                <Beaker size={24} />
+                <h3 className="text-xl font-medium uppercase tracking-widest">Synthesis</h3>
+              </div>
+              <ul className="space-y-4">
+                {["Deionized Water", "TRIzol", "TAE Buffer", "TBE Buffer", "Ethidium Bromide", "Media Formation"].map((item, i) => (
+                  <li key={i} className="group">
+                    <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
+                      <div className="flex items-center gap-4">
+                        <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
+                        <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
+>>>>>>> 8cffe425185edb12729bdb0b517020f35c29bdd3
                       </div>
                       <div className="w-12 h-0.5 bg-[#FF4D00] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
                     </div>
@@ -711,6 +604,7 @@ export default function Home() {
                     )}
                   </div>
 
+<<<<<<< HEAD
                   {/* Center scientific visual centerpiece */}
                   <div className="lg:col-span-4 hidden lg:flex justify-center items-center py-6">
                     <MicroscopeCenterpiece />
@@ -790,6 +684,37 @@ export default function Home() {
                   <path d="M0,50 Q25,20 50,50 T100,50 T150,50 T200,50" />
                   <path d="M0,60 Q25,30 50,60 T100,60 T150,60 T200,60" opacity="0.4" />
                 </svg>
+=======
+            {/* Center: Image */}
+            <div className="lg:col-span-4 hidden lg:flex items-center justify-center px-4 relative">
+              <img 
+                src="/reagents_microscope.png" 
+                alt="Microscope" 
+                className="w-full max-w-[320px] h-auto object-contain opacity-95 drop-shadow-[0_20px_50px_rgba(255,77,0,0.15)] select-none"
+              />
+            </div>
+
+            {/* Right: Supply */}
+            <div className="lg:col-span-4 flex flex-col h-full justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-8 text-accent">
+                  <Thermometer size={24} />
+                  <h3 className="text-xl font-medium uppercase tracking-widest">Supply</h3>
+                </div>
+                <ul className="space-y-4 mb-12">
+                  {["Restriction Enzymes", "Oligos", "Polymerases", "Master Mixes", "Media Supply"].map((item, i) => (
+                    <li key={i} className="group">
+                      <Link to={`/reagents/${item.toLowerCase().replace(/\s+/g, '-')}`} className="flex items-center justify-between py-4 border-b border-white/10 hover:border-accent transition-colors">
+                        <div className="flex items-center gap-4">
+                          <TestTube size={18} className="text-neutral-500 group-hover:text-accent transition-colors" />
+                          <span className="text-lg text-neutral-300 group-hover:text-white transition-colors">{item}</span>
+                        </div>
+                        <ChevronRight size={18} className="text-neutral-600 group-hover:text-accent transition-colors transform group-hover:translate-x-1" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+>>>>>>> 8cffe425185edb12729bdb0b517020f35c29bdd3
               </div>
 
               <div className="flex items-center gap-6 relative z-10 flex-col md:flex-row text-center md:text-left">
@@ -826,7 +751,7 @@ export default function Home() {
               highlightWord="Science."
               className="mb-0 md:mb-0"
             />
-            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="outline" className="shrink-0" withArrow>DISCUSS YOUR RESEARCH</Button>
+            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="outline" className="shrink-0 w-full sm:w-auto" withArrow>DISCUSS YOUR RESEARCH</Button>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -924,8 +849,8 @@ export default function Home() {
           <div className="bg-white rounded-[32px] overflow-hidden border border-border/50 shadow-sm flex flex-col">
             <div className="p-10 md:p-14 flex-grow">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-6">05 / Internships</p>
-              <h3 className="text-4xl md:text-5xl font-medium tracking-tight mb-8 leading-tight">Turn Knowledge Into<br/>Practical <span className="text-accent">Experience.</span></h3>
-              <Button href={getCtaPath('APPLY_INTERNSHIP')} variant="outline" className="mb-12" withArrow>APPLY FOR INTERNSHIP</Button>
+              <h3 className="text-[clamp(1.75rem,6vw,3rem)] font-medium tracking-tight mb-8 leading-tight">Turn Knowledge Into<br/>Practical <span className="text-accent">Experience.</span></h3>
+              <Button href={getCtaPath('APPLY_INTERNSHIP')} variant="outline" className="mb-12 w-full sm:w-auto" withArrow>APPLY FOR INTERNSHIP</Button>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
                 {[
@@ -950,8 +875,8 @@ export default function Home() {
           <div className="bg-white rounded-[32px] overflow-hidden border border-border/50 shadow-sm flex flex-col">
             <div className="p-10 md:p-14 flex-grow">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-6">06 / Training</p>
-              <h3 className="text-4xl md:text-5xl font-medium tracking-tight mb-8 leading-tight">Learn. Practice.<br/><span className="text-accent">Innovate.</span></h3>
-              <Button href={getCtaPath('VIEW_WORKSHOPS')} variant="outline" className="mb-12" withArrow>VIEW WORKSHOPS</Button>
+              <h3 className="text-[clamp(1.75rem,6vw,3rem)] font-medium tracking-tight mb-8 leading-tight">Learn. Practice.<br/><span className="text-accent">Innovate.</span></h3>
+              <Button href={getCtaPath('VIEW_WORKSHOPS')} variant="outline" className="mb-12 w-full sm:w-auto" withArrow>VIEW WORKSHOPS</Button>
               
               <div className="grid grid-cols-1 gap-y-6">
                 {[
@@ -991,18 +916,18 @@ export default function Home() {
               <Dna size={40} className="text-accent" />
             </div>
             <div>
-              <h2 className="text-5xl md:text-6xl lg:text-[70px] font-medium tracking-tight mb-6 leading-[1.1]">
+              <h2 className="text-[clamp(2rem,7vw,4.375rem)] font-medium tracking-tight mb-6 leading-[1.1]">
                 Have a <span className="text-accent">Research</span><br/>Challenge?
               </h2>
-              <p className="text-lg text-neutral-400 mb-0 max-w-xl font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-neutral-400 mb-0 max-w-xl font-light leading-relaxed">
                 Tell us what you are working on and our team can help identify the right biotechnology, laboratory, research, or training solution.
               </p>
             </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-            <Button href={getCtaPath('REQUEST_QUOTE')} size="lg" withArrow>REQUEST A QUOTE</Button>
-            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="dark" size="lg" withArrow>
+            <Button href={getCtaPath('REQUEST_QUOTE')} size="lg" withArrow className="w-full sm:w-auto">REQUEST A QUOTE</Button>
+            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="dark" size="lg" withArrow className="w-full sm:w-auto">
               CONTACT US
             </Button>
           </div>

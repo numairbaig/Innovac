@@ -64,9 +64,12 @@ const AccountApplications = React.lazy(() => import('./pages/account/Application
 const AccountInternships = React.lazy(() => import('./pages/account/Internships'));
 const AccountWorkshops = React.lazy(() => import('./pages/account/Workshops'));
 const AccountRequests = React.lazy(() => import('./pages/account/Requests'));
+const AccountOrders = React.lazy(() => import('./pages/account/Orders'));
 const AccountDocuments = React.lazy(() => import('./pages/account/Documents'));
 const AccountMessages = React.lazy(() => import('./pages/account/Messages'));
 const AccountNotifications = React.lazy(() => import('./pages/account/Notifications'));
+
+const MyOrder = React.lazy(() => import('./pages/MyOrder'));
 
 // Admin Pages
 const AdminLogin = React.lazy(() => import('./pages/admin/Login'));
@@ -91,7 +94,7 @@ const router = createBrowserRouter([
       { path: 'services', element: <Services /> },
       { path: 'services/:id', element: <ServiceDetail /> },
       { path: 'research/:topic', element: <ResearchDetail /> },
-      { path: 'reagents/:category', element: <ReagentDetail /> },
+      { path: 'reagents/:slug', element: <ReagentDetail /> },
       { path: 'team', element: <Team /> },
       { path: 'careers', element: <Careers /> },
       { path: 'courses', element: <Courses /> },
@@ -107,6 +110,7 @@ const router = createBrowserRouter([
       { path: 'auth/confirmed', element: <Confirmed /> },
       { path: 'auth/verification-error', element: <VerificationError /> },
       { path: 'quote', element: <Quote /> },
+      { path: 'my-order', element: <MyOrder /> },
       { path: 'members', element: <Members /> },
       { path: 'employees', element: <Navigate to="/members" replace /> },
       { path: 'collaborators', element: <Navigate to="/members" replace /> },
@@ -142,6 +146,7 @@ const router = createBrowserRouter([
               { path: 'internships', element: <AccountInternships /> },
               { path: 'workshops', element: <AccountWorkshops /> },
               { path: 'requests', element: <AccountRequests /> },
+              { path: 'orders', element: <AccountOrders /> },
               { path: 'documents', element: <AccountDocuments /> },
               { path: 'messages', element: <AccountMessages /> },
               { path: 'notifications', element: <AccountNotifications /> },
@@ -279,13 +284,17 @@ const router = createBrowserRouter([
   }
 ]);
 
+import { OrderCartProvider } from './contexts/OrderCartContext';
+
 export default function App() {
   return (
     <HelmetProvider>
       <AuthProvider>
-        <React.Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-accent border-t-transparent animate-spin"></div></div>}>
-          <RouterProvider router={router} />
-        </React.Suspense>
+        <OrderCartProvider>
+          <React.Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-accent border-t-transparent animate-spin"></div></div>}>
+            <RouterProvider router={router} />
+          </React.Suspense>
+        </OrderCartProvider>
       </AuthProvider>
     </HelmetProvider>
   );
