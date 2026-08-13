@@ -162,45 +162,11 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Connected Values List */}
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  visible: { transition: { staggerChildren: 0.15 } }
-                }}
-                className="flex flex-col border-t border-[#E5E5E5]/60 mb-8 sm:mb-10"
-              >
-                {[
-                  { title: 'RELIABLE QUALITY', desc: 'Quality-focused scientific solutions.', icon: ShieldCheck },
-                  { title: 'RESEARCH DRIVEN', desc: 'Focused on practical scientific impact.', icon: Target },
-                  { title: 'SUPPORT EVERY STEP', desc: 'From planning to project support.', icon: UsersRound },
-                ].map((item, idx) => (
-                  <motion.div 
-                    key={idx}
-                    variants={{
-                      hidden: { opacity: 0, x: -10 },
-                      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
-                    }}
-                    className="flex items-start gap-4 py-3 sm:py-4 border-b border-[#E5E5E5]/60 group/value transition-colors hover:bg-black/5"
-                  >
-                    <div className="w-8 h-8 rounded-full border border-[#E5E5E5] bg-white flex items-center justify-center shrink-0 group-hover/value:border-[#FF4D00] transition-colors mt-0.5">
-                      <item.icon size={14} className="text-[#050505] group-hover/value:text-[#FF4D00] transition-colors" />
-                    </div>
-                    <div>
-                      <h4 className="text-[11px] font-bold text-[#050505] uppercase tracking-widest mb-1 group-hover/value:text-[#FF4D00] transition-colors">{item.title}</h4>
-                      <p className="text-xs text-neutral-500 font-light">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
               {/* Learn More Button */}
-              <div className="mt-2 sm:mt-4">
+              <div className="mt-8 sm:mt-12 flex justify-center w-full">
                 <Link 
                   to="/about-us" 
-                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-6 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
                 >
                   <span>LEARN MORE ABOUT US</span>
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
