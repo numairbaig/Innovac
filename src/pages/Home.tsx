@@ -263,7 +263,7 @@ export default function Home() {
             {/* Card 2 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_2.png" alt="Protein" className="w-full h-full object-cover object-center" />
+                <img src="/service_2.jpg" alt="Protein" className="w-full h-full object-cover object-center" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -278,7 +278,7 @@ export default function Home() {
             {/* Card 3 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_3.png" alt="Computational" className="w-full h-full object-cover object-[25%_center]" />
+                <img src="/service_3.jpg" alt="Computational" className="w-full h-full object-cover object-center" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
