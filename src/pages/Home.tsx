@@ -194,7 +194,7 @@ function PremiumReagentIcon({ name, className = "w-5 h-5" }: { name: string; cla
 
 function MicroscopeCenterpiece() {
   return (
-    <div className="relative w-full aspect-square max-w-[340px] lg:max-w-[420px] flex items-center justify-center mx-auto">
+    <div className="relative w-full aspect-square max-w-[340px] sm:max-w-[380px] lg:max-w-[460px] flex items-center justify-center mx-auto">
       {/* Outer soft glowing emerald circle */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(32,199,122,0.12)_0%,transparent_70%)] animate-pulse" />
       
@@ -206,7 +206,7 @@ function MicroscopeCenterpiece() {
       <motion.div
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="relative z-10 w-[240px] h-[240px] flex items-center justify-center"
+        className="relative z-10 w-[92%] h-[92%] flex items-center justify-center"
       >
         <img 
           src="/reagents_microscope.png" 
@@ -311,146 +311,30 @@ export default function Home() {
           </div>
         </div>
       </section>
-{/* 2. SERVICES & CAPABILITIES SECTION */}
-<section className="py-20 md:py-28 px-6 bg-[#050505] text-white relative overflow-hidden border-t border-white/10">
-  <div className="max-w-[1400px] mx-auto relative z-10">
-    <div className="text-center max-w-3xl mx-auto mb-16">
-      <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
-        OUR CORE SERVICES & SOLUTIONS
-      </span>
-      <h2 className="text-[clamp(1.75rem,6vw,3.75rem)] font-bold tracking-tight text-white mb-6 leading-tight">
-        Biotechnology Services & <span className="text-[#FF4D00]">Capabilities</span>
-      </h2>
-      <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
-        Explore our core scientific offerings — from nucleic acid and protein research to laboratory reagents, computational analysis, and professional training.
-      </p>
-    </div>
-    <ServicesStrip />
-  </div>
-</section>
-      {/* 2. WHO WE ARE & STATS SECTION */}
-      <section className="py-20 md:py-24 px-6 bg-[#F5F5F3] relative overflow-hidden text-[#050505] border-t border-[#E5E5E5]/40">
-        {/* Subtle Molecular / DNA Wave Graphics Background */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 select-none" aria-hidden="true">
-          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-            <path d="M50,200 Q100,100 150,200 T250,200 T350,200" stroke="#FF4D00" strokeWidth="2.5" />
-            <path d="M50,200 Q100,300 150,200 T250,200 T350,200" stroke="#FF4D00" strokeWidth="2.5" strokeDasharray="5 5" />
-            <line x1="100" y1="145" x2="100" y2="255" stroke="#FF4D00" strokeWidth="1" />
-            <line x1="150" y1="200" x2="150" y2="200" stroke="#FF4D00" strokeWidth="1" />
-            <line x1="200" y1="145" x2="200" y2="255" stroke="#FF4D00" strokeWidth="1" />
-            <line x1="250" y1="200" x2="250" y2="200" stroke="#FF4D00" strokeWidth="1" />
-            <line x1="300" y1="145" x2="300" y2="255" stroke="#FF4D00" strokeWidth="1" />
-          </svg>
-        </div>
-
+      {/* 1. SERVICES & CAPABILITIES SECTION */}
+      <section className="py-20 md:py-28 px-6 bg-[#050505] text-white relative overflow-hidden border-t border-white/10">
         <div className="max-w-[1400px] mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row w-full gap-12 lg:gap-20">
-            
-            {/* LEFT COLUMN: PRIMARY CONTENT AREA */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full lg:w-[45%] flex flex-col"
-            >
-              {/* Section Label */}
-              <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-4 sm:mb-6 block">
-                01 / WHO WE ARE
-              </span>
-
-              {/* Main Heading */}
-              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-6">
-                Science That<br />
-                Moves Research<br />
-                <span className="text-[#FF4D00] italic pr-4">Forward.</span>
-              </h2>
-
-              {/* Company Descriptions */}
-              <div className="space-y-4 mb-8 sm:mb-10 max-w-xl">
-                <p className="text-base leading-relaxed text-[#050505] font-medium">
-                  INNOVAC BIOTECHNOLOGIES provides biotechnology, molecular biology, protein research, reagents, computational biology, internship, and professional training solutions.
-                </p>
-                <p className="text-sm leading-relaxed text-neutral-500 font-light">
-                  Our goal is to empower researchers and organizations with practical scientific services and innovative biotechnology solutions.
-                </p>
-              </div>
-
-              {/* Learn More Button (Mobile only) */}
-              <div className="mt-8 sm:mt-12 flex justify-start w-full lg:hidden">
-                <Link 
-                  to="/about-us" 
-                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
-                >
-                  <span>LEARN MORE ABOUT US</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* RIGHT COLUMN: Supporting Blocks Grid */}
-            <div className="w-full lg:w-[55%] flex flex-col mt-12 lg:mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12 content-start">
-                {[
-                  { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
-                  { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
-                  { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
-                  { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
-                ].map((block, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 0.1 * i }}
-                    className="flex flex-col group/block"
-                  >
-                    <div className="mb-2">
-                       <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
-                       <div className="w-6 h-[1px] bg-[#050505]/20 group-hover/block:bg-[#FF4D00] mt-3 mb-5 transition-colors" />
-                    </div>
-                    
-                    <div className="flex items-start gap-4 sm:gap-5">
-                      {block.img ? (
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors">
-                          <img src={block.img} alt={block.title} className="w-full h-full object-contain group-hover/block:scale-110 transition-transform duration-500" />
-                        </div>
-                      ) : (
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors relative overflow-hidden">
-                          <div className="absolute inset-0 bg-[#F5F5F3] opacity-50" />
-                        </div>
-                      )}
-                      <div className="pt-1">
-                        <h3 className="text-[11px] sm:text-xs font-bold text-[#050505] uppercase tracking-widest mb-1.5 leading-tight">{block.title}</h3>
-                        <p className="text-[11px] sm:text-xs text-neutral-500 font-light leading-relaxed">{block.desc}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Learn More Button (Desktop only) */}
-              <div className="hidden lg:flex justify-center w-full mt-10 sm:mt-12">
-                <Link 
-                  to="/about-us" 
-                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
-                >
-                  <span>LEARN MORE ABOUT US</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
-                </Link>
-              </div>
-            </div>
-
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
+              OUR CORE SERVICES & SOLUTIONS
+            </span>
+            <h2 className="text-[clamp(1.75rem,6vw,3.75rem)] font-bold tracking-tight text-white mb-6 leading-tight">
+              Biotechnology Services & <span className="text-[#FF4D00]">Capabilities</span>
+            </h2>
+            <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
+              Explore our core scientific offerings — from nucleic acid and protein research to laboratory reagents, computational analysis, and professional training.
+            </p>
           </div>
+          <ServicesStrip />
         </div>
       </section>
 
-      {/* 3. SERVICES SECTION */}
+      {/* 1. OUR SERVICES SECTION */}
       <section className="py-24 md:py-32 px-6 bg-white border-t border-border/40">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
             <SectionHeading 
-              label="02 / Our Services" 
+              label="01 / Our Services" 
               title="Biotechnology Services\nBuilt Around Your Research." 
               highlightWord="Research."
               className="mb-0 md:mb-0"
@@ -506,7 +390,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* 4. REAGENTS SECTION (Dark Green Theme) */}
+
+      {/* 2. REAGENTS SECTION (Dark Green Theme) */}
       <section className="py-16 md:py-32 px-4 sm:px-6 bg-[#06140F] text-[#F2F7F4] relative overflow-hidden">
         {/* Subtle molecular pattern background - more visible on desktop */}
         <div className="absolute inset-0 opacity-5 lg:opacity-12">
@@ -519,7 +404,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-8">
             <div>
               <span className="text-[#20C77A] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
-                03 / REAGENTS
+                02 / REAGENTS
               </span>
               <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-light tracking-tight leading-[1.05] text-[#F2F7F4]">
                 Laboratory Reagents for<br />
@@ -615,16 +500,16 @@ export default function Home() {
               }
 
               return (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-center relative z-10">
                   
                   {/* Left Column: Synthesis */}
                   <div className="lg:col-span-4 flex flex-col w-full h-full">
                     <div className="mb-6 group/title">
                       <div className="flex items-center gap-3 mb-2 text-[#20C77A]">
-                        <Beaker size={20} />
-                        <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Synthesis</h3>
+                        <Beaker size={26} className="text-[#20C77A] shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2F7F4]">Synthesis</h3>
                       </div>
-                      <div className="w-12 h-0.5 bg-[#20C77A] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
+                      <div className="w-16 h-1 bg-[#20C77A] rounded-full transform origin-left group-hover/title:w-24 transition-all duration-300" />
                     </div>
                     
                     {filteredSynthesis.length > 0 ? (
@@ -678,7 +563,7 @@ export default function Home() {
                   </div>
 
                   {/* Center Column: Microscope Centerpiece */}
-                  <div className="lg:col-span-4 flex justify-center items-center py-6 lg:py-0 w-full">
+                  <div className="lg:col-span-4 flex justify-center items-center py-4 lg:py-0 w-full">
                     <MicroscopeCenterpiece />
                   </div>
 
@@ -686,10 +571,10 @@ export default function Home() {
                   <div className="lg:col-span-4 flex flex-col w-full h-full">
                     <div className="mb-6 group/title">
                       <div className="flex items-center gap-3 mb-2 text-[#20C77A]">
-                        <Thermometer size={20} />
-                        <h3 className="text-sm font-bold uppercase tracking-[0.25em]">Supply</h3>
+                        <Thermometer size={26} className="text-[#20C77A] shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2F7F4]">Supply</h3>
                       </div>
-                      <div className="w-12 h-0.5 bg-[#20C77A] rounded-full transform origin-left group-hover/title:w-20 transition-all duration-300" />
+                      <div className="w-16 h-1 bg-[#20C77A] rounded-full transform origin-left group-hover/title:w-24 transition-all duration-300" />
                     </div>
 
                     {filteredSupply.length > 0 ? (
@@ -827,6 +712,123 @@ export default function Home() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* 3. WHO WE ARE & STATS SECTION */}
+      <section className="py-20 md:py-24 px-6 bg-[#F5F5F3] relative overflow-hidden text-[#050505] border-t border-[#E5E5E5]/40">
+        {/* Subtle Molecular / DNA Wave Graphics Background */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 select-none" aria-hidden="true">
+          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+            <path d="M50,200 Q100,100 150,200 T250,200 T350,200" stroke="#FF4D00" strokeWidth="2.5" />
+            <path d="M50,200 Q100,300 150,200 T250,200 T350,200" stroke="#FF4D00" strokeWidth="2.5" strokeDasharray="5 5" />
+            <line x1="100" y1="145" x2="100" y2="255" stroke="#FF4D00" strokeWidth="1" />
+            <line x1="150" y1="200" x2="150" y2="200" stroke="#FF4D00" strokeWidth="1" />
+            <line x1="200" y1="145" x2="200" y2="255" stroke="#FF4D00" strokeWidth="1" />
+            <line x1="250" y1="200" x2="250" y2="200" stroke="#FF4D00" strokeWidth="1" />
+            <line x1="300" y1="145" x2="300" y2="255" stroke="#FF4D00" strokeWidth="1" />
+          </svg>
+        </div>
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="flex flex-col lg:flex-row w-full gap-12 lg:gap-20">
+            
+            {/* LEFT COLUMN: PRIMARY CONTENT AREA */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full lg:w-[45%] flex flex-col"
+            >
+              {/* Section Label */}
+              <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-4 sm:mb-6 block">
+                03 / WHO WE ARE
+              </span>
+
+              {/* Main Heading */}
+              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-6">
+                Science That<br />
+                Moves Research<br />
+                <span className="text-[#FF4D00] italic pr-4">Forward.</span>
+              </h2>
+
+              {/* Company Descriptions */}
+              <div className="space-y-4 mb-8 sm:mb-10 max-w-xl">
+                <p className="text-base leading-relaxed text-[#050505] font-medium">
+                  INNOVAC BIOTECHNOLOGIES provides biotechnology, molecular biology, protein research, reagents, computational biology, internship, and professional training solutions.
+                </p>
+                <p className="text-sm leading-relaxed text-neutral-500 font-light">
+                  Our goal is to empower researchers and organizations with practical scientific services and innovative biotechnology solutions.
+                </p>
+              </div>
+
+              {/* Learn More Button (Mobile only) */}
+              <div className="mt-8 sm:mt-12 flex justify-start w-full lg:hidden">
+                <Link 
+                  to="/about-us" 
+                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
+                >
+                  <span>LEARN MORE ABOUT US</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Supporting Blocks Grid */}
+            <div className="w-full lg:w-[55%] flex flex-col mt-12 lg:mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12 content-start">
+                {[
+                  { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
+                  { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
+                  { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
+                  { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
+                ].map((block, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.1 * i }}
+                    className="flex flex-col group/block"
+                  >
+                    <div className="mb-2">
+                       <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
+                       <div className="w-6 h-[1px] bg-[#050505]/20 group-hover/block:bg-[#FF4D00] mt-3 mb-5 transition-colors" />
+                    </div>
+                    
+                    <div className="flex items-start gap-4 sm:gap-5">
+                      {block.img ? (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors">
+                          <img src={block.img} alt={block.title} className="w-full h-full object-contain group-hover/block:scale-110 transition-transform duration-500" />
+                        </div>
+                      ) : (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors relative overflow-hidden">
+                          <div className="absolute inset-0 bg-[#F5F5F3] opacity-50" />
+                        </div>
+                      )}
+                      <div className="pt-1">
+                        <h3 className="text-[11px] sm:text-xs font-bold text-[#050505] uppercase tracking-widest mb-1.5 leading-tight">{block.title}</h3>
+                        <p className="text-[11px] sm:text-xs text-neutral-500 font-light leading-relaxed">{block.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Learn More Button (Desktop only) */}
+              <div className="hidden lg:flex justify-center w-full mt-10 sm:mt-12">
+                <Link 
+                  to="/about-us" 
+                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
+                >
+                  <span>LEARN MORE ABOUT US</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
+                </Link>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
