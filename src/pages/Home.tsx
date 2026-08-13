@@ -48,17 +48,17 @@ export default function Home() {
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8">
+              <h1 className="text-[clamp(2.25rem,8vw,4.75rem)] font-medium tracking-tight leading-[1.05] mb-8">
                 Advanced Biotechnology,<br /> Molecular Biology &<br /> <span className="text-accent">Research Solutions.</span>
               </h1>
               
-              <p className="text-lg text-neutral-300 max-w-2xl mb-12 leading-relaxed font-light">
+              <p className="text-base sm:text-lg text-neutral-300 max-w-full sm:max-w-2xl mb-12 leading-relaxed font-light">
                 Empowering researchers, laboratories, universities, and biotechnology organizations with reliable laboratory services, research solutions, reagents, computational analysis, internships, and professional scientific training.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 mb-20 lg:mb-0">
-                <Button href={getCtaPath('EXPLORE_SERVICES')} size="lg" withArrow>EXPLORE SERVICES</Button>
-                <Button href={getCtaPath('REQUEST_QUOTE')} variant="dark" size="lg" withArrow>REQUEST A QUOTE</Button>
+              <div className="flex flex-col sm:flex-row gap-4 mb-20 lg:mb-0 w-full sm:w-auto">
+                <Button href={getCtaPath('EXPLORE_SERVICES')} size="lg" withArrow className="w-full sm:w-auto">EXPLORE SERVICES</Button>
+                <Button href={getCtaPath('REQUEST_QUOTE')} variant="dark" size="lg" withArrow className="w-full sm:w-auto">REQUEST A QUOTE</Button>
               </div>
             </motion.div>
 
@@ -89,7 +89,7 @@ export default function Home() {
                 <img
                   src="/hero-scientist.png"
                   alt="Biotechnology scientist with microscope, DNA helix, and laboratory equipment"
-                  className="w-full max-w-[480px] lg:max-w-[540px] h-auto object-contain drop-shadow-2xl select-none"
+                  className="w-full max-w-[360px] sm:max-w-[480px] lg:max-w-[540px] h-auto object-contain drop-shadow-2xl select-none mx-auto"
                   draggable={false}
                 />
               </motion.div>
@@ -104,7 +104,7 @@ export default function Home() {
       <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
         OUR CORE SERVICES & SOLUTIONS
       </span>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+      <h2 className="text-[clamp(1.75rem,6vw,3.75rem)] font-bold tracking-tight text-white mb-6 leading-tight">
         Biotechnology Services & <span className="text-[#FF4D00]">Capabilities</span>
       </h2>
       <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
@@ -146,7 +146,7 @@ export default function Home() {
               </span>
 
               {/* Main Heading */}
-              <h2 className="text-5xl md:text-6xl lg:text-[62px] font-bold text-[#050505] leading-[1.05] tracking-tight">
+              <h2 className="text-[clamp(2rem,7vw,3.875rem)] font-bold text-[#050505] leading-[1.05] tracking-tight">
                 Science That<br />
                 Moves Research<br />
                 <span className="text-[#FF4D00]">Forward.</span>
@@ -377,7 +377,7 @@ export default function Home() {
               highlightWord="Research."
               className="mb-0 md:mb-0"
             />
-            <Button href={getCtaPath('EXPLORE_SERVICES')} variant="outline" className="shrink-0" withArrow>VIEW ALL SERVICES</Button>
+            <Button href={getCtaPath('EXPLORE_SERVICES')} variant="outline" className="shrink-0 w-full sm:w-auto" withArrow>VIEW ALL SERVICES</Button>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -445,7 +445,7 @@ export default function Home() {
               highlightWord="Research." 
               className="mb-0 md:mb-0"
             />
-            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0" withArrow>VIEW ALL REAGENTS</Button>
+            <Button href={getCtaPath('VIEW_ALL_REAGENTS')} variant="dark" className="shrink-0 w-full sm:w-auto" withArrow>VIEW ALL REAGENTS</Button>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -533,7 +533,7 @@ export default function Home() {
               highlightWord="Science."
               className="mb-0 md:mb-0"
             />
-            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="outline" className="shrink-0" withArrow>DISCUSS YOUR RESEARCH</Button>
+            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="outline" className="shrink-0 w-full sm:w-auto" withArrow>DISCUSS YOUR RESEARCH</Button>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -631,8 +631,8 @@ export default function Home() {
           <div className="bg-white rounded-[32px] overflow-hidden border border-border/50 shadow-sm flex flex-col">
             <div className="p-10 md:p-14 flex-grow">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-6">05 / Internships</p>
-              <h3 className="text-4xl md:text-5xl font-medium tracking-tight mb-8 leading-tight">Turn Knowledge Into<br/>Practical <span className="text-accent">Experience.</span></h3>
-              <Button href={getCtaPath('APPLY_INTERNSHIP')} variant="outline" className="mb-12" withArrow>APPLY FOR INTERNSHIP</Button>
+              <h3 className="text-[clamp(1.75rem,6vw,3rem)] font-medium tracking-tight mb-8 leading-tight">Turn Knowledge Into<br/>Practical <span className="text-accent">Experience.</span></h3>
+              <Button href={getCtaPath('APPLY_INTERNSHIP')} variant="outline" className="mb-12 w-full sm:w-auto" withArrow>APPLY FOR INTERNSHIP</Button>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
                 {[
@@ -657,8 +657,8 @@ export default function Home() {
           <div className="bg-white rounded-[32px] overflow-hidden border border-border/50 shadow-sm flex flex-col">
             <div className="p-10 md:p-14 flex-grow">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-6">06 / Training</p>
-              <h3 className="text-4xl md:text-5xl font-medium tracking-tight mb-8 leading-tight">Learn. Practice.<br/><span className="text-accent">Innovate.</span></h3>
-              <Button href={getCtaPath('VIEW_WORKSHOPS')} variant="outline" className="mb-12" withArrow>VIEW WORKSHOPS</Button>
+              <h3 className="text-[clamp(1.75rem,6vw,3rem)] font-medium tracking-tight mb-8 leading-tight">Learn. Practice.<br/><span className="text-accent">Innovate.</span></h3>
+              <Button href={getCtaPath('VIEW_WORKSHOPS')} variant="outline" className="mb-12 w-full sm:w-auto" withArrow>VIEW WORKSHOPS</Button>
               
               <div className="grid grid-cols-1 gap-y-6">
                 {[
@@ -698,18 +698,18 @@ export default function Home() {
               <Dna size={40} className="text-accent" />
             </div>
             <div>
-              <h2 className="text-5xl md:text-6xl lg:text-[70px] font-medium tracking-tight mb-6 leading-[1.1]">
+              <h2 className="text-[clamp(2rem,7vw,4.375rem)] font-medium tracking-tight mb-6 leading-[1.1]">
                 Have a <span className="text-accent">Research</span><br/>Challenge?
               </h2>
-              <p className="text-lg text-neutral-400 mb-0 max-w-xl font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-neutral-400 mb-0 max-w-xl font-light leading-relaxed">
                 Tell us what you are working on and our team can help identify the right biotechnology, laboratory, research, or training solution.
               </p>
             </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-            <Button href={getCtaPath('REQUEST_QUOTE')} size="lg" withArrow>REQUEST A QUOTE</Button>
-            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="dark" size="lg" withArrow>
+            <Button href={getCtaPath('REQUEST_QUOTE')} size="lg" withArrow className="w-full sm:w-auto">REQUEST A QUOTE</Button>
+            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="dark" size="lg" withArrow className="w-full sm:w-auto">
               CONTACT US
             </Button>
           </div>
