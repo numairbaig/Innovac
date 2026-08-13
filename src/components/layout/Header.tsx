@@ -58,25 +58,25 @@ export function Header() {
   return (
     <>
       <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", headerBg)}>
-        <div className="max-w-[1400px] mx-auto px-10 lg:px-[50px] h-20 flex items-center justify-between gap-6 w-full">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-[50px] h-20 flex items-center justify-between gap-2 xl:gap-4 2xl:gap-6 w-full">
           
           {/* LEFT: Logo */}
-          <Link to="/" className="flex items-center gap-3 z-50 text-white hover:text-white/90 transition-colors shrink-0">
-            <img src="/logo.png" alt="INNOVAC BIOTECHNOLOGIES Logo" className="h-9 w-auto object-contain" />
+          <Link to="/" className="flex items-center gap-2.5 2xl:gap-3 z-50 text-white hover:text-white/90 transition-colors shrink-0">
+            <img src="/logo.png" alt="INNOVAC BIOTECHNOLOGIES Logo" className="h-8 2xl:h-9 w-auto object-contain" />
             <div className="font-semibold text-xs leading-[1.1] tracking-wider uppercase">
               Innovac<br />Biotechnologies
             </div>
           </Link>
 
           {/* CENTER: Desktop Nav */}
-          <nav className="hidden xl:flex items-center justify-center flex-grow">
-            <ul className="flex items-center gap-[28px]">
+          <nav className="hidden xl:flex items-center justify-center flex-grow min-w-0">
+            <ul className="flex items-center gap-3 xl:gap-4 2xl:gap-7 shrink">
               {desktopNavLinks.map((link) => (
                 <li key={link.name} className="relative">
                   <Link 
                     to={link.href} 
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-accent relative py-2 block",
+                      "text-xs 2xl:text-sm font-medium transition-colors hover:text-accent relative py-2 block whitespace-nowrap",
                       isActive(link.href) ? "text-accent" : "text-neutral-300 hover:text-white"
                     )}
                   >
@@ -95,41 +95,41 @@ export function Header() {
           </nav>
 
           {/* RIGHT: Search & CTAs */}
-          <div className="hidden xl:flex items-center shrink-0 gap-5">
+          <div className="hidden xl:flex items-center shrink-0 gap-2.5 xl:gap-3 2xl:gap-5">
             {/* Search Icon */}
-            <Link to="/search" className="text-neutral-300 hover:text-accent transition-colors flex items-center justify-center p-2" aria-label="Search">
-              <Search size={20} />
+            <Link to="/search" className="text-neutral-300 hover:text-accent transition-colors flex items-center justify-center p-1.5 2xl:p-2" aria-label="Search">
+              <Search className="w-4 h-4 2xl:w-5 2xl:h-5" />
             </Link>
             
             {/* Buttons container */}
-            <div className="flex items-center gap-[11px]">
+            <div className="flex items-center gap-2 2xl:gap-[11px]">
               {/* REQUEST A QUOTE button */}
               <Link 
                 to={getCtaPath('REQUEST_QUOTE')} 
-                className="h-[46px] border border-accent/45 hover:border-accent hover:bg-accent text-white px-5 rounded-[10px] text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer shrink-0"
+                className="h-10 2xl:h-[46px] border border-accent/45 hover:border-accent hover:bg-accent text-white px-3 2xl:px-5 rounded-[10px] text-[11px] 2xl:text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 2xl:gap-2 group cursor-pointer shrink-0 whitespace-nowrap"
               >
                 <span>REQUEST A QUOTE</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
 
               {/* ACCOUNT or LOGIN button */}
               {user ? (
                 <Link 
                   to="/account" 
-                  className="h-[46px] bg-accent hover:bg-accent-bright text-white px-5 rounded-[10px] text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-accent/25 hover:shadow-lg group cursor-pointer shrink-0"
+                  className="h-10 2xl:h-[46px] bg-accent hover:bg-accent-bright text-white px-3 2xl:px-5 rounded-[10px] text-[11px] 2xl:text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 2xl:gap-2 shadow-sm hover:shadow-accent/25 hover:shadow-lg group cursor-pointer shrink-0 whitespace-nowrap"
                 >
-                  <User size={14} />
+                  <User className="w-3.5 h-3.5" />
                   <span>ACCOUNT</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform duration-200" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
                 </Link>
               ) : (
                 <Link 
                   to="/login" 
-                  className="h-[46px] bg-accent hover:bg-accent-bright text-white px-5 rounded-[10px] text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-accent/25 hover:shadow-lg group cursor-pointer shrink-0"
+                  className="h-10 2xl:h-[46px] bg-accent hover:bg-accent-bright text-white px-3 2xl:px-5 rounded-[10px] text-[11px] 2xl:text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 2xl:gap-2 shadow-sm hover:shadow-accent/25 hover:shadow-lg group cursor-pointer shrink-0 whitespace-nowrap"
                 >
-                  <LogIn size={14} />
+                  <LogIn className="w-3.5 h-3.5" />
                   <span>LOGIN / SIGNUP</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform duration-200" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
                 </Link>
               )}
             </div>
@@ -169,7 +169,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#050505] pt-24 px-10 pb-6 overflow-y-auto lg:hidden flex flex-col"
+            className="fixed inset-0 z-40 bg-[#050505] pt-24 px-6 sm:px-10 pb-6 overflow-y-auto xl:hidden flex flex-col"
           >
             <nav className="flex flex-col h-full justify-between">
               <ul className="flex flex-col gap-5 mt-8">
