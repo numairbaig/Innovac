@@ -163,7 +163,7 @@ export default function Home() {
               </div>
 
               {/* Learn More Button */}
-              <div className="mt-8 sm:mt-12 flex justify-center w-full">
+              <div className="mt-8 sm:mt-12 flex justify-start lg:justify-center w-full lg:pr-12">
                 <Link 
                   to="/about-us" 
                   className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
@@ -235,7 +235,7 @@ export default function Home() {
             {/* Card 1 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?q=80&w=2925&auto=format&fit=crop" alt="DNA" className="w-full h-full object-cover" />
+                <img src="/service_1.jpg" alt="DNA" className="w-full h-full object-cover" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -250,7 +250,7 @@ export default function Home() {
             {/* Card 2 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="https://images.unsplash.com/photo-1559757175-9b93db5f8cb4?q=80&w=2831&auto=format&fit=crop" alt="Protein" className="w-full h-full object-cover" />
+                <img src="/service_2.png" alt="Protein" className="w-full h-full object-cover" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -265,7 +265,7 @@ export default function Home() {
             {/* Card 3 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2960&auto=format&fit=crop" alt="Computational" className="w-full h-full object-cover" />
+                <img src="/service_3.png" alt="Computational" className="w-full h-full object-cover" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
