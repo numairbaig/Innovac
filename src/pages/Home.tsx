@@ -162,8 +162,8 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Learn More Button */}
-              <div className="mt-8 sm:mt-12 flex justify-start lg:justify-center w-full lg:pr-12">
+              {/* Learn More Button (Mobile only) */}
+              <div className="mt-8 sm:mt-12 flex justify-start w-full lg:hidden">
                 <Link 
                   to="/about-us" 
                   className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
@@ -175,43 +175,56 @@ export default function Home() {
             </motion.div>
 
             {/* RIGHT COLUMN: Supporting Blocks Grid */}
-            <div className="w-full lg:w-[55%] grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12 mt-12 lg:mt-0 content-start">
-              {[
-                { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
-                { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
-                { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
-                { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
-              ].map((block, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: 0.1 * i }}
-                  className="flex flex-col group/block"
-                >
-                  <div className="mb-2">
-                     <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
-                     <div className="w-6 h-[1px] bg-[#050505]/20 group-hover/block:bg-[#FF4D00] mt-3 mb-5 transition-colors" />
-                  </div>
-                  
-                  <div className="flex items-start gap-4 sm:gap-5">
-                    {block.img ? (
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors">
-                        <img src={block.img} alt={block.title} className="w-full h-full object-contain group-hover/block:scale-110 transition-transform duration-500" />
-                      </div>
-                    ) : (
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors relative overflow-hidden">
-                        <div className="absolute inset-0 bg-[#F5F5F3] opacity-50" />
-                      </div>
-                    )}
-                    <div className="pt-1">
-                      <h3 className="text-[11px] sm:text-xs font-bold text-[#050505] uppercase tracking-widest mb-1.5 leading-tight">{block.title}</h3>
-                      <p className="text-[11px] sm:text-xs text-neutral-500 font-light leading-relaxed">{block.desc}</p>
+            <div className="w-full lg:w-[55%] flex flex-col mt-12 lg:mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12 content-start">
+                {[
+                  { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
+                  { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
+                  { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
+                  { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
+                ].map((block, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.1 * i }}
+                    className="flex flex-col group/block"
+                  >
+                    <div className="mb-2">
+                       <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
+                       <div className="w-6 h-[1px] bg-[#050505]/20 group-hover/block:bg-[#FF4D00] mt-3 mb-5 transition-colors" />
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                    
+                    <div className="flex items-start gap-4 sm:gap-5">
+                      {block.img ? (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors">
+                          <img src={block.img} alt={block.title} className="w-full h-full object-contain group-hover/block:scale-110 transition-transform duration-500" />
+                        </div>
+                      ) : (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors relative overflow-hidden">
+                          <div className="absolute inset-0 bg-[#F5F5F3] opacity-50" />
+                        </div>
+                      )}
+                      <div className="pt-1">
+                        <h3 className="text-[11px] sm:text-xs font-bold text-[#050505] uppercase tracking-widest mb-1.5 leading-tight">{block.title}</h3>
+                        <p className="text-[11px] sm:text-xs text-neutral-500 font-light leading-relaxed">{block.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Learn More Button (Desktop only) */}
+              <div className="hidden lg:flex justify-center w-full mt-10 sm:mt-12">
+                <Link 
+                  to="/about-us" 
+                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
+                >
+                  <span>LEARN MORE ABOUT US</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
+                </Link>
+              </div>
             </div>
 
           </div>
@@ -235,7 +248,7 @@ export default function Home() {
             {/* Card 1 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_1.jpg" alt="DNA" className="w-full h-full object-cover" />
+                <img src="/service_1.jpg" alt="DNA" className="w-full h-full object-cover object-center" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -250,7 +263,7 @@ export default function Home() {
             {/* Card 2 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_2.png" alt="Protein" className="w-full h-full object-cover" />
+                <img src="/service_2.png" alt="Protein" className="w-full h-full object-cover object-center" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -265,7 +278,7 @@ export default function Home() {
             {/* Card 3 */}
             <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
               <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_3.png" alt="Computational" className="w-full h-full object-cover" />
+                <img src="/service_3.png" alt="Computational" className="w-full h-full object-cover object-[25%_center]" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               
@@ -323,12 +336,11 @@ export default function Home() {
             </div>
 
             {/* Center: Image */}
-            <div className="lg:col-span-4 hidden lg:flex justify-center px-4 relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505] z-10" />
+            <div className="lg:col-span-4 hidden lg:flex items-center justify-center px-4 relative">
               <img 
-                src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2959&auto=format&fit=crop" 
-                alt="Laboratory Glassware" 
-                className="w-full h-[500px] object-cover mix-blend-screen opacity-80"
+                src="/reagents_microscope.png" 
+                alt="Microscope" 
+                className="w-full max-w-[320px] h-auto object-contain opacity-95 drop-shadow-[0_20px_50px_rgba(255,77,0,0.15)] select-none"
               />
             </div>
 
