@@ -115,7 +115,7 @@ export default function Home() {
   </div>
 </section>
       {/* 2. WHO WE ARE & STATS SECTION */}
-      <section className="py-24 md:py-32 px-6 bg-[#F5F5F3] relative overflow-hidden text-[#050505] border-t border-[#E5E5E5]/40">
+      <section className="py-20 md:py-24 px-6 bg-[#F5F5F3] relative overflow-hidden text-[#050505] border-t border-[#E5E5E5]/40">
         {/* Subtle Molecular / DNA Wave Graphics Background */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 select-none" aria-hidden="true">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -130,7 +130,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-[1400px] mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row w-full gap-16 lg:gap-24">
+          <div className="flex flex-col lg:flex-row w-full gap-12 lg:gap-20">
             
             {/* LEFT COLUMN: PRIMARY CONTENT AREA */}
             <motion.div 
@@ -141,19 +141,19 @@ export default function Home() {
               className="w-full lg:w-[45%] flex flex-col"
             >
               {/* Section Label */}
-              <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-8 block">
+              <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-4 sm:mb-6 block">
                 01 / WHO WE ARE
               </span>
 
               {/* Main Heading */}
-              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-8">
+              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-6">
                 Science That<br />
                 Moves Research<br />
                 <span className="text-[#FF4D00] italic pr-4">Forward.</span>
               </h2>
 
               {/* Company Descriptions */}
-              <div className="space-y-4 mb-12 max-w-xl">
+              <div className="space-y-4 mb-8 sm:mb-10 max-w-xl">
                 <p className="text-base leading-relaxed text-[#050505] font-medium">
                   INNOVAC BIOTECHNOLOGIES provides biotechnology, molecular biology, protein research, reagents, computational biology, internship, and professional training solutions.
                 </p>
@@ -170,7 +170,7 @@ export default function Home() {
                 variants={{
                   visible: { transition: { staggerChildren: 0.15 } }
                 }}
-                className="flex flex-col border-t border-[#E5E5E5]/60 mb-12"
+                className="flex flex-col border-t border-[#E5E5E5]/60 mb-8 sm:mb-10"
               >
                 {[
                   { title: 'RELIABLE QUALITY', desc: 'Quality-focused scientific solutions.', icon: ShieldCheck },
@@ -183,7 +183,7 @@ export default function Home() {
                       hidden: { opacity: 0, x: -10 },
                       visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
                     }}
-                    className="flex items-start gap-4 py-5 border-b border-[#E5E5E5]/60 group/value transition-colors hover:bg-black/5"
+                    className="flex items-start gap-4 py-3 sm:py-4 border-b border-[#E5E5E5]/60 group/value transition-colors hover:bg-black/5"
                   >
                     <div className="w-8 h-8 rounded-full border border-[#E5E5E5] bg-white flex items-center justify-center shrink-0 group-hover/value:border-[#FF4D00] transition-colors mt-0.5">
                       <item.icon size={14} className="text-[#050505] group-hover/value:text-[#FF4D00] transition-colors" />
@@ -197,7 +197,7 @@ export default function Home() {
               </motion.div>
 
               {/* Learn More Button */}
-              <div className="mt-auto">
+              <div className="mt-2 sm:mt-4">
                 <Link 
                   to="/about-us" 
                   className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-6 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
@@ -209,7 +209,7 @@ export default function Home() {
             </motion.div>
 
             {/* RIGHT COLUMN: Supporting Blocks Grid */}
-            <div className="w-full lg:w-[55%] grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 lg:gap-y-16 mt-8 lg:mt-0">
+            <div className="w-full lg:w-[55%] grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12 mt-12 lg:mt-0 content-start">
               {[
                 { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
                 { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
