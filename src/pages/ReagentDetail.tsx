@@ -3,15 +3,32 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
-import { ArrowLeft, Check, ShieldCheck, Thermometer, FlaskConical, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Check, ShieldCheck, Thermometer, FlaskConical, AlertCircle, ShoppingCart } from 'lucide-react';
 import { reagentsData } from '@/src/data/reagents';
 import NotFound from './NotFound';
+import { useOrderCart } from '@/src/contexts/OrderCartContext';
 
 export default function ReagentDetail() {
   const { slug } = useParams<{ slug: string }>();
   const reagent = reagentsData.find(r => r.slug === slug);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('500ml');
+  const [added, setAdded] = useState(false);
+  const { addItem } = useOrderCart();
+
+  const handleAddToOrder = () => {
+    if (!reagent) return;
+    addItem({
+      reagentId: reagent.id,
+      name: reagent.name,
+      category: reagent.category,
+      image: reagent.image,
+      size: selectedSize,
+      quantity,
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 5000); // Hide after 5 seconds
+  };
 
   if (!reagent) {
     return <NotFound />;
@@ -113,8 +130,8 @@ export default function ReagentDetail() {
                     <AlertCircle size={16} className="text-accent" />
                     <span className="text-sm font-medium text-white">Pricing & Availability</span>
                   </div>
-                  <h3 className="text-2xl font-light text-white mb-2">Contact us for pricing</h3>
-                  <p className="text-sm text-neutral-400">Due to varying specifications and volumes, please request a quote for accurate pricing.</p>
+                  <h3 className="text-2xl font-light text-white mb-2">Pricing available on request</h3>
+                  <p className="text-sm text-neutral-400">Please add items to your order request or request a quote directly.</p>
                 </div>
 
                 {/* Selectors */}
@@ -144,22 +161,40 @@ export default function ReagentDetail() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    href={getCtaPath('REQUEST_QUOTE')} 
-                    variant="primary" 
-                    className="flex-1 bg-accent hover:bg-accent-bright text-white py-4 shadow-lg shadow-accent/20 border-none"
-                  >
-                    ADD TO ORDER
-                  </Button>
-                  <Button 
-                    href={getCtaPath('REQUEST_QUOTE')} 
-                    variant="dark" 
-                    className="flex-1 py-4 border-white/20 hover:border-white/40"
-                  >
-                    REQUEST A QUOTE
-                  </Button>
-                </div>
+                {added ? (
+                  <div className="bg-accent/10 border border-accent rounded-2xl p-6 text-center animate-in fade-in zoom-in duration-300">
+                    <div className="flex justify-center mb-3">
+                      <div className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center shadow-lg">
+                        <Check size={20} strokeWidth={3} />
+                      </div>
+                    </div>
+                    <h4 className="text-white font-medium text-lg mb-4">Added to your order</h4>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button href="/my-order" variant="primary" className="flex-1 bg-white text-[#050505] hover:bg-neutral-200">
+                        VIEW ORDER
+                      </Button>
+                      <Button href="/reagents" variant="dark" className="flex-1 border-white/20 hover:border-white/40">
+                        CONTINUE SHOPPING
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <button 
+                      onClick={handleAddToOrder}
+                      className="flex-1 bg-accent hover:bg-accent-bright text-white py-4 shadow-lg shadow-accent/20 border-none rounded-[10px] text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2"
+                    >
+                      <ShoppingCart size={16} /> ADD TO ORDER
+                    </button>
+                    <Button 
+                      href={getCtaPath('REQUEST_QUOTE')} 
+                      variant="dark" 
+                      className="flex-1 py-4 border-white/20 hover:border-white/40"
+                    >
+                      REQUEST A QUOTE
+                    </Button>
+                  </div>
+                )}
                 
               </div>
             </div>

@@ -15,7 +15,8 @@ import {
   Bell, 
   LogOut,
   Menu,
-  X
+  X,
+  Package
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { SEO } from '../SEO';
@@ -35,6 +36,7 @@ export function AccountLayout() {
     { name: 'Internships', href: '/account/internships', icon: Award },
     { name: 'Workshops', href: '/account/workshops', icon: BookOpen },
     { name: 'Requests', href: '/account/requests', icon: Inbox },
+    { name: 'My Orders', href: '/account/orders', icon: Package },
     { name: 'Documents', href: '/account/documents', icon: FileText },
     { name: 'Messages', href: '/account/messages', icon: MessageSquare },
     { name: 'Notifications', href: '/account/notifications', icon: Bell },
