@@ -1,25 +1,25 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { cn } from '@/src/lib/utils';
+import { Breadcrumb, PageLabel, BreadcrumbItem } from './Breadcrumb';
 
 interface PageHeroProps {
   label: string;
   title: string;
   description?: string;
+  breadcrumbItems?: BreadcrumbItem[];
   className?: string;
 }
 
-export function PageHero({ label, title, description, className }: PageHeroProps) {
+export function PageHero({ label, title, description, breadcrumbItems, className }: PageHeroProps) {
+  const items = breadcrumbItems || [{ label: title.replace(/\.$/, '') }];
+
   return (
-    <section className={cn("pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-deep-black text-white border-b border-white/5", className)}>
+    <section className={cn("pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-[#050505] text-white border-b border-white/5", className)}>
       <div className="max-w-[1400px] mx-auto">
-        <motion.p 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-6"
-        >
-          {label}
-        </motion.p>
+        <Breadcrumb items={items} accentColor="text-[#FF4D00]" />
+        <PageLabel accentColor="text-[#FF4D00]">{label}</PageLabel>
+        
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

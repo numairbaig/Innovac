@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronDown, ChevronRight, Microscope, FlaskConical, Dna, Target, GraduationCap, Laptop, Share2, Layers, Binary, BarChart } from 'lucide-react';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
+import { Breadcrumb, PageLabel } from '@/src/components/ui/Breadcrumb';
 import { ecosystemAreas, whatWeDo, ourApproach, whyInnovac, areasOfExpertise, aboutFaqs } from '@/src/data/about';
 import { cn } from '@/src/lib/utils';
 import { ScientificHeroVisual } from '@/src/components/ui/ScientificHeroVisual'; // legacy
@@ -56,14 +57,8 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
-                  <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                  <ChevronRight size={12} />
-                  <span className="text-white">About Us</span>
-                </div>
-                <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">
-                  ABOUT INNOVAC
-                </p>
+              <Breadcrumb items={[{ label: 'About Us' }]} accentColor="text-[#FF4D00]" />
+              <PageLabel accentColor="text-[#FF4D00]">ABOUT INNOVAC</PageLabel>
                 <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8 text-white">
                   Science.<br />
                   Innovation.<br />

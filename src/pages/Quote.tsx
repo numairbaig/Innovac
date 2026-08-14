@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/Button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { PageHeroIllustration } from '../components/ui/PageHeroIllustration';
+import { Breadcrumb, PageLabel } from '../components/ui/Breadcrumb';
 
 export default function Quote() {
+  const [searchParams] = useSearchParams();
+  const preSelectedCategory = searchParams.get('category') || '';
+  const preSelectedService = searchParams.get('service') || '';
+
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [organization, setOrganization] = useState('');
-  const [interest, setInterest] = useState('');
+  const [interest, setInterest] = useState(preSelectedService || preSelectedCategory || '');
   const [description, setDescription] = useState('');
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  useEffect(() => {
+    if (preSelectedService) {
+      setInterest(preSelectedService);
+    } else if (preSelectedCategory) {
+      setInterest(preSelectedCategory);
+    }
+  }, [preSelectedService, preSelectedCategory]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,14 +92,8 @@ export default function Quote() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
-                  <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                  <ChevronRight size={12} />
-                  <span className="text-white">Request a Quote</span>
-                </div>
-                <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">
-                  Get a Proposal
-                </p>
+              <Breadcrumb items={[{ label: 'Request a Quote' }]} accentColor="text-[#FF4D00]" />
+              <PageLabel accentColor="text-[#FF4D00]">GET A PROPOSAL</PageLabel>
                 <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8 text-white">
                   Request a Custom<br />
                   <span className="text-[#FF4D00]">Quote.</span>
@@ -128,6 +135,25 @@ export default function Quote() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
+              {(preSelectedService || preSelectedCategory) && (
+                <div className="p-5 bg-[#FF4D00]/10 border border-[#FF4D00]/30 rounded-2xl flex items-center justify-between shadow-sm">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold uppercase text-[#FF4D00] tracking-wider block">
+                      PRE-SELECTED SERVICE FOR QUOTE
+                    </span>
+                    <h4 className="text-base font-bold text-[#050505]">
+                      {preSelectedCategory && preSelectedService && preSelectedCategory !== preSelectedService
+                        ? `${preSelectedCategory} — ${preSelectedService}`
+                        : preSelectedService || preSelectedCategory}
+                    </h4>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#FF4D00] bg-white px-3 py-1.5 rounded-lg border border-[#FF4D00]/20 shadow-sm shrink-0">
+                    <CheckCircle2 size={14} />
+                    <span>Selected</span>
+                  </div>
+                </div>
+              )}
+
               {formState === 'error' && (
                 <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm">
                   We couldn't send your request right now. Please email <a href="mailto:info@innovacbiotech.com" className="underline font-medium">info@innovacbiotech.com</a> directly.

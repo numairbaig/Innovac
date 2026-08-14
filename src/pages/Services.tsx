@@ -1,38 +1,37 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
+import { Breadcrumb, PageLabel } from '@/src/components/ui/Breadcrumb';
 import { 
   Dna, Microscope, ShieldCheck, FlaskConical,
   ChevronRight, ArrowRight, Activity, Database,
-  BarChart, Share2, Box, GitMerge, Check, Send,
-  Network, Cpu
+  BarChart, Share2, Box, GitMerge, Check, Network, Cpu
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PageHeroIllustration } from '@/src/components/ui/PageHeroIllustration';
 
 export default function Services() {
-
+  const navigate = useNavigate();
 
   return (
     <div className="bg-[#F5F5F3]">
-      <SEO title="Biotechnology Services | INNOVAC BIOTECHNOLOGIES" description="Explore biotechnology, nucleic acid, protein, peptide, molecular biology, bioinformatics, and computational research services from INNOVAC BIOTECHNOLOGIES." />
+      <SEO 
+        title="Biotechnology Services | INNOVAC BIOTECHNOLOGIES" 
+        description="Explore biotechnology, nucleic acid, protein, peptide, molecular biology, bioinformatics, and computational research services from INNOVAC BIOTECHNOLOGIES." 
+      />
       
-      {/* 1. SERVICES HERO */}
-      <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-[#050505] text-white overflow-hidden">
-        {/* Subtle Radial Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#050505]" />
-          <div className="absolute right-0 top-0 w-[60%] h-full bg-[radial-gradient(ellipse_at_70%_40%,rgba(255,77,0,0.08)_0%,transparent_65%)]" />
-          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] bg-[length:32px_32px]" />
+      {/* 1. SERVICES HERO (Green Biotech Theme) */}
+      <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-20 px-6 bg-[#06140F] text-[#F2F7F4] overflow-hidden border-b border-[#1A3B2B]">
+        {/* Subtle Radial & Molecular Pattern Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#06140F] via-[#092018] to-[#06140F]" />
+          <div className="absolute right-0 top-0 w-[60%] h-full bg-[radial-gradient(ellipse_at_70%_40%,rgba(32,199,122,0.15)_0%,transparent_65%)]" />
+          <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_center,#20C77A_1px,transparent_1px)] bg-[length:32px_32px]" />
         </div>
 
         <div className="max-w-[1400px] mx-auto relative z-20">
-          <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight size={12} />
-            <span className="text-white">Services</span>
-          </div>
+          <Breadcrumb items={[{ label: 'Services' }]} accentColor="text-[#20C77A]" />
 
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-4 lg:mt-0 w-full">
             <motion.div 
@@ -41,18 +40,16 @@ export default function Services() {
               transition={{ duration: 0.8 }}
               className="max-w-3xl lg:w-3/5"
             >
-              <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">
-                Our Services
-              </p>
-              <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8">
-                Advanced Science.<br /> Reliable <span className="text-[#FF4D00]">Solutions.</span>
+              <PageLabel accentColor="text-[#20C77A]">OUR SERVICES</PageLabel>
+              <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8 text-[#F2F7F4]">
+                Advanced Science.<br /> Reliable <span className="text-[#20C77A]">Solutions.</span>
               </h1>
-              <p className="text-lg text-neutral-300 max-w-2xl mb-16 leading-relaxed font-light">
+              <p className="text-base sm:text-lg text-[#A8B8AF] max-w-2xl mb-12 leading-relaxed font-light">
                 Comprehensive biotechnology and molecular services designed for researchers, laboratories, universities, and organizations working to advance scientific discovery.
               </p>
 
               {/* Feature Row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/10">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-[#1A3B2B]">
                 {[
                   { label: "Scientific Excellence", icon: Dna },
                   { label: "Advanced Technology", icon: Microscope },
@@ -60,8 +57,8 @@ export default function Services() {
                   { label: "Research Focused", icon: FlaskConical }
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-3">
-                    <feature.icon size={20} className="text-[#FF4D00] shrink-0" strokeWidth={1.5} />
-                    <span className="text-[13px] font-medium text-neutral-200">{feature.label}</span>
+                    <feature.icon size={20} className="text-[#20C77A] shrink-0" strokeWidth={1.5} />
+                    <span className="text-xs font-medium text-[#F2F7F4]">{feature.label}</span>
                   </div>
                 ))}
               </div>
@@ -73,14 +70,22 @@ export default function Services() {
         </div>
       </section>
 
-      {/* 2. SERVICE CATEGORIES */}
-      <section className="py-24 md:py-32 px-6 bg-[#F5F5F3]">
+      {/* 2. EXPLORE OUR SERVICES CATEGORIES (Light Theme & Clickable Cards) */}
+      <section className="py-20 lg:py-28 px-6 bg-white border-b border-[#E5E5E5]">
         <div className="max-w-[1400px] mx-auto">
-          <h2 className="text-center text-sm font-semibold tracking-[0.15em] uppercase text-[#050505] mb-16">
-            Explore Our Service Categories
-          </h2>
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#FF4D00] block">
+              SERVICE OFFERINGS
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#050505]">
+              Explore Our Services Categories
+            </h2>
+            <p className="text-neutral-500 text-sm font-light leading-relaxed">
+              Select a service domain below to view complete sub-service details, workflow parameters, and formal quotation options.
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
               {
                 title: "Nucleic Acid Services",
@@ -92,13 +97,13 @@ export default function Services() {
                 title: "Protein & Peptide Services",
                 desc: "Protein sequencing, peptide synthesis and modification services.",
                 img: "https://images.unsplash.com/photo-1559757175-9b93db5f8cb4?q=80&w=2831&auto=format&fit=crop",
-                link: "/services/protein"
+                link: "/services/protein-peptide"
               },
               {
                 title: "Research & Computational Biology",
                 desc: "In-silico research, bioinformatics and computational biology solutions.",
                 img: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2960&auto=format&fit=crop",
-                link: "/services/research"
+                link: "/services/computational"
               }
             ].map((cat, i) => (
               <motion.div 
@@ -107,7 +112,8 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[420px] flex flex-col p-10 border border-transparent hover:border-[#FF4D00] transition-all duration-500 hover:-translate-y-2"
+                onClick={() => navigate(cat.link)}
+                className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[440px] flex flex-col p-8 sm:p-10 border border-transparent hover:border-[#FF4D00] transition-all duration-500 hover:-translate-y-2 cursor-pointer shadow-lg"
               >
                 <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
                   <img src={cat.img} alt={cat.title} className="w-full h-full object-cover" />
@@ -115,11 +121,16 @@ export default function Services() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent" />
                 
                 <div className="relative z-10 mt-auto">
-                  <h3 className="text-2xl font-medium text-white mb-3 pr-4 leading-tight">{cat.title}</h3>
-                  <p className="text-neutral-400 text-sm mb-6 leading-relaxed line-clamp-3">{cat.desc}</p>
-                  <Button href={cat.link} variant="ghost" className="px-0 text-[#FF4D00] hover:bg-transparent hover:text-white" withArrow>
-                    VIEW SERVICES
-                  </Button>
+                  <h3 className="text-2xl font-bold text-white mb-3 pr-4 leading-tight group-hover:text-[#FF4D00] transition-colors">
+                    {cat.title}
+                  </h3>
+                  <p className="text-neutral-400 text-xs font-light mb-6 leading-relaxed">
+                    {cat.desc}
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-xs font-bold text-[#FF4D00] tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                    <span>VIEW SERVICES</span>
+                    <ArrowRight size={14} />
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -127,19 +138,28 @@ export default function Services() {
         </div>
       </section>
 
-      {/* 3. NUCLEIC ACID SERVICES */}
-      <section className="py-24 md:py-32 px-6 bg-white border-t border-[#D8D8D5]/60">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12">
+      {/* 3. NUCLEIC ACID SERVICES SECTION */}
+      <section className="py-20 lg:py-28 px-6 bg-[#F5F5F3] border-b border-[#E5E5E5]">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
-          <div className="lg:col-span-4 flex flex-col">
-            <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">Nucleic Acid Services</p>
-            <h2 className="text-4xl md:text-[44px] font-medium tracking-tight mb-8 leading-[1.1]">Nucleic Acid<br/>Services</h2>
-            <p className="text-neutral-600 mb-10 leading-relaxed text-base font-light">
-              We provide a wide range of nucleic acid based services to support your research from sample preparation to analysis.
-            </p>
-            <Button href="/services/nucleic-acid" variant="primary" className="self-start" withArrow>
-              VIEW ALL NUCLEIC ACID SERVICES
-            </Button>
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div className="space-y-4">
+              <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#FF4D00] block">
+                NUCLEIC ACID SERVICES
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#050505] leading-[1.1]">
+                Nucleic Acid<br/>Services
+              </h2>
+              <p className="text-neutral-600 text-sm font-light leading-relaxed">
+                We provide a wide range of nucleic acid based services to support your research from sample preparation to genomic analysis.
+              </p>
+            </div>
+
+            <div className="pt-6">
+              <Button href="/services/nucleic-acid" variant="primary" className="bg-[#FF4D00] hover:bg-[#E64500] text-white border-none px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl" withArrow>
+                VIEW ALL NUCLEIC ACID SERVICES
+              </Button>
+            </div>
           </div>
           
           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -147,36 +167,50 @@ export default function Services() {
               {
                 title: "DNA Services",
                 icon: Dna,
-                items: ["Detection", "Primer Design", "Sequencing", "Molecular Docking", "Gel Electrophoresis", "PCR", "Fragment Purification"]
+                desc: "Detection, Primer Design, Sequencing, Docking, Electrophoresis, PCR & Fragment Purification.",
+                link: "/services/nucleic-acid/dna",
+                items: ["DNA Detection", "Primer Design", "DNA Sequencing", "Molecular Docking", "Gel Electrophoresis", "PCR Assays", "Fragment Purification"]
               },
               {
                 title: "RNA Services",
                 icon: Activity,
-                items: ["Extraction", "Docking", "Sequencing", "Sample Processing"]
+                desc: "Total RNA Isolation, RNase-free processing, Sequencing, and Docking.",
+                link: "/services/nucleic-acid/rna",
+                items: ["RNA Extraction", "RNA Processing", "RNA Sequencing", "Molecular Docking", "RIN Integrity Check"]
               },
               {
                 title: "miRNA Services",
                 icon: Database,
-                items: ["Detection", "Synthesis", "Quantification"]
+                desc: "Small RNA isolation, stem-loop qPCR detection, and custom oligo synthesis.",
+                link: "/services/nucleic-acid/mirna",
+                items: ["miRNA Detection", "miRNA Synthesis", "miRNA Quantification", "Target Prediction"]
               }
             ].map((card, i) => (
-              <div key={i} className="bg-white rounded-[24px] p-8 border border-[#D8D8D5]/60 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
-                <Dna className="absolute -right-12 -bottom-12 w-48 h-48 text-neutral-100 opacity-60 transform -rotate-12" strokeWidth={1} />
-                <div className="relative z-10">
-                  <div className="w-12 h-12 bg-[#FF4D00]/10 rounded-full flex items-center justify-center mb-6">
-                    <card.icon size={20} className="text-[#FF4D00]" />
+              <div 
+                key={i} 
+                onClick={() => navigate(card.link)}
+                className="bg-white rounded-[24px] p-6 sm:p-8 border border-[#E5E5E5] shadow-sm relative overflow-hidden group hover:border-[#FF4D00]/50 hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 bg-[#FF4D00]/10 rounded-xl flex items-center justify-center mb-6 text-[#FF4D00] group-hover:bg-[#FF4D00] group-hover:text-white transition-colors">
+                    <card.icon size={22} />
                   </div>
-                  <h3 className="text-lg font-medium mb-6 text-[#050505]">{card.title}</h3>
-                  <ul className="space-y-3.5">
-                    {card.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-3 text-sm text-neutral-600">
-                        <div className="w-4 h-4 rounded-full bg-[#FF4D00] flex items-center justify-center shrink-0 mt-0.5">
-                          <Check size={10} className="text-white" strokeWidth={3} />
-                        </div>
+                  <h3 className="text-xl font-bold text-[#050505] mb-2 group-hover:text-[#FF4D00] transition-colors">{card.title}</h3>
+                  <p className="text-xs text-neutral-500 font-light leading-relaxed mb-6">{card.desc}</p>
+                  
+                  <div className="space-y-2 pt-4 border-t border-[#E5E5E5]">
+                    {card.items.slice(0, 5).map((item, j) => (
+                      <div key={j} className="flex items-center gap-2 text-xs text-neutral-700 font-light">
+                        <Check size={12} className="text-[#FF4D00] shrink-0" strokeWidth={3} />
                         <span>{item}</span>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-[#E5E5E5] mt-6 flex items-center justify-between text-xs font-bold text-[#FF4D00] uppercase tracking-wider">
+                  <span>EXPLORE {card.title.toUpperCase()}</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             ))}
@@ -185,43 +219,62 @@ export default function Services() {
         </div>
       </section>
 
-      {/* 4. PROTEIN & PEPTIDE SERVICES */}
-      <section className="py-24 md:py-32 px-6 bg-[#050505] text-white overflow-hidden relative">
+      {/* 4. PROTEIN & PEPTIDE SERVICES SECTION */}
+      <section className="py-20 lg:py-28 px-6 bg-[#050505] text-white overflow-hidden relative">
         <div className="max-w-[1400px] mx-auto relative z-10">
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center mb-16 lg:mb-24">
-            <div>
-              <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">Protein & Peptide Services</p>
-              <h2 className="text-4xl md:text-[44px] font-medium tracking-tight mb-8 leading-[1.1]">Protein & Peptide<br/>Services</h2>
-              <p className="text-neutral-400 mb-0 leading-relaxed text-base max-w-md font-light">
-                High-quality protein and peptide services using advanced techniques and scientific expertise.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center mb-16">
+            <div className="space-y-4">
+              <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#FF4D00] block">
+                PROTEIN & PEPTIDE SERVICES
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.1]">
+                Protein & Peptide<br/>Services
+              </h2>
+              <p className="text-neutral-400 text-sm sm:text-base font-light leading-relaxed max-w-md">
+                High-quality protein sequencing, solid-phase peptide synthesis (SPPS), and chemical modifications using advanced analytical mass spectrometry.
               </p>
-            </div>
-            <div className="relative h-64 md:h-96 lg:h-[400px] w-full flex items-center justify-center lg:justify-end">
-              <img 
-                src="https://images.unsplash.com/photo-1559757175-9b93db5f8cb4?q=80&w=2831&auto=format&fit=crop" 
-                alt="Protein Structure" 
-                className="absolute right-0 w-full lg:w-[130%] max-w-none h-full object-cover mix-blend-screen opacity-70 mask-image-gradient"
-                style={{ WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0))' }}
-              />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: "Protein Sequencing", desc: "Accurate protein sequencing services for research and scientific applications.", icon: Share2 },
-              { title: "Peptide Synthesis", desc: "Custom peptide synthesis for research and scientific studies.", icon: Box },
-              { title: "Peptide Modification", desc: "Peptide modification for improved stability, functionality and research applications.", icon: GitMerge }
+              { 
+                title: "Protein Sequencing", 
+                desc: "Accurate Edman N-terminal & LC-MS/MS protein sequencing services.", 
+                icon: Share2,
+                link: "/services/protein-peptide/sequencing"
+              },
+              { 
+                title: "Peptide Synthesis", 
+                desc: "Custom solid-phase peptide synthesis from short chains to complex sequences.", 
+                icon: Box,
+                link: "/services/protein-peptide/synthesis"
+              },
+              { 
+                title: "Peptide Modification", 
+                desc: "Phosphorylation, biotinylation, fluorescent tagging, and disulfide bonding.", 
+                icon: GitMerge,
+                link: "/services/protein-peptide/modification"
+              }
             ].map((card, i) => (
-              <div key={i} className="bg-white/5 rounded-[24px] p-8 border border-white/10 backdrop-blur-sm">
-                <div className="w-12 h-12 bg-[#FF4D00]/10 rounded-xl flex items-center justify-center mb-6 border border-[#FF4D00]/20">
-                  <card.icon size={22} className="text-[#FF4D00]" />
+              <div 
+                key={i} 
+                onClick={() => navigate(card.link)}
+                className="bg-white/5 rounded-[24px] p-8 border border-white/10 backdrop-blur-sm hover:border-[#FF4D00]/60 hover:bg-white/10 transition-all duration-300 cursor-pointer flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="w-12 h-12 bg-[#FF4D00]/10 rounded-xl flex items-center justify-center mb-6 border border-[#FF4D00]/20 text-[#FF4D00] group-hover:bg-[#FF4D00] group-hover:text-white transition-colors">
+                    <card.icon size={22} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#FF4D00] transition-colors">{card.title}</h3>
+                  <p className="text-neutral-400 text-xs font-light leading-relaxed mb-6">{card.desc}</p>
                 </div>
-                <h3 className="text-lg font-medium mb-3">{card.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-8">{card.desc}</p>
-                <Link to="/services/protein" className="text-[#FF4D00] text-xs font-semibold tracking-[0.1em] hover:text-white transition-colors flex items-center gap-2 group uppercase">
-                  Learn More <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
-                </Link>
+
+                <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-bold text-[#FF4D00] uppercase tracking-wider">
+                  <span>EXPLORE SERVICE</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                </div>
               </div>
             ))}
           </div>
@@ -229,77 +282,68 @@ export default function Services() {
         </div>
       </section>
 
-      {/* 5. RESEARCH & COMPUTATIONAL BIOLOGY */}
-      <section className="py-24 md:py-32 px-6 bg-white border-t border-[#D8D8D5]/60">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-16">
+      {/* 5. RESEARCH & COMPUTATIONAL BIOLOGY SECTION */}
+      <section className="py-20 lg:py-28 px-6 bg-white border-t border-[#E5E5E5]">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
-          <div className="lg:col-span-4 flex flex-col">
-            <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">Research & Computational Biology</p>
-            <h2 className="text-4xl md:text-[44px] font-medium tracking-tight mb-8 leading-[1.1]">Research &<br/>Computational Biology</h2>
-            <p className="text-neutral-600 mb-10 leading-relaxed text-base font-light">
-              Computational and bioinformatics solutions that accelerate research and scientific discovery.
-            </p>
-            <Button href="/services/research" variant="primary" className="self-start" withArrow>
-              EXPLORE RESEARCH SERVICES
-            </Button>
-          </div>
-
-          <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-12 gap-x-12">
-              {[
-                { title: "Primer Design", desc: "Custom primer design for PCR and molecular studies.", icon: Network },
-                { title: "SPSS Analysis", desc: "Statistical analysis for research data and results.", icon: BarChart },
-                { title: "Molecular Docking", desc: "Molecular docking for structure and interaction analysis.", icon: Share2 },
-                { title: "MD Simulations", desc: "Molecular dynamics simulations for advanced research.", icon: Activity },
-                { title: "Sequence Alignment", desc: "Sequence alignment and comparative analysis.", icon: GitMerge },
-                { title: "Other Computational Research", desc: "Various in-silico research solutions tailored to project requirements.", icon: Cpu }
-              ].map((item, i) => (
-                <div key={i} className="flex flex-col relative pb-8">
-                  {i < 4 && <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-[1px] bg-[#D8D8D5]/60" />}
-                  <div className="sm:hidden absolute bottom-0 left-0 right-0 h-[1px] bg-[#D8D8D5]/60" />
-                  
-                  <item.icon size={26} className="text-[#FF4D00] mb-5" strokeWidth={1.5} />
-                  <h3 className="text-lg font-medium mb-2 text-[#050505]">{item.title}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed font-light">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 6. SPECIALIZED RESEARCH CTA */}
-      <section className="py-24 md:py-32 px-6 bg-[#050505] text-white relative overflow-hidden">
-        {/* Subtle molecular background */}
-        <div className="absolute inset-0 opacity-30 mix-blend-screen">
-          <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2874&auto=format&fit=crop" alt="Background" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/95 to-transparent z-10" />
-        
-        <div className="max-w-[1400px] mx-auto relative z-20 flex flex-col lg:flex-row items-center justify-between gap-12">
-          
-          <div className="flex items-start gap-8 max-w-2xl">
-            <div className="w-20 h-20 rounded-full border border-white/20 bg-white/5 flex items-center justify-center flex-shrink-0 hidden sm:flex">
-              <Send size={32} className="text-white ml-1" />
-            </div>
-            <div>
-              <h2 className="text-4xl md:text-5xl lg:text-[56px] font-medium tracking-tight mb-6 leading-[1.1]">
-                Looking for a <span className="text-[#FF4D00]">Specialized</span><br/>Research Solution?
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div className="space-y-4">
+              <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#FF4D00] block">
+                COMPUTATIONAL BIOLOGY
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#050505] leading-[1.1]">
+                Research &<br/>Computational Biology
               </h2>
-              <p className="text-base text-neutral-400 mb-0 font-light leading-relaxed max-w-xl">
-                Our team is ready to discuss your project and provide the right scientific solution for your research.
+              <p className="text-neutral-600 text-sm font-light leading-relaxed">
+                In-silico research, molecular docking, MD simulations, SPSS statistical data analysis, and custom bioinformatics pipelines.
               </p>
             </div>
+
+            <div className="pt-6">
+              <Button href="/services/computational" variant="primary" className="bg-[#FF4D00] hover:bg-[#E64500] text-white border-none px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl" withArrow>
+                EXPLORE COMPUTATIONAL SERVICES
+              </Button>
+            </div>
           </div>
-          
-          <Button href="/contact" size="lg" className="shrink-0 w-full sm:w-auto px-8 py-4 text-[13px]" withArrow>
-            DISCUSS YOUR PROJECT
-          </Button>
-          
+
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              { 
+                title: "In-Silico Research", 
+                desc: "Primer design, SPSS biostatistical analysis, molecular docking, and MD simulations.", 
+                icon: Network,
+                link: "/services/computational/in-silico"
+              },
+              { 
+                title: "Bioinformatics", 
+                desc: "Sequence analysis, biological data pipelines, phylogenetic tree building, and gene annotation.", 
+                icon: Cpu,
+                link: "/services/computational/bioinformatics"
+              }
+            ].map((card, i) => (
+              <div 
+                key={i} 
+                onClick={() => navigate(card.link)}
+                className="p-8 bg-[#F9F9F8] rounded-[24px] border border-[#E5E5E5] hover:border-[#FF4D00]/50 hover:bg-white hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="w-12 h-12 bg-[#FF4D00]/10 rounded-xl flex items-center justify-center mb-6 text-[#FF4D00] group-hover:bg-[#FF4D00] group-hover:text-white transition-colors">
+                    <card.icon size={22} />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#050505] mb-2 group-hover:text-[#FF4D00] transition-colors">{card.title}</h3>
+                  <p className="text-xs text-neutral-600 font-light leading-relaxed mb-6">{card.desc}</p>
+                </div>
+
+                <div className="pt-6 border-t border-[#E5E5E5] flex items-center justify-between text-xs font-bold text-[#FF4D00] uppercase tracking-wider">
+                  <span>EXPLORE SERVICE</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
-
     </div>
   );
 }

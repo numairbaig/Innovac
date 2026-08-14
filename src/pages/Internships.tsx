@@ -10,6 +10,7 @@ import { cn } from '../lib/utils';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { PageHeroIllustration } from '@/src/components/ui/PageHeroIllustration';
+import { Breadcrumb, PageLabel } from '@/src/components/ui/Breadcrumb';
 
 export default function Internships() {
   const { user } = useAuth();
@@ -108,14 +109,8 @@ export default function Internships() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
-                  <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                  <ChevronRight size={12} />
-                  <span className="text-white">Internships</span>
-                </div>
-                <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">
-                  INTERNSHIPS AT INNOVAC
-                </p>
+              <Breadcrumb items={[{ label: 'Internships' }]} accentColor="text-[#FF4D00]" />
+              <PageLabel accentColor="text-[#FF4D00]">INTERNSHIPS AT INNOVAC</PageLabel>
                 <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8 text-white">
                   Learn.<br />
                   Explore.<br />

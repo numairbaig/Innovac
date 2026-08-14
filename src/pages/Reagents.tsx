@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ChevronDown, ChevronRight, Check, ArrowRight, FlaskConical, Beaker, TestTube2, ShieldCheck, Clock, MessageSquare, Microscope } from 'lucide-react';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
+import { Breadcrumb, PageLabel } from '@/src/components/ui/Breadcrumb';
 import { reagentsData, ReagentCategory } from '@/src/data/reagents';
 import { cn } from '@/src/lib/utils';
 import { PageHeroIllustration } from '@/src/components/ui/PageHeroIllustration';
@@ -74,14 +75,8 @@ export default function Reagents() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
-                <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                <ChevronRight size={12} />
-                <span className="text-white">Reagents</span>
-              </div>
-              <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">
-                LABORATORY REAGENTS
-              </p>
+              <Breadcrumb items={[{ label: 'Reagents' }]} accentColor="text-[#FF4D00]" />
+              <PageLabel accentColor="text-[#FF4D00]">LABORATORY REAGENTS</PageLabel>
               <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8 text-white">
                 Laboratory Reagents<br />
                 Built for <span className="text-[#FF4D00]">Research.</span>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
+import { Breadcrumb, PageLabel } from '@/src/components/ui/Breadcrumb';
 import { ArrowLeft, Check, ShieldCheck, Thermometer, FlaskConical, AlertCircle, ShoppingCart } from 'lucide-react';
 import { reagentsData } from '@/src/data/reagents';
 import NotFound from './NotFound';
@@ -42,11 +43,13 @@ export default function ReagentDetail() {
         <div className="max-w-[1400px] mx-auto px-6">
           
           {/* Top Breadcrumb */}
-          <div className="mb-8">
-            <Link to="/reagents" className="inline-flex items-center text-xs font-semibold tracking-widest text-neutral-400 uppercase hover:text-accent transition-colors">
-              <ArrowLeft size={14} className="mr-2" /> Back to Reagents
-            </Link>
-          </div>
+          <Breadcrumb 
+            items={[
+              { label: 'Reagents', href: '/reagents' },
+              { label: reagent.name }
+            ]} 
+            accentColor="text-accent" 
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
             
@@ -71,9 +74,9 @@ export default function ReagentDetail() {
             <div className="order-1 lg:order-2 flex flex-col justify-center">
               
               <div className="mb-10">
-                <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-4">
+                <PageLabel accentColor="text-accent">
                   INNOVAC LABORATORY REAGENTS
-                </p>
+                </PageLabel>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight mb-6 text-white leading-tight">
                   {reagent.name}
                 </h1>

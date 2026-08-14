@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronDown, ChevronRight, Mail, Phone, MapPin, MessageCircle, Microscope, FlaskConical, Dna, GraduationCap, Presentation } from 'lucide-react';
-import { SEO } from '../components/SEO';
-import { Button } from '../components/ui/Button';
+import { SEO } from '@/src/components/SEO';
+import { Button } from '@/src/components/ui/Button';
+import { Breadcrumb, PageLabel } from '@/src/components/ui/Breadcrumb';
 import { useSearchParams } from 'react-router-dom';
 import { contactConfig } from '../config/contact';
 import { enquiryTypes, interestAreas, scientificAreas, contactFaqs, contactOptions, servicePaths } from '../data/contact';
@@ -126,14 +127,8 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex items-center gap-2 text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-6">
-                  <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                  <ChevronRight size={12} />
-                  <span className="text-white">Contact</span>
-                </div>
-                <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#FF4D00] mb-6">
-                  CONNECT WITH US
-                </p>
+              <Breadcrumb items={[{ label: 'Contact' }]} accentColor="text-[#FF4D00]" />
+              <PageLabel accentColor="text-[#FF4D00]">CONNECT WITH US</PageLabel>
                 <h1 className="text-5xl md:text-7xl lg:text-[76px] font-medium tracking-tight leading-[1.05] mb-8 text-white">
                   Innovating science <br />
                   <span className="text-[#FF4D00]">demands connection.</span>
