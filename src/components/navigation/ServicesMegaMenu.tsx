@@ -116,7 +116,7 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
     >
       {/* Caret Pointer pointing directly at the 'Services' link */}
       <div className="relative">
-        <div className="absolute -top-2.5 left-[30.2%] xl:left-[30.0%] 2xl:left-[30.5%] -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-white/15 z-20" />
+        <div className="absolute -top-2.5 left-[30.2%] xl:left-[30.0%] 2xl:left-[30.5%] -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-white/20 z-20" />
         <div className="absolute -top-[8px] left-[30.2%] xl:left-[30.0%] 2xl:left-[30.5%] -translate-x-1/2 w-0 h-0 border-l-[7px] border-r-[7px] border-b-[9px] border-l-transparent border-r-transparent border-b-[#0A0A0A] z-30" />
 
         {/* Main Clean Dark Mega Menu Container */}
@@ -124,8 +124,8 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
           
           {/* Subtle Ambient Glow & Scientific Grid */}
           <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] bg-[length:24px_24px] pointer-events-none" />
-          <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-[#FF4D00]/06 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -left-24 -top-24 w-96 h-96 bg-[#FF4D00]/06 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-[#FF4D00]/05 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-24 -top-24 w-96 h-96 bg-[#FF4D00]/05 rounded-full blur-3xl pointer-events-none" />
 
           {/* Three Equal Columns Grid */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 xl:gap-12">
@@ -133,12 +133,12 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
             {/* COLUMN 1: SCIENTIFIC RESEARCH SERVICES */}
             <div className="space-y-4 pr-0 lg:pr-6 xl:pr-8 lg:border-r border-white/08 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2.5 mb-1.5">
-                  <Microscope size={18} className="text-[#FF4D00] shrink-0" />
-                  <h3 className="text-sm font-bold tracking-[0.14em] text-[#FF4D00] uppercase">
+                <Link to="/services/nucleic-acid" onClick={onClose} className="group/head flex items-center gap-2.5 mb-1.5 inline-flex">
+                  <Microscope size={18} className="text-white group-hover/head:text-[#FF4D00] transition-colors shrink-0" />
+                  <h3 className="text-sm font-bold tracking-[0.14em] text-white group-hover/head:text-[#FF4D00] uppercase transition-colors">
                     SCIENTIFIC RESEARCH SERVICES
                   </h3>
-                </div>
+                </Link>
                 <div className="w-10 h-[2.5px] bg-[#FF4D00] rounded-full mb-5" />
 
                 <div className="space-y-3">
@@ -152,10 +152,10 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
                 <Link
                   to="/services/nucleic-acid"
                   onClick={onClose}
-                  className="group inline-flex items-center gap-2 text-sm font-bold text-[#FF4D00] tracking-wider uppercase hover:text-white transition-colors"
+                  className="group inline-flex items-center gap-2 text-sm font-bold text-white tracking-wider uppercase hover:text-[#FF4D00] transition-colors"
                 >
                   <span>EXPLORE RESEARCH SERVICES</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
+                  <ArrowRight size={16} className="text-white group-hover:text-[#FF4D00] group-hover:translate-x-1.5 transition-all" />
                 </Link>
               </div>
             </div>
@@ -163,12 +163,12 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
             {/* COLUMN 2: PROTEINS & PEPTIDES */}
             <div className="space-y-4 pr-0 lg:pr-6 xl:pr-8 lg:border-r border-white/08 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2.5 mb-1.5">
-                  <Layers size={18} className="text-[#FF4D00] shrink-0" />
-                  <h3 className="text-sm font-bold tracking-[0.14em] text-[#FF4D00] uppercase">
+                <Link to="/services/protein-peptide" onClick={onClose} className="group/head flex items-center gap-2.5 mb-1.5 inline-flex">
+                  <Layers size={18} className="text-white group-hover/head:text-[#FF4D00] transition-colors shrink-0" />
+                  <h3 className="text-sm font-bold tracking-[0.14em] text-white group-hover/head:text-[#FF4D00] uppercase transition-colors">
                     PROTEINS & PEPTIDES
                   </h3>
-                </div>
+                </Link>
                 <div className="w-10 h-[2.5px] bg-[#FF4D00] rounded-full mb-5" />
 
                 <div className="space-y-3">
@@ -182,10 +182,10 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
                 <Link
                   to="/services/protein-peptide"
                   onClick={onClose}
-                  className="group inline-flex items-center gap-2 text-sm font-bold text-[#FF4D00] tracking-wider uppercase hover:text-white transition-colors"
+                  className="group inline-flex items-center gap-2 text-sm font-bold text-white tracking-wider uppercase hover:text-[#FF4D00] transition-colors"
                 >
                   <span>VIEW ALL PRODUCTS</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
+                  <ArrowRight size={16} className="text-white group-hover:text-[#FF4D00] group-hover:translate-x-1.5 transition-all" />
                 </Link>
               </div>
             </div>
@@ -193,12 +193,12 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
             {/* COLUMN 3: COMPUTATIONAL BIOLOGY */}
             <div className="space-y-4 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2.5 mb-1.5">
-                  <Cpu size={18} className="text-[#FF4D00] shrink-0" />
-                  <h3 className="text-sm font-bold tracking-[0.14em] text-[#FF4D00] uppercase">
+                <Link to="/services/computational" onClick={onClose} className="group/head flex items-center gap-2.5 mb-1.5 inline-flex">
+                  <Cpu size={18} className="text-white group-hover/head:text-[#FF4D00] transition-colors shrink-0" />
+                  <h3 className="text-sm font-bold tracking-[0.14em] text-white group-hover/head:text-[#FF4D00] uppercase transition-colors">
                     COMPUTATIONAL BIOLOGY
                   </h3>
-                </div>
+                </Link>
                 <div className="w-10 h-[2.5px] bg-[#FF4D00] rounded-full mb-5" />
 
                 <div className="space-y-3">
@@ -212,10 +212,10 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
                 <Link
                   to="/services/computational"
                   onClick={onClose}
-                  className="group inline-flex items-center gap-2 text-sm font-bold text-[#FF4D00] tracking-wider uppercase hover:text-white transition-colors"
+                  className="group inline-flex items-center gap-2 text-sm font-bold text-white tracking-wider uppercase hover:text-[#FF4D00] transition-colors"
                 >
                   <span>EXPLORE SOLUTIONS</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
+                  <ArrowRight size={16} className="text-white group-hover:text-[#FF4D00] group-hover:translate-x-1.5 transition-all" />
                 </Link>
               </div>
             </div>
@@ -227,7 +227,7 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
   );
 }
 
-// Single Clean Service Card Component (Bigger Font Size, Easy & User Friendly)
+// Single Clean Service Card Component (White Base + Orange Hover Highlight)
 function ServiceCard({ data, onClose }: { data: ServiceCardData; onClose: () => void }) {
   return (
     <Link
@@ -248,7 +248,7 @@ function ServiceCard({ data, onClose }: { data: ServiceCardData; onClose: () => 
       </div>
       <ArrowRight 
         size={16} 
-        className="text-neutral-400 group-hover:text-[#FF4D00] opacity-60 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all shrink-0 ml-1" 
+        className="text-neutral-400 group-hover:text-[#FF4D00] opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all shrink-0 ml-1" 
       />
     </Link>
   );

@@ -218,88 +218,88 @@ export function Header() {
                     >
                       {/* Section 1 */}
                       <div className="space-y-2">
-                        <Link to="/services/nucleic-acid" className="text-xs font-bold tracking-wider text-accent uppercase block px-1">
+                        <Link to="/services/nucleic-acid" onClick={() => setMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white hover:text-[#FF4D00] active:text-[#FF4D00] uppercase block px-1 transition-colors">
                           SCIENTIFIC RESEARCH SERVICES
                         </Link>
                         <div className="space-y-2">
-                          <Link to="/services/nucleic-acid/dna" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/nucleic-acid/dna" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={Dna} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">DNA Services</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">DNA Services</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
 
-                          <Link to="/services/nucleic-acid/rna" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/nucleic-acid/rna" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={Activity} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">RNA Services</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">RNA Services</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
 
-                          <Link to="/services/nucleic-acid/mirna" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/nucleic-acid/mirna" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={Database} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">miRNA Services</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">miRNA Services</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
                         </div>
                       </div>
 
                       {/* Section 2 */}
                       <div className="space-y-2">
-                        <Link to="/services/protein-peptide" className="text-xs font-bold tracking-wider text-accent uppercase block px-1">
+                        <Link to="/services/protein-peptide" onClick={() => setMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white hover:text-[#FF4D00] active:text-[#FF4D00] uppercase block px-1 transition-colors">
                           PROTEINS & PEPTIDES
                         </Link>
                         <div className="space-y-2">
-                          <Link to="/services/protein-peptide/sequencing" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/protein-peptide/sequencing" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={Share2} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">Protein Sequencing</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">Protein Sequencing</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
 
-                          <Link to="/services/protein-peptide/synthesis" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/protein-peptide/synthesis" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={Box} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">Peptide Synthesis</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">Peptide Synthesis</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
 
-                          <Link to="/services/protein-peptide/modification" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/protein-peptide/modification" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={GitMerge} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">Peptide Modification</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">Peptide Modification</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
                         </div>
                       </div>
 
                       {/* Section 3 */}
                       <div className="space-y-2">
-                        <Link to="/services/computational" className="text-xs font-bold tracking-wider text-accent uppercase block px-1">
+                        <Link to="/services/computational" onClick={() => setMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white hover:text-[#FF4D00] active:text-[#FF4D00] uppercase block px-1 transition-colors">
                           COMPUTATIONAL BIOLOGY
                         </Link>
                         <div className="space-y-2">
-                          <Link to="/services/computational/in-silico" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/computational/in-silico" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={Network} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">In-Silico Research</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">In-Silico Research</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
 
-                          <Link to="/services/computational/bioinformatics" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                          <Link to="/services/computational/bioinformatics" onClick={() => setMobileMenuOpen(false)} className="group p-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF4D00]/08 active:bg-[#FF4D00]/12 border border-white/10 hover:border-[#FF4D00]/40 active:border-[#FF4D00]/50 flex items-center justify-between gap-3 transition-all duration-200">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <ServiceIcon icon={Cpu} containerClassName="w-10 h-10 min-w-[40px]" />
-                              <h4 className="text-sm font-semibold text-white truncate">Bioinformatics</h4>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-[#FF4D00] group-active:text-[#FF4D00] transition-colors truncate">Bioinformatics</h4>
                             </div>
-                            <ArrowRight size={16} className="text-accent shrink-0" />
+                            <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#FF4D00] group-active:text-[#FF4D00] group-hover:translate-x-1 transition-all shrink-0" />
                           </Link>
                         </div>
                       </div>
