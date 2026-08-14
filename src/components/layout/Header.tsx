@@ -78,9 +78,9 @@ export function Header() {
                     aria-haspopup={link.isServices ? "true" : undefined}
                     className={cn(
                       "text-xs 2xl:text-sm font-medium transition-colors relative py-2 flex items-center gap-1.5 whitespace-nowrap",
-                      link.isServices && servicesDropdownOpen 
-                        ? "text-[#00E676] font-bold" 
-                        : isActive(link.href) ? "text-accent" : "text-neutral-300 hover:text-white"
+                      (link.isServices && servicesDropdownOpen) || isActive(link.href)
+                        ? "text-accent font-bold" 
+                        : "text-neutral-300 hover:text-white"
                     )}
                   >
                     <span>{link.name}</span>
@@ -89,14 +89,14 @@ export function Header() {
                         size={14} 
                         className={cn(
                           "transition-transform duration-300", 
-                          servicesDropdownOpen ? "rotate-180 text-[#00E676]" : "text-neutral-400 group-hover:text-white"
+                          servicesDropdownOpen ? "rotate-180 text-accent" : "text-neutral-400 group-hover:text-white"
                         )} 
                       />
                     )}
                     {(isActive(link.href) || (link.isServices && servicesDropdownOpen)) && (
                       <motion.div 
                         layoutId="activeNav"
-                        className={cn("absolute bottom-0 left-0 right-0 h-0.5", link.isServices && servicesDropdownOpen ? "bg-[#00E676]" : "bg-accent")}
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -198,14 +198,14 @@ export function Header() {
                 {/* Mobile Services Accordion */}
                 <li>
                   <div className="flex items-center justify-between py-2 border-b border-white/10">
-                    <Link to="/services" className="text-xl font-medium tracking-tight text-neutral-200 hover:text-[#00E676]">Services</Link>
+                    <Link to="/services" className="text-xl font-medium tracking-tight text-neutral-200 hover:text-accent">Services</Link>
                     <button 
                       onClick={() => setMobileServicesAccordion(!mobileServicesAccordion)}
                       aria-label="Toggle Services Categories"
                       aria-expanded={mobileServicesAccordion}
-                      className="p-3 text-neutral-400 hover:text-[#00E676] min-w-[44px] min-h-[44px] flex items-center justify-center"
+                      className="p-3 text-neutral-400 hover:text-accent min-w-[44px] min-h-[44px] flex items-center justify-center"
                     >
-                      <ChevronDown size={20} className={cn("transition-transform duration-300", mobileServicesAccordion && "rotate-180 text-[#00E676]")} />
+                      <ChevronDown size={20} className={cn("transition-transform duration-300", mobileServicesAccordion && "rotate-180 text-accent")} />
                     </button>
                   </div>
 
@@ -218,96 +218,88 @@ export function Header() {
                     >
                       {/* Section 1 */}
                       <div className="space-y-2">
-                        <Link to="/services/nucleic-acid" className="text-xs font-bold tracking-wider text-[#00E676] uppercase block px-1">
+                        <Link to="/services/nucleic-acid" className="text-xs font-bold tracking-wider text-accent uppercase block px-1">
                           SCIENTIFIC RESEARCH SERVICES
                         </Link>
                         <div className="space-y-2">
-                          <Link to="/services/nucleic-acid/dna" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={Dna} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">DNA Services</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">Advanced DNA analysis & sequencing</p>
+                          <Link to="/services/nucleic-acid/dna" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={Dna} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">DNA Services</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
 
-                          <Link to="/services/nucleic-acid/rna" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={Activity} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">RNA Services</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">Comprehensive RNA research solutions</p>
+                          <Link to="/services/nucleic-acid/rna" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={Activity} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">RNA Services</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
 
-                          <Link to="/services/nucleic-acid/mirna" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={Database} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">miRNA Services</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">MicroRNA profiling & analysis</p>
+                          <Link to="/services/nucleic-acid/mirna" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={Database} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">miRNA Services</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
                         </div>
                       </div>
 
                       {/* Section 2 */}
                       <div className="space-y-2">
-                        <Link to="/services/protein-peptide" className="text-xs font-bold tracking-wider text-[#00E676] uppercase block px-1">
+                        <Link to="/services/protein-peptide" className="text-xs font-bold tracking-wider text-accent uppercase block px-1">
                           PROTEINS & PEPTIDES
                         </Link>
                         <div className="space-y-2">
-                          <Link to="/services/protein-peptide/sequencing" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={Share2} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">Protein Sequencing</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">Edman degradation & LC-MS/MS</p>
+                          <Link to="/services/protein-peptide/sequencing" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={Share2} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">Protein Sequencing</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
 
-                          <Link to="/services/protein-peptide/synthesis" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={Box} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">Peptide Synthesis</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">Custom SPPS synthesis solutions</p>
+                          <Link to="/services/protein-peptide/synthesis" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={Box} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">Peptide Synthesis</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
 
-                          <Link to="/services/protein-peptide/modification" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={GitMerge} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">Peptide Modification</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">Phosphorylation & fluorescent tags</p>
+                          <Link to="/services/protein-peptide/modification" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={GitMerge} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">Peptide Modification</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
                         </div>
                       </div>
 
                       {/* Section 3 */}
                       <div className="space-y-2">
-                        <Link to="/services/computational" className="text-xs font-bold tracking-wider text-[#00E676] uppercase block px-1">
+                        <Link to="/services/computational" className="text-xs font-bold tracking-wider text-accent uppercase block px-1">
                           COMPUTATIONAL BIOLOGY
                         </Link>
                         <div className="space-y-2">
-                          <Link to="/services/computational/in-silico" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={Network} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">In-Silico Research</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">Computational modeling & simulation</p>
+                          <Link to="/services/computational/in-silico" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={Network} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">In-Silico Research</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
 
-                          <Link to="/services/computational/bioinformatics" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
-                            <ServiceIcon icon={Cpu} containerClassName="w-9 h-9 min-w-[36px]" />
-                            <div className="flex-grow min-w-0">
-                              <h4 className="text-xs font-bold text-white">Bioinformatics</h4>
-                              <p className="text-[10px] text-neutral-400 font-light truncate">Genomic data pipelines & analytics</p>
+                          <Link to="/services/computational/bioinformatics" className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 active:bg-white/10">
+                            <div className="flex items-center gap-3.5 min-w-0">
+                              <ServiceIcon icon={Cpu} containerClassName="w-10 h-10 min-w-[40px]" />
+                              <h4 className="text-sm font-semibold text-white truncate">Bioinformatics</h4>
                             </div>
-                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                            <ArrowRight size={16} className="text-accent shrink-0" />
                           </Link>
                         </div>
                       </div>
