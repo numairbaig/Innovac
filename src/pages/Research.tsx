@@ -108,7 +108,7 @@ export default function Research() {
               badge={{ tag: "BIO", label: "01" }}
               title="Biotechnology"
               description="Research focused on consortium development for biogas and other climatic processes."
-              image="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2960&auto=format&fit=crop"
+              image="/images/research_card_2.jpg"
               href="/research/biotech"
               variant="light"
             />
@@ -120,7 +120,7 @@ export default function Research() {
               title="Molecular Biology"
               description="Molecular biology research focused on vaccine design and aptamer detection."
               services={["Vaccine Design", "Aptamer Detection"]}
-              image="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=2787&auto=format&fit=crop"
+              image="/images/research_card_1.jpg"
               href="/research/molecular-biology"
               variant="light"
             />
