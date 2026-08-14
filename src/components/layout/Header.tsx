@@ -2,9 +2,11 @@ import { getCtaPath } from '@/src/config/ctaConfig';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Search, User, LogIn, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, Search, User, LogIn, ChevronDown, Dna, Activity, Database, Share2, Box, GitMerge, Network, Cpu, Microscope } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useAuth } from '@/src/contexts/AuthContext';
+import { ServicesMegaMenu } from '@/src/components/navigation/ServicesMegaMenu';
+import { ServiceIcon } from '@/src/components/ui/ServiceIcon';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -72,64 +74,44 @@ export function Header() {
                 >
                   <Link 
                     to={link.href} 
+                    aria-expanded={link.isServices ? servicesDropdownOpen : undefined}
+                    aria-haspopup={link.isServices ? "true" : undefined}
                     className={cn(
-                      "text-xs 2xl:text-sm font-medium transition-colors hover:text-accent relative py-2 flex items-center gap-1 whitespace-nowrap",
-                      isActive(link.href) ? "text-accent" : "text-neutral-300 hover:text-white"
+                      "text-xs 2xl:text-sm font-medium transition-colors relative py-2 flex items-center gap-1.5 whitespace-nowrap",
+                      link.isServices && servicesDropdownOpen 
+                        ? "text-[#00E676] font-bold" 
+                        : isActive(link.href) ? "text-accent" : "text-neutral-300 hover:text-white"
                     )}
                   >
                     <span>{link.name}</span>
-                    {link.isServices && <ChevronDown size={12} className={cn("transition-transform duration-200", servicesDropdownOpen && "rotate-180 text-accent")} />}
-                    {isActive(link.href) && (
+                    {link.isServices && (
+                      <ChevronDown 
+                        size={14} 
+                        className={cn(
+                          "transition-transform duration-300", 
+                          servicesDropdownOpen ? "rotate-180 text-[#00E676]" : "text-neutral-400 group-hover:text-white"
+                        )} 
+                      />
+                    )}
+                    {(isActive(link.href) || (link.isServices && servicesDropdownOpen)) && (
                       <motion.div 
                         layoutId="activeNav"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
+                        className={cn("absolute bottom-0 left-0 right-0 h-0.5", link.isServices && servicesDropdownOpen ? "bg-[#00E676]" : "bg-accent")}
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
                   </Link>
 
                   {/* Desktop Services Mega Menu Dropdown */}
-                  {link.isServices && servicesDropdownOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[680px] z-50">
-                      <div className="bg-[#0A0A0A] border border-white/15 rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl">
-                        <div className="grid grid-cols-3 gap-6 text-left">
-                          {/* Column 1 */}
-                          <div>
-                            <Link to="/services/nucleic-acid" className="text-xs font-bold text-accent uppercase tracking-wider block mb-3 hover:underline">
-                              Nucleic Acid Services
-                            </Link>
-                            <ul className="space-y-2 text-xs">
-                              <li><Link to="/services/nucleic-acid/dna" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">DNA Services</Link></li>
-                              <li><Link to="/services/nucleic-acid/rna" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">RNA Services</Link></li>
-                              <li><Link to="/services/nucleic-acid/mirna" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">miRNA Services</Link></li>
-                            </ul>
-                          </div>
-
-                          {/* Column 2 */}
-                          <div>
-                            <Link to="/services/protein-peptide" className="text-xs font-bold text-accent uppercase tracking-wider block mb-3 hover:underline">
-                              Protein & Peptide
-                            </Link>
-                            <ul className="space-y-2 text-xs">
-                              <li><Link to="/services/protein-peptide/sequencing" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">Protein Sequencing</Link></li>
-                              <li><Link to="/services/protein-peptide/synthesis" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">Peptide Synthesis</Link></li>
-                              <li><Link to="/services/protein-peptide/modification" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">Peptide Modification</Link></li>
-                            </ul>
-                          </div>
-
-                          {/* Column 3 */}
-                          <div>
-                            <Link to="/services/computational" className="text-xs font-bold text-accent uppercase tracking-wider block mb-3 hover:underline">
-                              Computational Biology
-                            </Link>
-                            <ul className="space-y-2 text-xs">
-                              <li><Link to="/services/computational/in-silico" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">In-Silico Research</Link></li>
-                              <li><Link to="/services/computational/bioinformatics" className="text-neutral-300 hover:text-accent transition-colors block py-0.5">Bioinformatics</Link></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {link.isServices && (
+                    <AnimatePresence>
+                      {servicesDropdownOpen && (
+                        <ServicesMegaMenu 
+                          isOpen={servicesDropdownOpen} 
+                          onClose={() => setServicesDropdownOpen(false)} 
+                        />
+                      )}
+                    </AnimatePresence>
                   )}
                 </li>
               ))}
@@ -215,44 +197,121 @@ export function Header() {
 
                 {/* Mobile Services Accordion */}
                 <li>
-                  <div className="flex items-center justify-between py-1">
-                    <Link to="/services" className="text-xl font-medium tracking-tight text-neutral-300 hover:text-accent">Services</Link>
+                  <div className="flex items-center justify-between py-2 border-b border-white/10">
+                    <Link to="/services" className="text-xl font-medium tracking-tight text-neutral-200 hover:text-[#00E676]">Services</Link>
                     <button 
                       onClick={() => setMobileServicesAccordion(!mobileServicesAccordion)}
-                      className="p-2 text-neutral-400 hover:text-accent"
+                      aria-label="Toggle Services Categories"
+                      aria-expanded={mobileServicesAccordion}
+                      className="p-3 text-neutral-400 hover:text-[#00E676] min-w-[44px] min-h-[44px] flex items-center justify-center"
                     >
-                      <ChevronDown size={18} className={cn("transition-transform duration-200", mobileServicesAccordion && "rotate-180 text-accent")} />
+                      <ChevronDown size={20} className={cn("transition-transform duration-300", mobileServicesAccordion && "rotate-180 text-[#00E676]")} />
                     </button>
                   </div>
 
                   {mobileServicesAccordion && (
-                    <div className="pl-4 py-2 border-l border-white/10 space-y-3 mt-1 text-sm">
-                      <div>
-                        <Link to="/services/nucleic-acid" className="font-bold text-accent block mb-1">Nucleic Acid Services</Link>
-                        <div className="pl-3 space-y-1 text-neutral-400 text-xs">
-                          <Link to="/services/nucleic-acid/dna" className="block hover:text-white py-0.5">DNA Services</Link>
-                          <Link to="/services/nucleic-acid/rna" className="block hover:text-white py-0.5">RNA Services</Link>
-                          <Link to="/services/nucleic-acid/mirna" className="block hover:text-white py-0.5">miRNA Services</Link>
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="pl-2 pr-1 py-3 space-y-5 text-sm overflow-hidden"
+                    >
+                      {/* Section 1 */}
+                      <div className="space-y-2">
+                        <Link to="/services/nucleic-acid" className="text-xs font-bold tracking-wider text-[#00E676] uppercase block px-1">
+                          SCIENTIFIC RESEARCH SERVICES
+                        </Link>
+                        <div className="space-y-2">
+                          <Link to="/services/nucleic-acid/dna" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={Dna} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">DNA Services</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">Advanced DNA analysis & sequencing</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
+
+                          <Link to="/services/nucleic-acid/rna" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={Activity} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">RNA Services</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">Comprehensive RNA research solutions</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
+
+                          <Link to="/services/nucleic-acid/mirna" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={Database} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">miRNA Services</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">MicroRNA profiling & analysis</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
                         </div>
                       </div>
 
-                      <div>
-                        <Link to="/services/protein-peptide" className="font-bold text-accent block mb-1">Protein & Peptide</Link>
-                        <div className="pl-3 space-y-1 text-neutral-400 text-xs">
-                          <Link to="/services/protein-peptide/sequencing" className="block hover:text-white py-0.5">Protein Sequencing</Link>
-                          <Link to="/services/protein-peptide/synthesis" className="block hover:text-white py-0.5">Peptide Synthesis</Link>
-                          <Link to="/services/protein-peptide/modification" className="block hover:text-white py-0.5">Peptide Modification</Link>
+                      {/* Section 2 */}
+                      <div className="space-y-2">
+                        <Link to="/services/protein-peptide" className="text-xs font-bold tracking-wider text-[#00E676] uppercase block px-1">
+                          PROTEINS & PEPTIDES
+                        </Link>
+                        <div className="space-y-2">
+                          <Link to="/services/protein-peptide/sequencing" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={Share2} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">Protein Sequencing</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">Edman degradation & LC-MS/MS</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
+
+                          <Link to="/services/protein-peptide/synthesis" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={Box} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">Peptide Synthesis</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">Custom SPPS synthesis solutions</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
+
+                          <Link to="/services/protein-peptide/modification" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={GitMerge} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">Peptide Modification</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">Phosphorylation & fluorescent tags</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
                         </div>
                       </div>
 
-                      <div>
-                        <Link to="/services/computational" className="font-bold text-accent block mb-1">Computational Biology</Link>
-                        <div className="pl-3 space-y-1 text-neutral-400 text-xs">
-                          <Link to="/services/computational/in-silico" className="block hover:text-white py-0.5">In-Silico Research</Link>
-                          <Link to="/services/computational/bioinformatics" className="block hover:text-white py-0.5">Bioinformatics</Link>
+                      {/* Section 3 */}
+                      <div className="space-y-2">
+                        <Link to="/services/computational" className="text-xs font-bold tracking-wider text-[#00E676] uppercase block px-1">
+                          COMPUTATIONAL BIOLOGY
+                        </Link>
+                        <div className="space-y-2">
+                          <Link to="/services/computational/in-silico" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={Network} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">In-Silico Research</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">Computational modeling & simulation</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
+
+                          <Link to="/services/computational/bioinformatics" className="p-3 rounded-xl bg-[#0A2319]/80 border border-[#50FF96]/15 flex items-center gap-3 active:bg-[#0F3723]">
+                            <ServiceIcon icon={Cpu} containerClassName="w-9 h-9 min-w-[36px]" />
+                            <div className="flex-grow min-w-0">
+                              <h4 className="text-xs font-bold text-white">Bioinformatics</h4>
+                              <p className="text-[10px] text-neutral-400 font-light truncate">Genomic data pipelines & analytics</p>
+                            </div>
+                            <ArrowRight size={14} className="text-[#00E676] shrink-0" />
+                          </Link>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   )}
                 </li>
 
