@@ -14,7 +14,7 @@ export function ServiceIcon({ icon: Icon, src, alt = "Service Icon", className, 
   return (
     <div 
       className={cn(
-        "w-[40px] h-[40px] md:w-[44px] md:h-[44px] rounded-xl bg-white/5 border border-white/12 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:border-[#FF4D00]/50 group-hover:bg-[#FF4D00]/10",
+        "w-[40px] h-[40px] md:w-[44px] md:h-[44px] rounded-xl bg-white/[0.06] border border-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 transition-all duration-200 group-hover:border-[#FF4D00]/60 group-hover:bg-[#FF4D00]/15 group-hover:shadow-[0_0_15px_rgba(255,77,0,0.25)]",
         containerClassName
       )}
     >
@@ -22,12 +22,12 @@ export function ServiceIcon({ icon: Icon, src, alt = "Service Icon", className, 
         <img 
           src={src} 
           alt={alt} 
-          className={cn("w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-105", className)} 
+          className={cn("w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-110", className)} 
         />
       ) : Icon ? (
         <Icon 
-          size={18} 
-          className={cn("text-white transition-all duration-200 group-hover:scale-105 group-hover:text-[#FF4D00]", className)} 
+          size={19} 
+          className={cn("text-white transition-all duration-200 group-hover:scale-110 group-hover:text-[#FF4D00]", className)} 
         />
       ) : null}
     </div>

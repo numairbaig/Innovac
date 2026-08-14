@@ -116,22 +116,22 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
     >
       {/* Caret Pointer pointing directly at the 'Services' link */}
       <div className="relative">
-        <div className="absolute -top-2.5 left-[30.2%] xl:left-[30.0%] 2xl:left-[30.5%] -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-white/20 z-20" />
-        <div className="absolute -top-[8px] left-[30.2%] xl:left-[30.0%] 2xl:left-[30.5%] -translate-x-1/2 w-0 h-0 border-l-[7px] border-r-[7px] border-b-[9px] border-l-transparent border-r-transparent border-b-[#0A0A0A] z-30" />
+        <div className="absolute -top-2.5 left-[30.2%] xl:left-[30.0%] 2xl:left-[30.5%] -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-white/25 z-20" />
+        <div className="absolute -top-[8px] left-[30.2%] xl:left-[30.0%] 2xl:left-[30.5%] -translate-x-1/2 w-0 h-0 border-l-[7px] border-r-[7px] border-b-[9px] border-l-transparent border-r-transparent border-b-[#050505] z-30" />
 
-        {/* Main Clean Dark Mega Menu Container */}
-        <div className="relative bg-[#0A0A0A]/98 border border-white/12 rounded-[24px] p-6 lg:p-8 xl:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.85)] backdrop-blur-xl text-left overflow-hidden">
+        {/* Premium Glassmorphic Mega Menu Container */}
+        <div className="relative bg-[#050505]/92 border border-white/15 rounded-[24px] p-6 lg:p-8 xl:p-9 shadow-[0_25px_70px_rgba(0,0,0,0.95)] backdrop-blur-2xl text-left overflow-hidden">
           
-          {/* Subtle Ambient Glow & Scientific Grid */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] bg-[length:24px_24px] pointer-events-none" />
-          <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-[#FF4D00]/05 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -left-24 -top-24 w-96 h-96 bg-[#FF4D00]/05 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Glass Ambient Glow & Grid */}
+          <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] bg-[length:24px_24px] pointer-events-none" />
+          <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-[#FF4D00]/06 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-24 -top-24 w-96 h-96 bg-[#FF4D00]/06 rounded-full blur-3xl pointer-events-none" />
 
           {/* Three Equal Columns Grid */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 xl:gap-12">
             
             {/* COLUMN 1: SCIENTIFIC RESEARCH SERVICES */}
-            <div className="space-y-4 pr-0 lg:pr-6 xl:pr-8 lg:border-r border-white/08 flex flex-col justify-between">
+            <div className="space-y-4 pr-0 lg:pr-6 xl:pr-8 lg:border-r border-white/10 flex flex-col justify-between">
               <div>
                 <Link to="/services/nucleic-acid" onClick={onClose} className="group/head flex items-center gap-2.5 mb-1.5 inline-flex">
                   <Microscope size={18} className="text-white group-hover/head:text-[#FF4D00] transition-colors shrink-0" />
@@ -148,7 +148,7 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
                 </div>
               </div>
 
-              <div className="pt-5 mt-3 border-t border-white/08">
+              <div className="pt-5 mt-3 border-t border-white/10">
                 <Link
                   to="/services/nucleic-acid"
                   onClick={onClose}
@@ -161,7 +161,7 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
             </div>
 
             {/* COLUMN 2: PROTEINS & PEPTIDES */}
-            <div className="space-y-4 pr-0 lg:pr-6 xl:pr-8 lg:border-r border-white/08 flex flex-col justify-between">
+            <div className="space-y-4 pr-0 lg:pr-6 xl:pr-8 lg:border-r border-white/10 flex flex-col justify-between">
               <div>
                 <Link to="/services/protein-peptide" onClick={onClose} className="group/head flex items-center gap-2.5 mb-1.5 inline-flex">
                   <Layers size={18} className="text-white group-hover/head:text-[#FF4D00] transition-colors shrink-0" />
@@ -178,7 +178,7 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
                 </div>
               </div>
 
-              <div className="pt-5 mt-3 border-t border-white/08">
+              <div className="pt-5 mt-3 border-t border-white/10">
                 <Link
                   to="/services/protein-peptide"
                   onClick={onClose}
@@ -208,7 +208,7 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
                 </div>
               </div>
 
-              <div className="pt-5 mt-3 border-t border-white/08">
+              <div className="pt-5 mt-3 border-t border-white/10">
                 <Link
                   to="/services/computational"
                   onClick={onClose}
@@ -227,13 +227,13 @@ export function ServicesMegaMenu({ isOpen, onClose }: ServicesMegaMenuProps) {
   );
 }
 
-// Single Clean Service Card Component (White Base + Orange Hover Highlight)
+// Single Glassmorphic Service Card (Pure White Base + Orange Hover Highlight)
 function ServiceCard({ data, onClose }: { data: ServiceCardData; onClose: () => void }) {
   return (
     <Link
       to={data.href}
       onClick={onClose}
-      className="group relative bg-white/[0.04] hover:bg-[#FF4D00]/08 border border-white/10 hover:border-[#FF4D00]/40 rounded-[16px] px-4.5 py-3.5 flex items-center justify-between gap-4 transition-all duration-200 cursor-pointer block"
+      className="group relative bg-white/[0.03] backdrop-blur-md hover:bg-[#FF4D00]/10 border border-white/12 hover:border-[#FF4D00]/50 rounded-[16px] px-4.5 py-3.5 flex items-center justify-between gap-4 transition-all duration-200 cursor-pointer block hover:shadow-[0_8px_25px_rgba(255,77,0,0.15)]"
     >
       <div className="flex items-center gap-4 min-w-0 flex-grow">
         <ServiceIcon 
@@ -248,7 +248,7 @@ function ServiceCard({ data, onClose }: { data: ServiceCardData; onClose: () => 
       </div>
       <ArrowRight 
         size={16} 
-        className="text-neutral-400 group-hover:text-[#FF4D00] opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all shrink-0 ml-1" 
+        className="text-neutral-300 group-hover:text-[#FF4D00] opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all shrink-0 ml-1" 
       />
     </Link>
   );
