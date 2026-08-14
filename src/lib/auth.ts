@@ -1,6 +1,17 @@
 import { supabase } from './supabase';
 
 /**
+ * Returns the reliable site URL for authentication redirects.
+ * Automatically resolves to current window origin on live site (e.g. https://innovacbiotech.com).
+ */
+const getSiteUrl = () => {
+  if (typeof window !== 'undefined' && window.location.origin && !window.location.origin.includes('localhost')) {
+    return window.location.origin;
+  }
+  return import.meta.env.VITE_SITE_URL || 'https://innovacbiotech.com';
+};
+
+/**
  * Signs in a user with email and password using Supabase.
  * Blocks unverified users from authenticating or retaining a session.
  */
@@ -28,7 +39,7 @@ export async function loginUser(email: string, password: string) {
  * Triggers fallback resend if identity already exists.
  */
 export async function registerUser(email: string, password: string, metadata?: Record<string, any>) {
-  const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
+  const siteUrl = getSiteUrl();
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -55,7 +66,7 @@ export async function registerUser(email: string, password: string, metadata?: R
  * Resends the signup email verification link to the given email address.
  */
 export async function resendVerificationEmail(email: string) {
-  const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
+  const siteUrl = getSiteUrl();
   const { data, error } = await supabase.auth.resend({
     type: 'signup',
     email,

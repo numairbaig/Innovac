@@ -168,7 +168,7 @@ export default function PublicSignup() {
               <ul className="list-disc pl-4 space-y-1 text-amber-900/90">
                 <li>Check your <strong>Spam, Junk, or Promotions</strong> folder.</li>
                 <li>Wait 1–2 minutes or click <strong>Resend Verification Link</strong> above.</li>
-                <li>If testing locally, confirm Custom SMTP is enabled in your Supabase Dashboard.</li>
+                <li>Ensure custom SMTP settings in your Supabase Dashboard match your domain mailbox.</li>
               </ul>
             </div>
           </div>
