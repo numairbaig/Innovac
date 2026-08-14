@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, Mail, Phone, Building2, X, Bell, ArrowRight, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { User, Mail, Phone, Building2, ArrowRight, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { useAuth } from '../../contexts/AuthContext';
 import { registerUser, resendVerificationEmail } from '../../lib/auth';
@@ -170,16 +170,7 @@ export default function PublicSignup() {
       <SEO title="Create Account | INNOVAC BIOTECHNOLOGIES" noindex={true} />
 
       <AuthCard maxWidth="600px">
-        <div className="flex justify-end gap-2 mb-4">
-      <button className="p-2 text-[#6A6A6A] hover:bg-[#ECECE9]/60 hover:text-[#080808] rounded-full relative transition-colors">
-        <Bell size={20} />
-        <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#FF4D00] rounded-full border border-white"></span>
-      </button>
-      <button onClick={() => navigate('/', { replace: true })} className="p-2 text-[#6A6A6A] hover:bg-[#ECECE9]/60 hover:text-[#080808] rounded-full" aria-label="Close Account">
-        <X size={24} />
-      </button>
-    </div>
-    <div className="text-center mb-8">
+        <div className="text-center mb-8">
           <h1 className="text-2xl font-bold tracking-tight text-[#050505] uppercase">
             Create Your Account
           </h1>

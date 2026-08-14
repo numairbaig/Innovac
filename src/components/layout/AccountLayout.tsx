@@ -16,7 +16,8 @@ import {
   LogOut,
   Menu,
   X,
-  Package
+  Package,
+  ChevronLeft
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { SEO } from '../SEO';
@@ -57,8 +58,13 @@ export function AccountLayout() {
           <Link to="/account/profile" className={cn("font-bold text-[#080808] tracking-tight text-lg truncate flex items-center gap-2", !sidebarOpen && "lg:hidden")}>
             INNOVAC <span className="text-[#FF4D00] font-semibold">ACCOUNT</span>
           </Link>
-          <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-neutral-500 hover:text-neutral-900 transition-colors">
-            <X size={20} />
+          <button 
+            onClick={() => setSidebarOpen(!sidebarOpen)} 
+            className="p-1.5 text-[#6A6A6A] hover:text-[#FF4D00] hover:bg-[#ECECE9]/60 rounded-lg transition-colors cursor-pointer"
+            title={sidebarOpen ? "Minimize Sidebar" : "Expand Sidebar"}
+            aria-label="Minimize side panel"
+          >
+            <ChevronLeft size={20} className={cn("transition-transform duration-300", !sidebarOpen && "rotate-180")} />
           </button>
         </div>
         

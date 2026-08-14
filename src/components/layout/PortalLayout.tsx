@@ -15,7 +15,8 @@ import {
   Settings, 
   LogOut,
   Menu,
-  X
+  X,
+  ChevronLeft
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { SEO } from '../SEO';
@@ -59,8 +60,13 @@ export function PortalLayout() {
           <Link to="/portal/dashboard" className={cn("font-bold text-[#050505] truncate", !sidebarOpen && "lg:hidden")}>
             INNOVAC <span className="text-[#FF4D00]">PORTAL</span>
           </Link>
-          <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-neutral-500">
-            <X size={20} />
+          <button 
+            onClick={() => setSidebarOpen(!sidebarOpen)} 
+            className="p-1.5 text-neutral-500 hover:text-[#FF4D00] hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer"
+            title={sidebarOpen ? "Minimize Sidebar" : "Expand Sidebar"}
+            aria-label="Minimize side panel"
+          >
+            <ChevronLeft size={20} className={cn("transition-transform duration-300", !sidebarOpen && "rotate-180")} />
           </button>
         </div>
         

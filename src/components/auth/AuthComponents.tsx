@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Mail, Lock, Eye, EyeOff, ShieldCheck, Sparkles, 
-  LayoutGrid, ArrowRight, Check, AlertCircle, Phone, Building2, User
+  LayoutGrid, ArrowRight, Check, AlertCircle, Phone, Building2, User, X
 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
@@ -169,11 +169,11 @@ export function AuthCloseButton({ variant = 'desktop' }: { variant?: 'desktop' |
     return (
       <button 
         onClick={handleClose} 
-        className="w-10 h-10 rounded-full border border-white/10 text-white hover:text-[#FF4D00] hover:border-[#FF4D00]/50 bg-white/5 transition-all duration-200 flex items-center justify-center cursor-pointer focus:outline-none"
+        className="w-10 h-10 rounded-full border border-white/20 text-white hover:text-[#FF4D00] hover:border-[#FF4D00]/50 bg-white/10 transition-all duration-200 flex items-center justify-center cursor-pointer focus:outline-none"
         aria-label="Close authentication page"
         title="Close"
       >
-        <span>✕</span>
+        <X size={20} />
       </button>
     );
   }
@@ -181,12 +181,11 @@ export function AuthCloseButton({ variant = 'desktop' }: { variant?: 'desktop' |
   return (
     <button 
       onClick={handleClose} 
-      className="hidden md:flex absolute top-8 right-8 z-50 text-neutral-600 hover:text-[#FF4D00] border border-[#D8D8D5] hover:border-[#FF4D00] bg-white/80 hover:bg-white backdrop-blur-sm rounded-lg px-4 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 items-center gap-1.5 cursor-pointer shadow-sm focus:outline-none"
+      className="hidden md:flex absolute top-6 right-6 z-50 w-10 h-10 rounded-full border border-neutral-300 bg-white/90 text-neutral-600 hover:text-[#FF4D00] hover:border-[#FF4D00] hover:bg-white transition-all duration-200 flex items-center justify-center cursor-pointer shadow-sm focus:outline-none"
       aria-label="Close authentication page"
       title="Close"
     >
-      <span>✕</span>
-      <span>CLOSE</span>
+      <X size={20} />
     </button>
   );
 }

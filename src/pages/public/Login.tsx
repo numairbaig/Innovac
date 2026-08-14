@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Mail, ArrowRight, X, Bell, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { Mail, ArrowRight, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { useAuth } from '../../contexts/AuthContext';
 import { loginUser, resendVerificationEmail } from '../../lib/auth';
@@ -74,15 +74,6 @@ export default function PublicLogin() {
       
       <AuthCard maxWidth="500px">
         <div className="text-center mb-8">
-          <div className="flex justify-end gap-2 mb-4">
-            <button className="p-2 text-[#6A6A6A] hover:bg-[#ECECE9]/60 hover:text-[#080808] rounded-full relative transition-colors">
-              <Bell size={20} />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#FF4D00] rounded-full border border-white"></span>
-            </button>
-            <button onClick={() => navigate('/', { replace: true })} className="p-2 text-[#6A6A6A] hover:bg-[#ECECE9]/60 hover:text-[#080808] rounded-full" aria-label="Close Account">
-              <X size={20} />
-            </button>
-          </div>
           <h1 className="text-2xl font-bold tracking-tight text-[#050505] uppercase">
             Login
           </h1>
