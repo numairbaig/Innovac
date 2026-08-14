@@ -1,5 +1,5 @@
 import { getCtaPath } from '@/src/config/ctaConfig';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, useScroll } from 'motion/react';
 import { 
@@ -215,6 +215,197 @@ function MicroscopeCenterpiece() {
         />
       </motion.div>
     </div>
+  );
+}
+
+interface ResearchCardProps {
+  number: string;
+  badge: { tag: string; label: string };
+  title: string;
+  description?: string;
+  services?: string[];
+  image: string;
+  href: string;
+}
+
+function Research3DCard({ number, badge, title, description, services, image, href }: ResearchCardProps) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) return;
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Smooth, subtle 3D tilt between -6deg and +6deg
+    const rotateX = -((y - centerY) / centerY) * 6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+    
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
+  return (
+    <div 
+      className="group h-full flex flex-col cursor-pointer" 
+      style={{ perspective: '1000px' }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div 
+        className="relative bg-[#0C2419] rounded-[24px] border border-[#1A3B2B] group-hover:border-[#20C77A]/50 group-hover:bg-[#103322] shadow-sm group-hover:shadow-[0_10px_30px_rgba(32,199,122,0.1)] transition-all duration-500 flex flex-col justify-between h-full overflow-hidden p-6 sm:p-8"
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: isHovered 
+            ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.02, 1.02, 1.02)` 
+            : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+          transition: isHovered ? 'transform 0.12s ease-out, border-color 0.3s, background-color 0.3s, box-shadow 0.3s' : 'transform 0.5s ease-out, border-color 0.3s, background-color 0.3s, box-shadow 0.3s'
+        }}
+      >
+        {/* Subtle decorative scientific grid background */}
+        <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#1A3B2B_1px,transparent_1px),linear-gradient(to_bottom,#1A3B2B_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+
+        {/* 3D Floating Scientific Badge (Uiverse inspired date-box adaptation) */}
+        <div 
+          style={{ transform: 'translateZ(30px)' }}
+          className="absolute top-6 right-6 z-20 flex flex-col items-center justify-center bg-[#04110B] text-[#F2F7F4] px-3 py-2 rounded-xl border border-[#1A3B2B] shadow-md group-hover:border-[#20C77A]/50 transition-colors select-none"
+        >
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#20C77A] leading-none mb-0.5">{badge.tag}</span>
+          <span className="text-[11px] font-bold leading-none tracking-wider text-[#F2F7F4]">{badge.label}</span>
+        </div>
+
+        {/* Top Header Layer */}
+        <div style={{ transform: 'translateZ(25px)' }} className="relative z-10 mb-6">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-xl font-bold tracking-tight text-[#20C77A]">{number}</span>
+            <div className="h-[2px] w-8 bg-[#20C77A]/40 group-hover:w-12 group-hover:bg-[#20C77A] transition-all duration-300" />
+          </div>
+          <h3 className="text-xl font-bold tracking-tight text-[#F2F7F4] uppercase leading-snug">
+            {title}
+          </h3>
+        </div>
+
+        {/* Body Content Layer */}
+        <div style={{ transform: 'translateZ(20px)' }} className="relative z-10 flex-grow mb-6">
+          {description && (
+            <p className="text-[#A8B8AF] text-sm leading-relaxed font-light">
+              {description}
+            </p>
+          )}
+
+          {services && (
+            <ul className="space-y-2 font-light">
+              {services.map((item, idx) => (
+                <li key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-[#A8B8AF]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#20C77A] shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* Integrated Image Layer */}
+        <div 
+          style={{ transform: 'translateZ(15px)' }} 
+          className="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden mb-6 border border-[#1A3B2B] group-hover:border-[#20C77A]/30 transition-colors shrink-0 bg-[#081C14]"
+        >
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#04110B]/60 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity" />
+        </div>
+
+        {/* Footer CTA Layer */}
+        <div style={{ transform: 'translateZ(32px)' }} className="relative z-10 pt-3 border-t border-[#1A3B2B]">
+          <Link 
+            to={href} 
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#F2F7F4] group-hover:text-[#20C77A] transition-colors py-1"
+          >
+            <span>EXPLORE RESEARCH</span>
+            <ArrowRight size={14} className="text-[#20C77A] group-hover:translate-x-1.5 transition-transform duration-300" />
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+interface WhoWeAreBlockProps {
+  block: { num: string; title: string; desc: string; img: string };
+  index: number;
+}
+
+function WhoWeAreBlockItem({ block, index }: WhoWeAreBlockProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Mobile: Alternating (01 & 03 from LEFT [-60], 02 & 04 from RIGHT [60])
+  // Desktop: All from RIGHT [50] with staggered delay (0.12 * index)
+  const initialX = isMobile 
+    ? (index % 2 === 0 ? -60 : 60) 
+    : 50;
+
+  const delay = isMobile ? 0 : index * 0.12;
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, x: initialX }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="flex flex-col group/block p-4 sm:p-5 rounded-2xl border border-transparent hover:border-[#E5E5E5] hover:bg-white/60 transition-all duration-300"
+    >
+      <div className="flex items-center gap-3 mb-3">
+        <span className="text-4xl lg:text-5xl font-semibold text-[#050505] group-hover/block:text-[#FF4D00] transition-colors tracking-tight">
+          {block.num}
+        </span>
+        <div className="h-[2px] w-8 bg-[#050505]/20 group-hover/block:w-14 group-hover/block:bg-[#FF4D00] transition-all duration-300" />
+      </div>
+      
+      <div className="flex items-start gap-4 sm:gap-5">
+        {block.img && (
+          <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 flex items-center justify-center relative select-none">
+            <img 
+              src={block.img} 
+              alt={block.title} 
+              className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.06)] group-hover/block:scale-108 transition-transform duration-500 ease-out" 
+            />
+          </div>
+        )}
+        <div className="pt-1">
+          <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#050505] uppercase tracking-wider mb-2 leading-snug group-hover/block:text-[#FF4D00] transition-colors">
+            {block.title}
+          </h3>
+          <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed">
+            {block.desc}
+          </p>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -731,7 +922,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-[1400px] mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row w-full gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row w-full gap-12 lg:gap-16 items-start">
             
             {/* LEFT COLUMN: PRIMARY CONTENT AREA */}
             <motion.div 
@@ -739,85 +930,32 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full lg:w-[45%] flex flex-col"
+              className="w-full lg:w-[45%] flex flex-col justify-start"
             >
               {/* Section Label */}
-              <span className="text-[#FF4D00] text-[10px] font-bold tracking-[0.2em] uppercase mb-4 sm:mb-6 block">
+              <span className="text-[#FF4D00] text-xs font-bold tracking-[0.2em] uppercase mb-4 sm:mb-6 block">
                 03 / WHO WE ARE
               </span>
 
               {/* Main Heading */}
-              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-6">
+              <h2 className="text-[clamp(2.25rem,5vw,4.25rem)] font-medium text-[#050505] leading-[1.05] tracking-tight mb-6">
                 Science That<br />
                 Moves Research<br />
                 <span className="text-[#FF4D00] italic pr-4">Forward.</span>
               </h2>
 
               {/* Company Descriptions */}
-              <div className="space-y-4 mb-8 sm:mb-10 max-w-xl">
-                <p className="text-base leading-relaxed text-[#050505] font-medium">
+              <div className="space-y-4 mb-8 max-w-xl">
+                <p className="text-base sm:text-lg leading-relaxed text-[#050505] font-medium">
                   INNOVAC BIOTECHNOLOGIES provides biotechnology, molecular biology, protein research, reagents, computational biology, internship, and professional training solutions.
                 </p>
-                <p className="text-sm leading-relaxed text-neutral-500 font-light">
+                <p className="text-sm sm:text-base leading-relaxed text-neutral-600 font-light">
                   Our goal is to empower researchers and organizations with practical scientific services and innovative biotechnology solutions.
                 </p>
               </div>
 
-              {/* Learn More Button (Mobile only) */}
-              <div className="mt-8 sm:mt-12 flex justify-start w-full lg:hidden">
-                <Link 
-                  to="/about-us" 
-                  className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
-                >
-                  <span>LEARN MORE ABOUT US</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* RIGHT COLUMN: Supporting Blocks Grid */}
-            <div className="w-full lg:w-[55%] flex flex-col mt-12 lg:mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12 content-start">
-                {[
-                  { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
-                  { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
-                  { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
-                  { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
-                ].map((block, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 0.1 * i }}
-                    className="flex flex-col group/block"
-                  >
-                    <div className="mb-2">
-                       <span className="text-3xl font-medium text-[#050505] tracking-tight group-hover/block:text-[#FF4D00] transition-colors">{block.num}</span>
-                       <div className="w-6 h-[1px] bg-[#050505]/20 group-hover/block:bg-[#FF4D00] mt-3 mb-5 transition-colors" />
-                    </div>
-                    
-                    <div className="flex items-start gap-4 sm:gap-5">
-                      {block.img ? (
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors">
-                          <img src={block.img} alt={block.title} className="w-full h-full object-contain group-hover/block:scale-110 transition-transform duration-500" />
-                        </div>
-                      ) : (
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-[12px] border border-[#E5E5E5]/60 flex items-center justify-center p-2 sm:p-2.5 shadow-sm group-hover/block:border-[#FF4D00]/30 transition-colors relative overflow-hidden">
-                          <div className="absolute inset-0 bg-[#F5F5F3] opacity-50" />
-                        </div>
-                      )}
-                      <div className="pt-1">
-                        <h3 className="text-[11px] sm:text-xs font-bold text-[#050505] uppercase tracking-widest mb-1.5 leading-tight">{block.title}</h3>
-                        <p className="text-[11px] sm:text-xs text-neutral-500 font-light leading-relaxed">{block.desc}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Learn More Button (Desktop only) */}
-              <div className="hidden lg:flex justify-center w-full mt-10 sm:mt-12">
+              {/* Learn More Button */}
+              <div className="mt-4 flex justify-start w-full">
                 <Link 
                   to="/about-us" 
                   className="inline-flex items-center justify-center gap-3 bg-white border border-[#E5E5E5] hover:border-[#050505] text-[#050505] rounded-full px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 group shadow-sm focus:outline-none whitespace-nowrap"
@@ -826,77 +964,84 @@ export default function Home() {
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
                 </Link>
               </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Supporting Feature Items Grid */}
+            <div className="w-full lg:w-[55%] flex flex-col justify-start">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 lg:gap-y-10 content-start">
+                {[
+                  { num: '01', title: 'Integrated Research Platform', desc: 'Connected scientific services, research support, and expertise.', img: '/who_we_are_1.png' },
+                  { num: '02', title: 'Training Pathways', desc: 'Internship, workshop, and professional learning opportunities.', img: '/who_we_are_2.png' },
+                  { num: '03', title: 'Core Scientific Areas', desc: 'Focused expertise across key scientific and biotechnology domains.', img: '/who_we_are_3.png' },
+                  { num: '04', title: 'Service Categories', desc: 'A broad range of services supporting research and laboratory needs.', img: '/who_we_are_4.png' },
+                ].map((block, i) => (
+                  <WhoWeAreBlockItem key={i} block={block} index={i} />
+                ))}
+              </div>
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* 5. RESEARCH SECTION */}
-      <section className="py-24 md:py-32 px-6 bg-background">
-        <div className="max-w-[1400px] mx-auto">
+      {/* 5. RESEARCH SECTION (Deep Forest Green Theme) */}
+      <section className="py-16 md:py-24 px-4 sm:px-6 bg-[#06140F] text-[#F2F7F4] relative overflow-hidden border-t border-[#1A3B2B]">
+        {/* Subtle molecular pattern background */}
+        <div className="absolute inset-0 opacity-5 lg:opacity-10 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#183A2B_1px,transparent_1px)] bg-[length:40px_40px]" />
+        </div>
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-            <SectionHeading 
-              label="04 / Research" 
-              title="Research Across\nBiotechnology &\nComputational Science." 
-              highlightWord="Science."
-              className="mb-0 md:mb-0"
-            />
-            <Button href={getCtaPath('CONSULTATION_REQUEST')} variant="outline" className="shrink-0 w-full sm:w-auto" withArrow>DISCUSS YOUR RESEARCH</Button>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
+            <div>
+              <span className="text-[#20C77A] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
+                04 / Research
+              </span>
+              <h2 className="text-[clamp(2.25rem,6vw,4.5rem)] font-light tracking-tight leading-[1.05] text-[#F2F7F4]">
+                Research Across<br />
+                Biotechnology & <span className="text-[#20C77A] font-medium">Computational Science.</span>
+              </h2>
+            </div>
+            <Button 
+              href={getCtaPath('CONSULTATION_REQUEST')} 
+              className="shrink-0 w-full sm:w-auto bg-[#20C77A] text-[#04110B] hover:bg-[#2ae08c] hover:text-[#04110B] border-none hover:shadow-[0_0_20px_rgba(32,199,122,0.25)] transition-all duration-300" 
+              withArrow
+            >
+              DISCUSS YOUR RESEARCH
+            </Button>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {/* Card 1 */}
-            <div className="bg-white rounded-[24px] border border-border/50 overflow-hidden flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
-              <div className="p-10 flex-grow">
-                <span className="text-2xl font-medium text-primary mb-6 block">01</span>
-                <h3 className="text-lg font-bold tracking-wide uppercase text-primary mb-6">Biotechnology</h3>
-                <p className="text-neutral-600 leading-relaxed text-sm">
-                  Consortia development for biogas and climate-related biological processes.
-                </p>
-              </div>
-              <div className="h-48 w-full relative overflow-hidden bg-neutral-100">
-                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=2787&auto=format&fit=crop" alt="Biotech" className="w-full h-full object-cover mix-blend-multiply" />
-              </div>
-            </div>
+            <Research3DCard 
+              number="01"
+              badge={{ tag: "BIO", label: "01" }}
+              title="BIOTECHNOLOGY"
+              description="Consortia development for biogas and climate-related biological processes."
+              image="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=2787&auto=format&fit=crop"
+              href="/research"
+            />
 
             {/* Card 2 */}
-            <div className="bg-white rounded-[24px] border border-border/50 overflow-hidden flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
-              <div className="p-10 flex-grow">
-                <span className="text-2xl font-medium text-primary mb-6 block">02</span>
-                <h3 className="text-lg font-bold tracking-wide uppercase text-primary mb-6">Molecular Biology</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-sm text-neutral-600">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" /> Vaccine Design
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-neutral-600">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" /> Aptamer Detection
-                  </li>
-                </ul>
-              </div>
-              <div className="h-48 w-full relative overflow-hidden bg-neutral-100">
-                <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?q=80&w=2925&auto=format&fit=crop" alt="Molecular" className="w-full h-full object-cover mix-blend-multiply" />
-              </div>
-            </div>
+            <Research3DCard 
+              number="02"
+              badge={{ tag: "MOL", label: "02" }}
+              title="MOLECULAR BIOLOGY"
+              services={["Vaccine Design", "Aptamer Detection"]}
+              image="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?q=80&w=2925&auto=format&fit=crop"
+              href="/research"
+            />
 
             {/* Card 3 */}
-            <div className="bg-white rounded-[24px] border border-border/50 overflow-hidden flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
-              <div className="p-10 flex-grow">
-                <span className="text-2xl font-medium text-primary mb-6 block">03</span>
-                <h3 className="text-lg font-bold tracking-wide uppercase text-primary mb-6">In-Silico Research</h3>
-                <ul className="space-y-2">
-                  {["Primer Design", "SPSS Analysis", "Molecular Docking", "MD Simulations", "Sequence Alignment", "Other Computational Research"].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-neutral-600">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" /> {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="h-48 w-full relative overflow-hidden bg-neutral-100">
-                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2960&auto=format&fit=crop" alt="Computational" className="w-full h-full object-cover mix-blend-multiply" />
-              </div>
-            </div>
+            <Research3DCard 
+              number="03"
+              badge={{ tag: "SILICO", label: "03" }}
+              title="IN-SILICO RESEARCH"
+              services={["Primer Design", "SPSS Analysis", "Molecular Docking", "MD Simulations", "Sequence Alignment", "Other Computational Research"]}
+              image="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2960&auto=format&fit=crop"
+              href="/research"
+            />
           </div>
         </div>
       </section>
@@ -933,63 +1078,196 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. INTERNSHIPS & TRAINING (Split Layout) */}
-      <section className="py-24 px-6 bg-background">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* 7. INTERNSHIPS & TRAINING (Interactive Dual Feature Cards) */}
+      <section className="py-20 md:py-28 px-4 sm:px-6 bg-[#F5F5F3] relative overflow-hidden border-t border-[#E5E5E5]/60">
+        
+        {/* Subtle Decorative Background Wave / DNA SVG */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] opacity-[0.03] pointer-events-none z-0 select-none">
+          <svg viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+            <path d="M0,250 C200,100 300,400 500,250 C700,100 800,400 1000,250" stroke="#FF4D00" strokeWidth="2" />
+            <path d="M0,250 C200,400 300,100 500,250 C700,400 800,100 1000,250" stroke="#FF4D00" strokeWidth="2" strokeDasharray="6 6" />
+          </svg>
+        </div>
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
           
-          {/* Internships */}
-          <div className="bg-white rounded-[32px] overflow-hidden border border-border/50 shadow-sm flex flex-col">
-            <div className="p-10 md:p-14 flex-grow">
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-6">05 / Internships</p>
-              <h3 className="text-[clamp(1.75rem,6vw,3rem)] font-medium tracking-tight mb-8 leading-tight">Turn Knowledge Into<br/>Practical <span className="text-accent">Experience.</span></h3>
-              <Button href={getCtaPath('APPLY_INTERNSHIP')} variant="outline" className="mb-12 w-full sm:w-auto" withArrow>APPLY FOR INTERNSHIP</Button>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
-                {[
-                  "Molecular Biology", "Biotechnology", "Bioinformatics", 
-                  "Computational Biology", "Laboratory Techniques", "Research & Data Analysis"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-neutral-600 font-medium">
-                    <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <Network size={12} className="text-accent" />
-                    </div>
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="h-64 w-full relative">
-              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2680&auto=format&fit=crop" alt="Internship" className="w-full h-full object-cover object-top" />
-            </div>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+            
+            {/* CARD 1: INTERNSHIPS */}
+            <motion.div 
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-[28px] sm:rounded-[32px] border border-[#E5E5E5] hover:border-[#FF4D00]/40 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between p-8 sm:p-10 lg:p-12 relative overflow-hidden group"
+            >
+              {/* Subtle background technical grid line */}
+              <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#FF4D00_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-          {/* Training */}
-          <div className="bg-white rounded-[32px] overflow-hidden border border-border/50 shadow-sm flex flex-col">
-            <div className="p-10 md:p-14 flex-grow">
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-6">06 / Training</p>
-              <h3 className="text-[clamp(1.75rem,6vw,3rem)] font-medium tracking-tight mb-8 leading-tight">Learn. Practice.<br/><span className="text-accent">Innovate.</span></h3>
-              <Button href={getCtaPath('VIEW_WORKSHOPS')} variant="outline" className="mb-12 w-full sm:w-auto" withArrow>VIEW WORKSHOPS</Button>
-              
-              <div className="grid grid-cols-1 gap-y-6">
-                {[
-                  { title: "Molecular Biology", icon: Dna },
-                  { title: "Computational Biology", icon: Activity },
-                  { title: "Research Skills", icon: FileText }
-                ].map((cat, i) => (
-                  <div key={i} className="flex items-center gap-4 text-neutral-700 font-medium">
-                    <div className="w-10 h-10 rounded-xl bg-background border border-border/50 flex items-center justify-center flex-shrink-0">
-                      <cat.icon size={18} className="text-accent" />
-                    </div>
-                    {cat.title}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="h-64 w-full relative">
-              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2940&auto=format&fit=crop" alt="Training" className="w-full h-full object-cover object-center" />
-            </div>
-          </div>
+              {/* Upper-Right Corner Arrow Badge */}
+              <Link 
+                to={getCtaPath('APPLY_INTERNSHIP')}
+                aria-label="Apply for Internship"
+                className="absolute top-8 right-8 z-20 w-11 h-11 rounded-full border border-neutral-200 bg-white/90 group-hover:bg-[#FF4D00] group-hover:border-[#FF4D00] group-hover:text-white transition-all duration-300 flex items-center justify-center text-neutral-700 shadow-sm cursor-pointer"
+              >
+                <ArrowRight size={18} className="group-hover:translate-x-0.5 group-hover:-rotate-45 transition-transform duration-300" />
+              </Link>
 
+              <div>
+                {/* Section Badge with Pulse Indicator */}
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="w-2 h-2 rounded-full bg-[#FF4D00] animate-ping opacity-75" />
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FF4D00]">05 / Internships</p>
+                </div>
+
+                {/* Main Headline */}
+                <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#050505] mb-4 leading-[1.12]">
+                  Turn Knowledge Into<br />
+                  Practical <span className="text-[#FF4D00]">Experience.</span>
+                </h3>
+
+                {/* Description */}
+                <p className="text-neutral-600 text-sm sm:text-base font-light leading-relaxed mb-8 max-w-lg">
+                  Gain hands-on experience in biotechnology, molecular biology, laboratory techniques, bioinformatics, and scientific research.
+                </p>
+
+                {/* CTA Button */}
+                <div className="mb-10">
+                  <Button 
+                    href={getCtaPath('APPLY_INTERNSHIP')} 
+                    variant="dark" 
+                    className="bg-[#050505] text-white hover:bg-[#FF4D00] hover:text-white border-none py-3.5 px-7 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 shadow-sm" 
+                    withArrow
+                  >
+                    APPLY FOR INTERNSHIP
+                  </Button>
+                </div>
+
+                {/* Topic Chips Grid */}
+                <div className="space-y-3 pt-6 border-t border-[#F0F0EE]">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-neutral-400 mb-3">Core Specialty Domains</p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {[
+                      { name: "Molecular Biology", icon: Dna },
+                      { name: "Biotechnology", icon: FlaskConical },
+                      { name: "Bioinformatics", icon: Database },
+                      { name: "Computational Biology", icon: Network },
+                      { name: "Laboratory Techniques", icon: Pipette },
+                      { name: "Research & Data Analysis", icon: FileText }
+                    ].map((topic, i) => (
+                      <div 
+                        key={i} 
+                        className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#FFF6F2] border border-[#FFE6D9] text-xs font-semibold text-neutral-800 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all duration-300 shadow-xs group/chip cursor-default"
+                      >
+                        <div className="w-5 h-5 rounded-full bg-[#FF4D00]/10 group-hover/chip:bg-white/20 flex items-center justify-center text-[#FF4D00] group-hover/chip:text-white transition-colors shrink-0">
+                          <topic.icon size={11} />
+                        </div>
+                        <span>{topic.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Integrated Scientific Image */}
+              <div className="relative w-full h-52 sm:h-64 rounded-2xl overflow-hidden mt-8 border border-[#E5E5E5]/80 shrink-0 bg-neutral-100">
+                <img 
+                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2680&auto=format&fit=crop" 
+                  alt="Biotechnology Internship" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/40 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+              </div>
+            </motion.div>
+
+            {/* CARD 2: TRAINING */}
+            <motion.div 
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-[28px] sm:rounded-[32px] border border-[#E5E5E5] hover:border-[#FF4D00]/40 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between p-8 sm:p-10 lg:p-12 relative overflow-hidden group"
+            >
+              {/* Subtle background technical grid line */}
+              <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#FF4D00_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+
+              {/* Upper-Right Corner Arrow Badge */}
+              <Link 
+                to={getCtaPath('VIEW_WORKSHOPS')}
+                aria-label="View Workshops"
+                className="absolute top-8 right-8 z-20 w-11 h-11 rounded-full border border-neutral-200 bg-white/90 group-hover:bg-[#FF4D00] group-hover:border-[#FF4D00] group-hover:text-white transition-all duration-300 flex items-center justify-center text-neutral-700 shadow-sm cursor-pointer"
+              >
+                <ArrowRight size={18} className="group-hover:translate-x-0.5 group-hover:-rotate-45 transition-transform duration-300" />
+              </Link>
+
+              <div>
+                {/* Section Badge with Pulse Indicator */}
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="w-2 h-2 rounded-full bg-[#FF4D00] animate-ping opacity-75" />
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FF4D00]">06 / Training</p>
+                </div>
+
+                {/* Main Headline */}
+                <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#050505] mb-4 leading-[1.12]">
+                  Learn. Practice.<br />
+                  <span className="text-[#FF4D00]">Innovate.</span>
+                </h3>
+
+                {/* Description */}
+                <p className="text-neutral-600 text-sm sm:text-base font-light leading-relaxed mb-8 max-w-lg">
+                  Build practical scientific skills through focused workshops, hands-on lab sessions, and professional biotechnology training.
+                </p>
+
+                {/* CTA Button */}
+                <div className="mb-10">
+                  <Button 
+                    href={getCtaPath('VIEW_WORKSHOPS')} 
+                    variant="dark" 
+                    className="bg-[#050505] text-white hover:bg-[#FF4D00] hover:text-white border-none py-3.5 px-7 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 shadow-sm" 
+                    withArrow
+                  >
+                    VIEW WORKSHOPS
+                  </Button>
+                </div>
+
+                {/* Topic Chips Grid */}
+                <div className="space-y-3 pt-6 border-t border-[#F0F0EE]">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-neutral-400 mb-3">Featured Training Modules</p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {[
+                      { name: "Molecular Biology", icon: Dna },
+                      { name: "Computational Biology", icon: Activity },
+                      { name: "Research Skills", icon: FileText },
+                      { name: "Advanced Workshops", icon: GraduationCap },
+                      { name: "Wet Lab Protocols", icon: TestTube },
+                      { name: "Data Interpretation", icon: Layers }
+                    ].map((topic, i) => (
+                      <div 
+                        key={i} 
+                        className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#FFF6F2] border border-[#FFE6D9] text-xs font-semibold text-neutral-800 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all duration-300 shadow-xs group/chip cursor-default"
+                      >
+                        <div className="w-5 h-5 rounded-full bg-[#FF4D00]/10 group-hover/chip:bg-white/20 flex items-center justify-center text-[#FF4D00] group-hover/chip:text-white transition-colors shrink-0">
+                          <topic.icon size={11} />
+                        </div>
+                        <span>{topic.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Integrated Scientific Image */}
+              <div className="relative w-full h-52 sm:h-64 rounded-2xl overflow-hidden mt-8 border border-[#E5E5E5]/80 shrink-0 bg-neutral-100">
+                <img 
+                  src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2940&auto=format&fit=crop" 
+                  alt="Biotechnology Training & Workshops" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/40 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
