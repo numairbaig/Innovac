@@ -25,6 +25,7 @@ export async function loginUser(email: string, password: string) {
 
 /**
  * Registers a new user with email, password, and optional profile metadata.
+ * Triggers fallback resend if identity already exists.
  */
 export async function registerUser(email: string, password: string, metadata?: Record<string, any>) {
   const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
@@ -37,6 +38,16 @@ export async function registerUser(email: string, password: string, metadata?: R
     }
   });
   if (error) throw error;
+
+  // If user already exists in auth table (identities array empty), trigger explicit resend confirmation
+  if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+    try {
+      await resendVerificationEmail(email);
+    } catch (resendErr) {
+      console.warn('Auto-resend for existing user failed:', resendErr);
+    }
+  }
+
   return data;
 }
 

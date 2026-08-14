@@ -114,23 +114,6 @@ export function Research3DCard({
           <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] bg-[length:24px_24px]" />
         </div>
 
-        {/* 3D Floating Scientific Badge */}
-        <div 
-          style={{ transform: 'translateZ(30px)' }}
-          className={`absolute top-6 right-6 z-20 flex flex-col items-center justify-center px-3 py-2 rounded-xl border shadow-lg backdrop-blur-md transition-colors select-none ${
-            isDark
-              ? 'bg-[#04110B]/90 text-[#F2F7F4] border-[#1A3B2B] group-hover:border-[#20C77A]/60'
-              : 'bg-[#0A0A0A]/90 text-white border-white/20 group-hover:border-[#FF4D00]/60'
-          }`}
-        >
-          <span className={`text-[10px] font-bold uppercase tracking-widest leading-none mb-0.5 ${isDark ? 'text-[#20C77A]' : 'text-[#FF4D00]'}`}>
-            {badge.tag}
-          </span>
-          <span className="text-[11px] font-bold leading-none tracking-wider text-white">
-            {badge.label}
-          </span>
-        </div>
-
         {/* Top Header Layer */}
         <div style={{ transform: 'translateZ(25px)' }} className="relative z-10 mb-6 pt-1">
           <div className="flex items-center gap-3 mb-3">

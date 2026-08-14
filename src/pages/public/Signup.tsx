@@ -159,6 +159,18 @@ export default function PublicSignup() {
                 )}
               </button>
             </div>
+
+            {/* Helpful Email Delivery Tip Box */}
+            <div className="mt-6 p-4 bg-amber-50/80 border border-amber-200 rounded-xl text-xs text-amber-900 text-left space-y-1.5 font-light">
+              <p className="font-semibold text-amber-950 flex items-center gap-1.5">
+                <span>Didn't receive the confirmation email?</span>
+              </p>
+              <ul className="list-disc pl-4 space-y-1 text-amber-900/90">
+                <li>Check your <strong>Spam, Junk, or Promotions</strong> folder.</li>
+                <li>Wait 1–2 minutes or click <strong>Resend Verification Link</strong> above.</li>
+                <li>If testing locally, confirm Custom SMTP is enabled in your Supabase Dashboard.</li>
+              </ul>
+            </div>
           </div>
         </AuthCard>
       </AuthLayout>
