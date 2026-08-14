@@ -59,6 +59,7 @@ const EmployeeLogin = lazyWithRetry(() => import('./pages/employee/Login'));
 const CollaboratorLogin = lazyWithRetry(() => import('./pages/collaborator/Login'));
 
 // Account Pages
+const AccountOverview = lazyWithRetry(() => import('./pages/account/Overview'));
 const AccountProfile = lazyWithRetry(() => import('./pages/account/Profile'));
 const AccountSettings = lazyWithRetry(() => import('./pages/account/Settings'));
 const AccountSecurity = lazyWithRetry(() => import('./pages/account/Security'));
@@ -141,13 +142,14 @@ const router = createBrowserRouter([
     path: '/account',
     errorElement: <RouteErrorElement />,
     children: [
-      { index: true, element: <Navigate to="/account/profile" replace /> },
+      { index: true, element: <Navigate to="/account/overview" replace /> },
       {
         element: <ProtectedRoute allowedRoles={['PUBLIC_USER', 'SUPER_ADMIN', 'ADMIN']} />,
         children: [
           {
             element: <AccountLayout />,
             children: [
+              { path: 'overview', element: <AccountOverview /> },
               { path: 'profile', element: <AccountProfile /> },
               { path: 'settings', element: <AccountSettings /> },
               { path: 'security', element: <AccountSecurity /> },
