@@ -4,90 +4,93 @@ import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { Layout } from './components/layout/Layout';
+import { RouteErrorElement } from './components/RouteErrorElement';
+import { lazyWithRetry } from './utils/lazyWithRetry';
 import Home from './pages/Home';
 
-// Lazy load pages for better performance
-const About = React.lazy(() => import('./pages/About'));
-const Services = React.lazy(() => import('./pages/Services'));
-const Reagents = React.lazy(() => import('./pages/Reagents'));
-const Research = React.lazy(() => import('./pages/Research'));
-const Internships = React.lazy(() => import('./pages/Internships'));
-const Workshops = React.lazy(() => import('./pages/Workshops'));
-const Contact = React.lazy(() => import('./pages/Contact'));
-const Quote = React.lazy(() => import('./pages/Quote'));
-const Confirmed = React.lazy(() => import('./pages/auth/Confirmed'));
-const VerificationError = React.lazy(() => import('./pages/auth/VerificationError'));
-const Members = React.lazy(() => import('./pages/Members'));
-const ServiceDetail = React.lazy(() => import('./pages/ServiceDetail'));
-const ResearchDetail = React.lazy(() => import('./pages/ResearchDetail'));
-const ReagentDetail = React.lazy(() => import('./pages/ReagentDetail'));
-const Team = React.lazy(() => import('./pages/Team'));
-const Careers = React.lazy(() => import('./pages/Careers'));
-const Courses = React.lazy(() => import('./pages/Courses'));
-const Privacy = React.lazy(() => import('./pages/Privacy'));
-const Search = React.lazy(() => import('./pages/Search'));
-const Terms = React.lazy(() => import('./pages/Terms'));
-const NotFound = React.lazy(() => import('./pages/NotFound'));
+// Lazy load pages with auto-retry and chunk hash refresh support
+const About = lazyWithRetry(() => import('./pages/About'));
+const Services = lazyWithRetry(() => import('./pages/Services'));
+const Reagents = lazyWithRetry(() => import('./pages/Reagents'));
+const Research = lazyWithRetry(() => import('./pages/Research'));
+const Internships = lazyWithRetry(() => import('./pages/Internships'));
+const Workshops = lazyWithRetry(() => import('./pages/Workshops'));
+const Contact = lazyWithRetry(() => import('./pages/Contact'));
+const Quote = lazyWithRetry(() => import('./pages/Quote'));
+const Confirmed = lazyWithRetry(() => import('./pages/auth/Confirmed'));
+const VerificationError = lazyWithRetry(() => import('./pages/auth/VerificationError'));
+const Members = lazyWithRetry(() => import('./pages/Members'));
+const ServiceDetail = lazyWithRetry(() => import('./pages/ServiceDetail'));
+const ResearchDetail = lazyWithRetry(() => import('./pages/ResearchDetail'));
+const ReagentDetail = lazyWithRetry(() => import('./pages/ReagentDetail'));
+const Team = lazyWithRetry(() => import('./pages/Team'));
+const Careers = lazyWithRetry(() => import('./pages/Careers'));
+const Courses = lazyWithRetry(() => import('./pages/Courses'));
+const Privacy = lazyWithRetry(() => import('./pages/Privacy'));
+const Search = lazyWithRetry(() => import('./pages/Search'));
+const Terms = lazyWithRetry(() => import('./pages/Terms'));
+const NotFound = lazyWithRetry(() => import('./pages/NotFound'));
 
 // Layouts
-const EmployeeLayout = React.lazy(() => import('./components/layout/EmployeeLayout').then(m => ({ default: m.EmployeeLayout })));
-const CollaboratorLayout = React.lazy(() => import('./components/layout/CollaboratorLayout').then(m => ({ default: m.CollaboratorLayout })));
-const AccountLayout = React.lazy(() => import('./components/layout/AccountLayout').then(m => ({ default: m.AccountLayout })));
-const AdminLayout = React.lazy(() => import('./components/layout/AdminLayout').then(m => ({ default: m.AdminLayout })));
+const EmployeeLayout = lazyWithRetry(() => import('./components/layout/EmployeeLayout').then(m => ({ default: m.EmployeeLayout })));
+const CollaboratorLayout = lazyWithRetry(() => import('./components/layout/CollaboratorLayout').then(m => ({ default: m.CollaboratorLayout })));
+const AccountLayout = lazyWithRetry(() => import('./components/layout/AccountLayout').then(m => ({ default: m.AccountLayout })));
+const AdminLayout = lazyWithRetry(() => import('./components/layout/AdminLayout').then(m => ({ default: m.AdminLayout })));
 
-// Portal Pages (Shared by employee and collaborator portals)
-const PortalSignup = React.lazy(() => import('./pages/portal/Signup'));
-const PortalDashboard = React.lazy(() => import('./pages/portal/Dashboard'));
-const PortalTasks = React.lazy(() => import('./pages/portal/tasks/Tasks'));
-const PortalResearch = React.lazy(() => import('./pages/portal/research/Research'));
-const PortalProjects = React.lazy(() => import('./pages/portal/projects/Projects'));
-const PortalAttendance = React.lazy(() => import('./pages/portal/attendance/Attendance'));
-const PortalDocuments = React.lazy(() => import('./pages/portal/documents/Documents'));
-const PortalCalendar = React.lazy(() => import('./pages/portal/calendar/Calendar'));
-const PortalMessages = React.lazy(() => import('./pages/portal/messages/Messages'));
-const PortalAnnouncements = React.lazy(() => import('./pages/portal/announcements/Announcements'));
-const PortalProfile = React.lazy(() => import('./pages/portal/profile/Profile'));
-const PortalSettings = React.lazy(() => import('./pages/portal/settings/Settings'));
+// Portal Pages
+const PortalSignup = lazyWithRetry(() => import('./pages/portal/Signup'));
+const PortalDashboard = lazyWithRetry(() => import('./pages/portal/Dashboard'));
+const PortalTasks = lazyWithRetry(() => import('./pages/portal/tasks/Tasks'));
+const PortalResearch = lazyWithRetry(() => import('./pages/portal/research/Research'));
+const PortalProjects = lazyWithRetry(() => import('./pages/portal/projects/Projects'));
+const PortalAttendance = lazyWithRetry(() => import('./pages/portal/attendance/Attendance'));
+const PortalDocuments = lazyWithRetry(() => import('./pages/portal/documents/Documents'));
+const PortalCalendar = lazyWithRetry(() => import('./pages/portal/calendar/Calendar'));
+const PortalMessages = lazyWithRetry(() => import('./pages/portal/messages/Messages'));
+const PortalAnnouncements = lazyWithRetry(() => import('./pages/portal/announcements/Announcements'));
+const PortalProfile = lazyWithRetry(() => import('./pages/portal/profile/Profile'));
+const PortalSettings = lazyWithRetry(() => import('./pages/portal/settings/Settings'));
 
 // Dedicated Login Pages
-const PublicLogin = React.lazy(() => import('./pages/public/Login'));
-const PublicSignup = React.lazy(() => import('./pages/public/Signup'));
-const ForgotPassword = React.lazy(() => import('./pages/public/ForgotPassword'));
-const EmployeeLogin = React.lazy(() => import('./pages/employee/Login'));
-const CollaboratorLogin = React.lazy(() => import('./pages/collaborator/Login'));
+const PublicLogin = lazyWithRetry(() => import('./pages/public/Login'));
+const PublicSignup = lazyWithRetry(() => import('./pages/public/Signup'));
+const ForgotPassword = lazyWithRetry(() => import('./pages/public/ForgotPassword'));
+const EmployeeLogin = lazyWithRetry(() => import('./pages/employee/Login'));
+const CollaboratorLogin = lazyWithRetry(() => import('./pages/collaborator/Login'));
 
-// Account Pages (Public User Portal)
-const AccountProfile = React.lazy(() => import('./pages/account/Profile'));
-const AccountSettings = React.lazy(() => import('./pages/account/Settings'));
-const AccountSecurity = React.lazy(() => import('./pages/account/Security'));
-const AccountApplications = React.lazy(() => import('./pages/account/Applications'));
-const AccountInternships = React.lazy(() => import('./pages/account/Internships'));
-const AccountWorkshops = React.lazy(() => import('./pages/account/Workshops'));
-const AccountRequests = React.lazy(() => import('./pages/account/Requests'));
-const AccountOrders = React.lazy(() => import('./pages/account/Orders'));
-const AccountDocuments = React.lazy(() => import('./pages/account/Documents'));
-const AccountMessages = React.lazy(() => import('./pages/account/Messages'));
-const AccountNotifications = React.lazy(() => import('./pages/account/Notifications'));
+// Account Pages
+const AccountProfile = lazyWithRetry(() => import('./pages/account/Profile'));
+const AccountSettings = lazyWithRetry(() => import('./pages/account/Settings'));
+const AccountSecurity = lazyWithRetry(() => import('./pages/account/Security'));
+const AccountApplications = lazyWithRetry(() => import('./pages/account/Applications'));
+const AccountInternships = lazyWithRetry(() => import('./pages/account/Internships'));
+const AccountWorkshops = lazyWithRetry(() => import('./pages/account/Workshops'));
+const AccountRequests = lazyWithRetry(() => import('./pages/account/Requests'));
+const AccountOrders = lazyWithRetry(() => import('./pages/account/Orders'));
+const AccountDocuments = lazyWithRetry(() => import('./pages/account/Documents'));
+const AccountMessages = lazyWithRetry(() => import('./pages/account/Messages'));
+const AccountNotifications = lazyWithRetry(() => import('./pages/account/Notifications'));
 
-const MyOrder = React.lazy(() => import('./pages/MyOrder'));
+const MyOrder = lazyWithRetry(() => import('./pages/MyOrder'));
 
 // Admin Pages
-const AdminLogin = React.lazy(() => import('./pages/admin/Login'));
-const AdminForgotPassword = React.lazy(() => import('./pages/admin/ForgotPassword'));
-const AdminResetPassword = React.lazy(() => import('./pages/admin/ResetPassword'));
-const AdminDashboard = React.lazy(() => import('./pages/admin/Dashboard'));
-const AdminWebsite = React.lazy(() => import('./pages/admin/cms/WebsiteManager'));
-const AdminUsers = React.lazy(() => import('./pages/admin/users/UserManager'));
-const AdminProjects = React.lazy(() => import('./pages/admin/projects/ProjectManager'));
-const AdminOperations = React.lazy(() => import('./pages/admin/operations/OperationsManager'));
-const AdminDocuments = React.lazy(() => import('./pages/admin/documents/DocumentManager'));
-const AdminEnquiries = React.lazy(() => import('./pages/admin/enquiries/EnquiryManager'));
-const AdminSettings = React.lazy(() => import('./pages/admin/settings/SettingsManager'));
+const AdminLogin = lazyWithRetry(() => import('./pages/admin/Login'));
+const AdminForgotPassword = lazyWithRetry(() => import('./pages/admin/ForgotPassword'));
+const AdminResetPassword = lazyWithRetry(() => import('./pages/admin/ResetPassword'));
+const AdminDashboard = lazyWithRetry(() => import('./pages/admin/Dashboard'));
+const AdminWebsite = lazyWithRetry(() => import('./pages/admin/cms/WebsiteManager'));
+const AdminUsers = lazyWithRetry(() => import('./pages/admin/users/UserManager'));
+const AdminProjects = lazyWithRetry(() => import('./pages/admin/projects/ProjectManager'));
+const AdminOperations = lazyWithRetry(() => import('./pages/admin/operations/OperationsManager'));
+const AdminDocuments = lazyWithRetry(() => import('./pages/admin/documents/DocumentManager'));
+const AdminEnquiries = lazyWithRetry(() => import('./pages/admin/enquiries/EnquiryManager'));
+const AdminSettings = lazyWithRetry(() => import('./pages/admin/settings/SettingsManager'));
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <RouteErrorElement />,
     children: [
       { index: true, element: <Home /> },
       { path: 'about-us', element: <About /> },
@@ -121,18 +124,22 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <PublicLogin />
+    element: <PublicLogin />,
+    errorElement: <RouteErrorElement />
   },
   {
     path: '/signup',
-    element: <PublicSignup />
+    element: <PublicSignup />,
+    errorElement: <RouteErrorElement />
   },
   {
     path: '/forgot-password',
-    element: <ForgotPassword />
+    element: <ForgotPassword />,
+    errorElement: <RouteErrorElement />
   },
   {
     path: '/account',
+    errorElement: <RouteErrorElement />,
     children: [
       { index: true, element: <Navigate to="/account/profile" replace /> },
       {
@@ -160,6 +167,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/employee',
+    errorElement: <RouteErrorElement />,
     children: [
       { index: true, element: <Navigate to="/employee/login" replace /> },
       { path: 'login', element: <EmployeeLogin /> },
@@ -190,6 +198,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/collaborator',
+    errorElement: <RouteErrorElement />,
     children: [
       { index: true, element: <Navigate to="/collaborator/login" replace /> },
       { path: 'login', element: <CollaboratorLogin /> },
@@ -219,6 +228,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
+    errorElement: <RouteErrorElement />,
     children: [
       { index: true, element: <Navigate to="/admin/login" replace /> },
       { path: 'login', element: <AdminLogin /> },
@@ -293,7 +303,7 @@ export default function App() {
     <HelmetProvider>
       <AuthProvider>
         <OrderCartProvider>
-          <React.Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-accent border-t-transparent animate-spin"></div></div>}>
+          <React.Suspense fallback={<div className="min-h-screen bg-[#050505] flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-[#FF4D00] border-t-transparent animate-spin"></div></div>}>
             <RouterProvider router={router} />
           </React.Suspense>
         </OrderCartProvider>
