@@ -10,6 +10,15 @@
   --color-secondary: #6A6A6A;
   --color-border: #D8D8D5;
   --color-light-gray: #ECECE9;
+
+  /* Biotechnology Blue & Cyan Theme Tokens */
+  --color-biotech-navy: #030B17;
+  --color-biotech-navy-dark: #020710;
+  --color-biotech-navy-surface: #07152B;
+  --color-biotech-royal: #0D3B82;
+  --color-biotech-electric: #0066FF;
+  --color-biotech-cyan: #00E5FF;
+  --color-biotech-turquoise: #00C2FF;
   
   --font-sans: "Inter", system-ui, sans-serif;
 }

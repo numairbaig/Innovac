@@ -1,4 +1,5 @@
 import { getCtaPath } from '@/src/config/ctaConfig';
+import { BASE44_ORDER_PORTAL_URL } from '@/src/config/portalConfig';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, useScroll } from 'motion/react';
@@ -8,13 +9,15 @@ import {
   MessageSquare, FileText, Activity, ShieldCheck, 
   ChevronRight, Beaker, TestTube, Thermometer,
   Target, UsersRound, Droplet, Layers, GitFork,
-  Link2, Zap, Pipette, Database, X
+  Link2, Zap, Pipette, Database, X, ExternalLink,
+  Sparkles, CheckCircle2, ChevronDown
 } from 'lucide-react';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { ServicesStrip } from '@/src/components/ui/ServicesStrip';
 import { Research3DCard } from '@/src/components/ui/Research3DCard';
+import { DnaCanvasHero } from '@/src/components/ui/DnaCanvasHero';
 
 function PremiumReagentIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
   switch (name) {
@@ -297,20 +300,23 @@ export default function Home() {
     <div className="bg-background">
       <SEO />
       
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-[100vh] flex items-center bg-[#050505] text-white pt-24 pb-12 overflow-hidden">
-        {/* Subtle Radial Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#050505]" />
-          {/* Faint orange radial glow behind illustration */}
-          <div className="absolute right-0 top-0 w-[60%] h-full bg-[radial-gradient(ellipse_at_70%_40%,rgba(255,77,0,0.08)_0%,transparent_65%)]" />
-          {/* Subtle dot grid */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] bg-[length:32px_32px]" />
+      {/* 1. HERO SECTION (Biotechnology Blue & Cyan Theme + 3D DNA Canvas) */}
+      <section className="relative min-h-[100vh] flex items-center bg-[#030B17] text-white pt-28 pb-16 overflow-hidden">
+        {/* Animated DNA Double Helix & Molecular Canvas */}
+        <DnaCanvasHero className="opacity-90" />
+
+        {/* Sophisticated Deep Navy & Cyan Gradient Background Layers */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_40%,rgba(0,102,255,0.18)_0%,transparent_60%)]" />
+          <div className="absolute right-0 top-1/4 w-[50%] h-[70%] bg-[radial-gradient(circle_at_60%_40%,rgba(0,229,255,0.12)_0%,transparent_65%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#030B17]/40 via-transparent to-[#030B17]" />
+          {/* Subtle Scientific Coordinate Grid */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,#00E5FF_1px,transparent_1px)] bg-[length:36px_36px]" />
         </div>
 
         <div className="max-w-[1400px] mx-auto px-6 relative z-20 w-full flex flex-col h-full justify-center">
           
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 lg:mt-0">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-6 lg:mt-0">
             {/* Left Content */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -318,41 +324,80 @@ export default function Home() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl lg:w-3/5"
             >
-              <div className="inline-block mb-6">
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
-                  Innovac Biotechnologies
+              {/* Scientific Tag Badge */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#00E5FF]/30 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(0,229,255,0.15)]">
+                <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse" />
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00E5FF]">
+                  INNOVAC BIOTECHNOLOGIES
                 </span>
               </div>
               
-              <h1 className="text-[clamp(2.25rem,8vw,4.75rem)] font-medium tracking-tight leading-[1.05] mb-8">
-                Advanced Biotechnology,<br /> Molecular Biology &<br /> <span className="text-accent">Research Solutions.</span>
+              <h1 className="text-[clamp(2.35rem,7.5vw,4.75rem)] font-medium tracking-tight leading-[1.06] mb-8 text-white">
+                Advanced Biotechnology,<br /> Molecular Biology &<br />
+                <span className="bg-gradient-to-r from-[#00E5FF] via-[#00A3FF] to-[#0066FF] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(0,229,255,0.3)]">
+                  Scientific Research.
+                </span>
               </h1>
               
-              <p className="text-base sm:text-lg text-neutral-300 max-w-full sm:max-w-2xl mb-12 leading-relaxed font-light">
-                Empowering researchers, laboratories, universities, and biotechnology organizations with reliable laboratory services, research solutions, reagents, computational analysis, internships, and professional scientific training.
+              <p className="text-base sm:text-lg text-neutral-300 max-w-full sm:max-w-2xl mb-10 leading-relaxed font-light">
+                Empowering researchers, laboratories, universities, and healthcare organizations with reliable genomic services, custom peptide synthesis, computational bioinformatics, premium reagents, and verified training pathways.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 mb-20 lg:mb-0 w-full sm:w-auto">
-                <Button href={getCtaPath('EXPLORE_SERVICES')} size="lg" withArrow className="w-full sm:w-auto">EXPLORE SERVICES</Button>
-                <Button href={getCtaPath('REQUEST_QUOTE')} variant="dark" size="lg" withArrow className="w-full sm:w-auto">REQUEST A QUOTE</Button>
+              {/* Primary Call-to-Actions */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-12 w-full sm:w-auto">
+                {/* 1. Request a Service -> Direct Base44 Portal */}
+                <a 
+                  href={BASE44_ORDER_PORTAL_URL}
+                  className="h-14 px-8 rounded-[12px] bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#00C2FF] hover:from-[#0052CC] hover:to-[#00E5FF] text-white font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2.5 shadow-[0_0_30px_rgba(0,102,255,0.4)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] cursor-pointer group"
+                >
+                  <span>REQUEST A SERVICE (ORDER PORTAL)</span>
+                  <ExternalLink size={16} className="group-hover:scale-110 transition-transform duration-200" />
+                </a>
+
+                {/* 2. Explore Our Services */}
+                <Button 
+                  href="/services" 
+                  variant="dark" 
+                  size="lg" 
+                  withArrow 
+                  className="border-white/20 hover:border-[#00E5FF] hover:bg-white/5 text-white h-14"
+                >
+                  EXPLORE SERVICES
+                </Button>
+              </div>
+
+              {/* Molecular Capabilities Highlights Bar */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-xl">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2 h-2 rounded-full bg-[#00E5FF]" />
+                  <span className="text-xs text-neutral-300 font-light">Genomics & DNA</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2 h-2 rounded-full bg-[#0066FF]" />
+                  <span className="text-xs text-neutral-300 font-light">Peptide Synthesis</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2 h-2 rounded-full bg-[#00C2FF]" />
+                  <span className="text-xs text-neutral-300 font-light">In-Silico Modeling</span>
+                </div>
               </div>
             </motion.div>
 
-            {/* Right Visual Area — Scientist Illustration */}
+            {/* Right Visual Area — Interactive 3D Scientist Graphic with Molecular Aura */}
             <motion.div 
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.35, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="w-full lg:w-2/5 flex justify-center lg:justify-end relative"
             >
-              {/* Soft glow behind illustration */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,77,0,0.12)_0%,transparent_70%)] pointer-events-none" />
+              {/* Glowing Aura behind illustration */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,229,255,0.18)_0%,transparent_70%)] pointer-events-none" />
 
-              {/* Floating / alive animation wrapper */}
+              {/* Floating animation wrapper */}
               <motion.div
                 animate={{
-                  y: [0, -14, 0],
-                  rotate: [0, 0.8, 0, -0.8, 0],
+                  y: [0, -12, 0],
+                  rotate: [0, 0.6, 0, -0.6, 0],
                 }}
                 transition={{
                   duration: 6,
@@ -365,7 +410,7 @@ export default function Home() {
                 <img
                   src="/hero-scientist.png"
                   alt="Biotechnology scientist with microscope, DNA helix, and laboratory equipment"
-                  className="w-full max-w-[360px] sm:max-w-[480px] lg:max-w-[540px] h-auto object-contain drop-shadow-2xl select-none mx-auto"
+                  className="w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[500px] h-auto object-contain filter drop-shadow-[0_20px_45px_rgba(0,102,255,0.35)] select-none mx-auto"
                   draggable={false}
                 />
               </motion.div>
@@ -373,15 +418,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* 1. SERVICES & CAPABILITIES SECTION */}
-      <section className="py-20 md:py-28 px-6 bg-[#050505] text-white relative overflow-hidden border-t border-white/10">
+      {/* 2. SERVICES & CAPABILITIES STRIP */}
+      <section className="py-20 md:py-24 px-6 bg-[#030B17] text-white relative overflow-hidden border-t border-[#00E5FF]/15">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,102,255,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#FF4D00] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
+            <span className="text-[#00E5FF] text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
               OUR CORE SERVICES & SOLUTIONS
             </span>
-            <h2 className="text-[clamp(1.75rem,6vw,3.75rem)] font-bold tracking-tight text-white mb-6 leading-tight">
-              Biotechnology Services & <span className="text-[#FF4D00]">Capabilities</span>
+            <h2 className="text-[clamp(1.75rem,5.5vw,3.5rem)] font-bold tracking-tight text-white mb-6 leading-tight">
+              Biotechnology Services & <span className="text-[#00E5FF]">Capabilities</span>
             </h2>
             <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
               Explore our core scientific offerings — from nucleic acid and protein research to laboratory reagents, computational analysis, and professional training.
@@ -391,64 +437,215 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 1. OUR SERVICES SECTION */}
-      <section className="py-24 md:py-32 px-6 bg-white border-t border-border/40">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-            <SectionHeading 
-              label="01 / Our Services" 
-              title="Biotechnology Services\nBuilt Around Your Research." 
-              highlightWord="Research."
-              className="mb-0 md:mb-0"
-            />
-            <Button href={getCtaPath('EXPLORE_SERVICES')} variant="outline" className="shrink-0 w-full sm:w-auto" withArrow>VIEW ALL SERVICES</Button>
+      {/* 3. CORE SERVICE CATALOG CARDS (With direct Base44 portal order buttons) */}
+      <section className="py-24 md:py-32 px-6 bg-[#051329] text-white border-t border-white/10 relative overflow-hidden">
+        {/* Ambient glow */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#00E5FF]/05 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0066FF]/08 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-8">
+            <div>
+              <span className="text-xs font-semibold tracking-[0.25em] uppercase mb-3 block text-[#00E5FF]">
+                01 / SERVICE CATALOG
+              </span>
+              <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-[1.1]">
+                Biotechnology Services<br />
+                Built Around Your <span className="text-[#00E5FF]">Research.</span>
+              </h2>
+            </div>
+            <div className="flex items-center gap-4">
+              <a 
+                href={BASE44_ORDER_PORTAL_URL}
+                className="bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center gap-2 shadow-[0_0_20px_rgba(0,194,255,0.3)] shrink-0"
+              >
+                <span>ORDER PORTAL</span>
+                <ExternalLink size={14} />
+              </a>
+              <Button href="/services" variant="dark" className="border-white/20 text-white hover:border-[#00E5FF] shrink-0" withArrow>
+                VIEW ALL SERVICES
+              </Button>
+            </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
-              <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_1.jpg" alt="DNA" className="w-full h-full object-cover object-center" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Card 1: Nucleic Acid */}
+            <div className="group relative bg-[#030B17]/90 rounded-[24px] overflow-hidden min-h-[500px] flex flex-col p-8 sm:p-10 transition-all duration-500 hover:-translate-y-2 border border-white/10 hover:border-[#00E5FF]/60 shadow-xl hover:shadow-[0_15px_40px_rgba(0,229,255,0.15)]">
+              <div className="absolute inset-0 opacity-40 group-hover:scale-105 transition-transform duration-700">
+                <img src="/service_1.jpg" alt="Nucleic Acid Services" className="w-full h-full object-cover object-center" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030B17] via-[#030B17]/85 to-transparent" />
               
-              <div className="relative z-10 mt-auto">
-                <h3 className="text-3xl font-medium text-white mb-2">Nucleic Acid<br/>Services</h3>
-                <p className="text-accent text-sm font-semibold tracking-wider mb-6 mt-4">DNA • RNA • miRNA</p>
-                <p className="text-neutral-400 text-sm mb-8 leading-relaxed max-w-sm">Comprehensive nucleic acid services supporting molecular biology and research applications.</p>
-                <Button href="/services/nucleic-acid" variant="dark" className="bg-white/5 border-white/20 w-auto text-xs h-10 px-4" withArrow>EXPLORE</Button>
+              <div className="relative z-10 mt-auto flex flex-col">
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00E5FF] mb-2">GENOMIC SOLUTIONS</span>
+                <h3 className="text-2xl sm:text-3xl font-medium text-white mb-2 leading-tight">Nucleic Acid<br/>Services</h3>
+                <p className="text-xs text-[#00E5FF]/90 font-medium tracking-wider mb-4">DNA • RNA • miRNA • Sequencing</p>
+                <p className="text-neutral-300 text-xs sm:text-sm mb-6 leading-relaxed">
+                  Comprehensive nucleic acid laboratory services including PCR amplification, RNA isolation, and miRNA analysis.
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <a 
+                    href={BASE44_ORDER_PORTAL_URL}
+                    className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-1.5 transition-all shadow-[0_0_15px_rgba(0,102,255,0.3)]"
+                  >
+                    <span>REQUEST SERVICE</span>
+                    <ExternalLink size={13} />
+                  </a>
+                  <Link 
+                    to="/services/nucleic-acid"
+                    className="py-3 px-4 rounded-xl border border-white/20 hover:border-[#00E5FF] text-white hover:text-[#00E5FF] text-xs font-semibold tracking-wider uppercase transition-colors"
+                  >
+                    DETAILS
+                  </Link>
+                </div>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
-              <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_2.jpg" alt="Protein" className="w-full h-full object-cover object-center" />
+            {/* Card 2: Protein & Peptide */}
+            <div className="group relative bg-[#030B17]/90 rounded-[24px] overflow-hidden min-h-[500px] flex flex-col p-8 sm:p-10 transition-all duration-500 hover:-translate-y-2 border border-white/10 hover:border-[#00E5FF]/60 shadow-xl hover:shadow-[0_15px_40px_rgba(0,229,255,0.15)]">
+              <div className="absolute inset-0 opacity-40 group-hover:scale-105 transition-transform duration-700">
+                <img src="/service_2.jpg" alt="Protein & Peptide Services" className="w-full h-full object-cover object-center" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030B17] via-[#030B17]/85 to-transparent" />
               
-              <div className="relative z-10 mt-auto">
-                <h3 className="text-3xl font-medium text-white mb-2">Protein & Peptide<br/>Services</h3>
-                <p className="text-accent text-sm font-semibold tracking-wider mb-6 mt-4">Sequencing • Synthesis • Modification</p>
-                <p className="text-neutral-400 text-sm mb-8 leading-relaxed max-w-sm">Advanced protein and peptide solutions for research and scientific applications.</p>
-                <Button href="/services/protein" variant="dark" className="bg-white/5 border-white/20 w-auto text-xs h-10 px-4" withArrow>EXPLORE</Button>
+              <div className="relative z-10 mt-auto flex flex-col">
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00E5FF] mb-2">PROTEOMICS PLATFORM</span>
+                <h3 className="text-2xl sm:text-3xl font-medium text-white mb-2 leading-tight">Protein & Peptide<br/>Services</h3>
+                <p className="text-xs text-[#00E5FF]/90 font-medium tracking-wider mb-4">Sequencing • Synthesis • Modification</p>
+                <p className="text-neutral-300 text-xs sm:text-sm mb-6 leading-relaxed">
+                  Advanced solid-phase peptide synthesis (SPPS), Edman sequencing, mass spec profiling, and chemical conjugation.
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <a 
+                    href={BASE44_ORDER_PORTAL_URL}
+                    className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-1.5 transition-all shadow-[0_0_15px_rgba(0,102,255,0.3)]"
+                  >
+                    <span>REQUEST SERVICE</span>
+                    <ExternalLink size={13} />
+                  </a>
+                  <Link 
+                    to="/services/protein-peptide"
+                    className="py-3 px-4 rounded-xl border border-white/20 hover:border-[#00E5FF] text-white hover:text-[#00E5FF] text-xs font-semibold tracking-wider uppercase transition-colors"
+                  >
+                    DETAILS
+                  </Link>
+                </div>
               </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="group relative bg-[#050505] rounded-[24px] overflow-hidden h-[480px] flex flex-col p-10 transition-transform duration-500 hover:-translate-y-2 border border-transparent hover:border-accent">
-              <div className="absolute inset-0 opacity-50 group-hover:scale-105 transition-transform duration-700">
-                <img src="/service_3.jpg" alt="Computational" className="w-full h-full object-cover object-center" />
+            {/* Card 3: Research & Computational */}
+            <div className="group relative bg-[#030B17]/90 rounded-[24px] overflow-hidden min-h-[500px] flex flex-col p-8 sm:p-10 transition-all duration-500 hover:-translate-y-2 border border-white/10 hover:border-[#00E5FF]/60 shadow-xl hover:shadow-[0_15px_40px_rgba(0,229,255,0.15)]">
+              <div className="absolute inset-0 opacity-40 group-hover:scale-105 transition-transform duration-700">
+                <img src="/service_3.jpg" alt="Computational Biology" className="w-full h-full object-cover object-center" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030B17] via-[#030B17]/85 to-transparent" />
               
-              <div className="relative z-10 mt-auto">
-                <h3 className="text-3xl font-medium text-white mb-2">Research &<br/>Computational Biology</h3>
-                <p className="text-accent text-sm font-semibold tracking-wider mb-6 mt-4">In-silico • Bioinformatics • Analysis</p>
-                <p className="text-neutral-400 text-sm mb-8 leading-relaxed max-w-sm">Computational and bioinformatics solutions to accelerate research and discovery.</p>
-                <Button href="/services/research" variant="dark" className="bg-white/5 border-white/20 w-auto text-xs h-10 px-4" withArrow>EXPLORE</Button>
+              <div className="relative z-10 mt-auto flex flex-col">
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00E5FF] mb-2">IN-SILICO INTELLIGENCE</span>
+                <h3 className="text-2xl sm:text-3xl font-medium text-white mb-2 leading-tight">Research &<br/>Computational Biology</h3>
+                <p className="text-xs text-[#00E5FF]/90 font-medium tracking-wider mb-4">In-Silico • Bioinformatics • MD Simulations</p>
+                <p className="text-neutral-300 text-xs sm:text-sm mb-6 leading-relaxed">
+                  Molecular docking, trajectory simulations, biostatistical analysis, and bioinformatics data processing.
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <a 
+                    href={BASE44_ORDER_PORTAL_URL}
+                    className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-1.5 transition-all shadow-[0_0_15px_rgba(0,102,255,0.3)]"
+                  >
+                    <span>REQUEST SERVICE</span>
+                    <ExternalLink size={13} />
+                  </a>
+                  <Link 
+                    to="/services/computational"
+                    className="py-3 px-4 rounded-xl border border-white/20 hover:border-[#00E5FF] text-white hover:text-[#00E5FF] text-xs font-semibold tracking-wider uppercase transition-colors"
+                  >
+                    DETAILS
+                  </Link>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. SERVICE-REQUEST PROCESS / CUSTOMER JOURNEY ROADMAP */}
+      <section className="py-20 md:py-28 px-6 bg-[#030B17] text-white border-t border-white/10 relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#00E5FF] text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">
+              SEAMLESS ORDERING JOURNEY
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              How to Request & Order a Service
+            </h2>
+            <p className="text-neutral-400 text-sm md:text-base font-light">
+              Submit scientific specifications, track project status, and collaborate with our laboratory team directly through the client portal.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+            {[
+              {
+                step: '01',
+                title: 'Explore Services',
+                desc: 'Review laboratory assays, synthesis options, and in-silico capabilities.',
+                icon: Search,
+              },
+              {
+                step: '02',
+                title: 'Select Service',
+                desc: 'Choose your desired service and click "Request This Service".',
+                icon: CheckCircle2,
+              },
+              {
+                step: '03',
+                title: 'Open Client Portal',
+                desc: 'Instantly connect to our dedicated Base44 order application.',
+                icon: ExternalLink,
+              },
+              {
+                step: '04',
+                title: 'Log In or Register',
+                desc: 'Access your secure client account to submit requirements.',
+                icon: UsersRound,
+              },
+              {
+                step: '05',
+                title: 'Submit & Track Order',
+                desc: 'Receive formal quotation, assay timeline, and status updates.',
+                icon: ShieldCheck,
+              },
+            ].map((journey, idx) => (
+              <div 
+                key={idx} 
+                className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-2xl font-bold text-[#00E5FF]">{journey.step}</span>
+                    <div className="w-10 h-10 rounded-xl bg-[#0066FF]/15 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-[#030B17] transition-colors">
+                      <journey.icon size={18} />
+                    </div>
+                  </div>
+                  <h4 className="text-base font-bold text-white mb-2 group-hover:text-[#00E5FF] transition-colors">
+                    {journey.title}
+                  </h4>
+                  <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                    {journey.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <a 
+              href={BASE44_ORDER_PORTAL_URL}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-wider shadow-[0_0_25px_rgba(0,194,255,0.35)] transition-all"
+            >
+              <span>ACCESS THE CLIENT ORDER PORTAL NOW</span>
+              <ExternalLink size={16} />
+            </a>
           </div>
         </div>
       </section>
@@ -1145,33 +1342,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. CTA SECTION */}
-      <section className="py-20 md:py-32 px-4 sm:px-6 bg-[#06140F] text-[#F2F7F4] relative overflow-hidden border-t border-[#1A3B2B] border-b border-[#1A3B2B]">
-        {/* DNA background image */}
-        <div className="absolute inset-0 opacity-30 mix-blend-screen">
+      {/* 8. CTA SECTION (Biotech Deep Navy & Cyan Glow) */}
+      <section className="py-20 md:py-32 px-4 sm:px-6 bg-[#030B17] text-white relative overflow-hidden border-t border-[#00E5FF]/20 border-b border-[#00E5FF]/20">
+        {/* DNA background image with cyan blend */}
+        <div className="absolute inset-0 opacity-20 mix-blend-screen pointer-events-none">
           <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2874&auto=format&fit=crop" alt="DNA Background" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#06140F] via-[#06140F]/90 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#030B17] via-[#030B17]/95 to-[#030B17]/70 z-10 pointer-events-none" />
         
         <div className="max-w-[1400px] mx-auto relative z-20 flex flex-col md:flex-row items-center justify-between gap-12">
           
           <div className="flex items-start gap-8 max-w-3xl">
-            <div className="w-24 h-24 rounded-full border border-[#1A3B2B] bg-[#0C2419] flex items-center justify-center flex-shrink-0 hidden md:flex">
-              <Dna size={40} className="text-[#20C77A]" />
+            <div className="w-24 h-24 rounded-full border border-[#00E5FF]/30 bg-[#0066FF]/10 flex items-center justify-center flex-shrink-0 hidden md:flex shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+              <Dna size={40} className="text-[#00E5FF]" />
             </div>
             <div>
-              <h2 className="text-[clamp(2rem,7vw,4.375rem)] font-medium tracking-tight text-[#F2F7F4] mb-6 leading-[1.1]">
-                Have a <span className="text-[#20C77A]">Research</span><br/>Challenge?
+              <span className="text-[#00E5FF] text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">START YOUR PROJECT</span>
+              <h2 className="text-[clamp(2rem,7vw,4.375rem)] font-medium tracking-tight text-white mb-6 leading-[1.1]">
+                Have a <span className="text-[#00E5FF]">Research</span><br/>Challenge?
               </h2>
-              <p className="text-base sm:text-lg text-[#A8B8AF] mb-0 max-w-xl font-light leading-relaxed">
-                Tell us what you are working on and our team can help identify the right biotechnology, laboratory, research, or training solution.
+              <p className="text-base sm:text-lg text-neutral-300 mb-0 max-w-xl font-light leading-relaxed">
+                Connect directly with our laboratory team or place an order via the client portal to advance your assays and computational studies.
               </p>
             </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-            <Button href={getCtaPath('REQUEST_QUOTE')} size="lg" withArrow className="w-full sm:w-auto bg-[#20C77A] text-[#04110B] hover:bg-[#2ae08c] hover:text-[#04110B] border-none hover:shadow-[0_0_20px_rgba(32,199,122,0.3)] transition-all duration-300">REQUEST A QUOTE</Button>
-            <Button href={getCtaPath('CONSULTATION_REQUEST')} size="lg" withArrow className="w-full sm:w-auto bg-[#0C2419] border border-[#1A3B2B] text-[#F2F7F4] hover:border-[#20C77A] hover:text-[#20C77A] hover:bg-[#103322] transition-colors duration-300">
+            <a 
+              href={BASE44_ORDER_PORTAL_URL}
+              className="w-full sm:w-auto bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white font-bold text-xs tracking-wider uppercase py-4 px-8 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(0,194,255,0.35)] transition-all cursor-pointer"
+            >
+              <span>ORDER IN PORTAL</span>
+              <ExternalLink size={16} />
+            </a>
+            <Button href={getCtaPath('CONSULTATION_REQUEST')} size="lg" withArrow className="w-full sm:w-auto bg-white/5 border border-white/20 text-white hover:border-[#00E5FF] hover:text-[#00E5FF] hover:bg-white/10 transition-colors duration-300">
               CONTACT US
             </Button>
           </div>
