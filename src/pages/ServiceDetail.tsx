@@ -3,11 +3,13 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   ChevronRight, ArrowRight, CheckCircle2, ShieldCheck, Dna, 
-  FlaskConical, Microscope, Activity, Database, Check, FileText, Beaker
+  FlaskConical, Microscope, Activity, Database, Check, FileText, Beaker,
+  ExternalLink
 } from 'lucide-react';
 import { SEO } from '@/src/components/SEO';
 import { Button } from '@/src/components/ui/Button';
 import { Breadcrumb, PageLabel } from '@/src/components/ui/Breadcrumb';
+import { BASE44_ORDER_PORTAL_URL } from '@/src/config/portalConfig';
 import { 
   SERVICE_CATEGORIES, 
   SERVICE_DETAILS, 
@@ -75,20 +77,20 @@ function CategoryView({ data }: { data: ServiceCategoryData }) {
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
+                <a 
+                  href={BASE44_ORDER_PORTAL_URL}
+                  className="bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(0,194,255,0.35)] flex items-center gap-2 transition-all cursor-pointer"
+                >
+                  <span>ORDER IN CLIENT PORTAL</span>
+                  <ExternalLink size={15} />
+                </a>
                 <Button 
                   href={`/quote?category=${encodeURIComponent(data.title)}`}
-                  variant="primary" 
-                  className="bg-[#FF4D00] hover:bg-[#E64500] text-white border-none px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg"
+                  variant="dark" 
+                  className="border-white/20 hover:border-[#00E5FF] text-white px-8 py-4 text-xs font-semibold uppercase tracking-wider rounded-xl"
                   withArrow
                 >
-                  REQUEST SERVICE QUOTE
-                </Button>
-                <Button 
-                  href="#services-grid" 
-                  variant="outline" 
-                  className="text-white border-white/20 hover:bg-white hover:text-black px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-xl"
-                >
-                  EXPLORE OFFERINGS &rarr;
+                  REQUEST FORMAL QUOTE
                 </Button>
               </div>
             </div>
@@ -377,13 +379,22 @@ function SubServiceView({ data }: { data: ServiceDetailData }) {
                   </div>
                 </div>
 
-                <Link 
-                  to={`/quote?category=${encodeURIComponent(data.categoryTitle)}&service=${encodeURIComponent(`${data.title} — ${subItem.name}`)}`}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#FF4D00] uppercase tracking-wider hover:text-[#E64500]"
-                >
-                  <span>REQUEST {subItem.name.toUpperCase()}</span>
-                  <ArrowRight size={14} />
-                </Link>
+                <div className="flex items-center gap-4">
+                  <a 
+                    href={BASE44_ORDER_PORTAL_URL}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] px-3.5 py-2 rounded-lg uppercase tracking-wider shadow-[0_0_12px_rgba(0,102,255,0.3)] transition-all"
+                  >
+                    <span>REQUEST {subItem.name.toUpperCase()}</span>
+                    <ExternalLink size={12} />
+                  </a>
+                  <Link 
+                    to={`/quote?category=${encodeURIComponent(data.categoryTitle)}&service=${encodeURIComponent(`${data.title} — ${subItem.name}`)}`}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-neutral-400 hover:text-white uppercase tracking-wider"
+                  >
+                    <span>QUOTE</span>
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -456,17 +467,24 @@ function SubServiceView({ data }: { data: ServiceDetailData }) {
             Submit your sample parameters or project specifications to receive a custom quotation from our scientific team.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">
+            <a 
+              href={BASE44_ORDER_PORTAL_URL}
+              className="bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white px-10 py-4 text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_25px_rgba(0,194,255,0.35)] flex items-center gap-2 transition-all cursor-pointer"
+            >
+              <span>REQUEST THIS SERVICE (ORDER PORTAL)</span>
+              <ExternalLink size={15} />
+            </a>
             <Button 
               href={`/quote?category=${encodeURIComponent(data.categoryTitle)}&service=${encodeURIComponent(data.title)}`}
-              variant="primary" 
-              className="bg-[#FF4D00] hover:bg-[#E64500] text-white border-none px-10 py-4 text-xs font-bold uppercase tracking-wider rounded-xl shadow-xl"
+              variant="dark" 
+              className="border-white/20 text-white hover:border-[#00E5FF] px-8 py-4 text-xs font-semibold uppercase tracking-wider rounded-xl"
               withArrow
             >
-              REQUEST THIS SERVICE
+              REQUEST QUOTE
             </Button>
             <Link 
               to={categoryRoute}
-              className="px-8 py-4 rounded-xl border border-white/20 text-white text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors"
+              className="px-6 py-4 rounded-xl border border-white/10 text-neutral-400 text-xs font-semibold uppercase tracking-wider hover:text-white hover:bg-white/5 transition-colors"
             >
               &larr; BACK TO {data.categoryTitle.toUpperCase()}
             </Link>

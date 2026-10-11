@@ -1,8 +1,9 @@
 import { getCtaPath } from '@/src/config/ctaConfig';
+import { BASE44_ORDER_PORTAL_URL } from '@/src/config/portalConfig';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Search, User, LogIn, ChevronDown, Dna, Activity, Database, Share2, Box, GitMerge, Network, Cpu, Microscope } from 'lucide-react';
+import { Menu, X, ArrowRight, Search, User, LogIn, ChevronDown, Dna, Activity, Database, Share2, Box, GitMerge, Network, Cpu, Microscope, ExternalLink } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useAuth } from '@/src/contexts/AuthContext';
 import { ServicesMegaMenu } from '@/src/components/navigation/ServicesMegaMenu';
@@ -41,8 +42,8 @@ export function Header() {
   ];
 
   const headerBg = isScrolled 
-    ? 'bg-[#050505]/88 backdrop-blur-[14px] border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.1)]' 
-    : 'bg-transparent';
+    ? 'bg-[#030B17]/90 backdrop-blur-[16px] border-b border-[#00E5FF]/15 shadow-[0_4px_30px_rgba(0,10,30,0.5)]' 
+    : 'bg-[#030B17]/40 backdrop-blur-sm border-b border-white/5';
 
   const isActive = (href: string) => {
     if (href === '/') return location.pathname === '/';
@@ -58,7 +59,7 @@ export function Header() {
           <Link to="/" className="flex items-center gap-2.5 2xl:gap-3 z-50 text-white hover:text-white/90 transition-colors shrink-0">
             <img src="/logo.png" alt="INNOVAC BIOTECHNOLOGIES Logo" className="h-8 2xl:h-9 w-auto object-contain" />
             <div className="font-semibold text-xs leading-[1.1] tracking-wider uppercase">
-              Innovac<br />Biotechnologies
+              Innovac<br /><span className="text-[#00E5FF]">Biotechnologies</span>
             </div>
           </Link>
 
@@ -79,7 +80,7 @@ export function Header() {
                     className={cn(
                       "text-xs 2xl:text-sm font-medium transition-colors relative py-2 flex items-center gap-1.5 whitespace-nowrap",
                       (link.isServices && servicesDropdownOpen) || isActive(link.href)
-                        ? "text-accent font-bold" 
+                        ? "text-[#00E5FF] font-bold" 
                         : "text-neutral-300 hover:text-white"
                     )}
                   >
@@ -89,14 +90,14 @@ export function Header() {
                         size={14} 
                         className={cn(
                           "transition-transform duration-300", 
-                          servicesDropdownOpen ? "rotate-180 text-accent" : "text-neutral-400 group-hover:text-white"
+                          servicesDropdownOpen ? "rotate-180 text-[#00E5FF]" : "text-neutral-400 group-hover:text-white"
                         )} 
                       />
                     )}
                     {(isActive(link.href) || (link.isServices && servicesDropdownOpen)) && (
                       <motion.div 
                         layoutId="activeNav"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#00E5FF] shadow-[0_0_8px_#00E5FF]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -119,37 +120,44 @@ export function Header() {
           </nav>
 
           {/* RIGHT: Search & CTAs */}
-          <div className="hidden xl:flex items-center shrink-0 gap-2.5 xl:gap-3 2xl:gap-5">
-            <Link to="/search" className="text-neutral-300 hover:text-accent transition-colors flex items-center justify-center p-1.5 2xl:p-2" aria-label="Search">
+          <div className="hidden xl:flex items-center shrink-0 gap-2.5 xl:gap-3 2xl:gap-4">
+            <Link to="/search" className="text-neutral-300 hover:text-[#00E5FF] transition-colors flex items-center justify-center p-1.5 2xl:p-2" aria-label="Search">
               <Search className="w-4 h-4 2xl:w-5 2xl:h-5" />
             </Link>
             
-            <div className="flex items-center gap-2 2xl:gap-[11px]">
+            <div className="flex items-center gap-2 2xl:gap-3">
+              {/* ORDER PORTAL / ORDER SERVICES BUTTON (Base44) */}
+              <a 
+                href={BASE44_ORDER_PORTAL_URL}
+                className="h-10 2xl:h-[44px] bg-gradient-to-r from-[#0066FF] to-[#00C2FF] hover:from-[#0055D4] hover:to-[#00E5FF] text-white px-3.5 2xl:px-4 rounded-[10px] text-[11px] 2xl:text-xs font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(0,194,255,0.3)] hover:shadow-[0_0_28px_rgba(0,229,255,0.5)] group cursor-pointer shrink-0 whitespace-nowrap"
+              >
+                <span>ORDER SERVICES</span>
+                <ExternalLink className="w-3.5 h-3.5 group-hover:scale-110 transition-transform duration-200" />
+              </a>
+
               <Link 
                 to={getCtaPath('REQUEST_QUOTE')} 
-                className="h-10 2xl:h-[46px] border border-accent/45 hover:border-accent hover:bg-accent text-white px-3 2xl:px-5 rounded-[10px] text-[11px] 2xl:text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 2xl:gap-2 group cursor-pointer shrink-0 whitespace-nowrap"
+                className="h-10 2xl:h-[44px] border border-white/20 hover:border-[#00E5FF] hover:bg-white/5 text-white px-3 2xl:px-4 rounded-[10px] text-[11px] 2xl:text-xs font-semibold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 group cursor-pointer shrink-0 whitespace-nowrap"
               >
-                <span>REQUEST A QUOTE</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+                <span>REQUEST QUOTE</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200 text-[#00E5FF]" />
               </Link>
 
               {user ? (
                 <Link 
                   to="/account" 
-                  className="h-10 2xl:h-[46px] bg-accent hover:bg-accent-bright text-white px-3 2xl:px-5 rounded-[10px] text-[11px] 2xl:text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 2xl:gap-2 shadow-sm hover:shadow-accent/25 hover:shadow-lg group cursor-pointer shrink-0 whitespace-nowrap"
+                  className="h-10 2xl:h-[44px] bg-white/10 hover:bg-white/20 text-white px-3 2xl:px-4 rounded-[10px] text-[11px] 2xl:text-xs font-medium tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap"
                 >
-                  <User className="w-3.5 h-3.5" />
+                  <User className="w-3.5 h-3.5 text-[#00E5FF]" />
                   <span>ACCOUNT</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
                 </Link>
               ) : (
                 <Link 
                   to="/login" 
-                  className="h-10 2xl:h-[46px] bg-accent hover:bg-accent-bright text-white px-3 2xl:px-5 rounded-[10px] text-[11px] 2xl:text-xs font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 2xl:gap-2 shadow-sm hover:shadow-accent/25 hover:shadow-lg group cursor-pointer shrink-0 whitespace-nowrap"
+                  className="h-10 2xl:h-[44px] bg-white/10 hover:bg-white/20 text-white px-3 2xl:px-4 rounded-[10px] text-[11px] 2xl:text-xs font-medium tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap"
                 >
-                  <LogIn className="w-3.5 h-3.5" />
-                  <span>LOGIN / SIGNUP</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
+                  <LogIn className="w-3.5 h-3.5 text-[#00E5FF]" />
+                  <span>LOGIN</span>
                 </Link>
               )}
             </div>
@@ -319,30 +327,37 @@ export function Header() {
                 {/* Search link */}
                 <Link 
                   to="/search" 
-                  className="flex items-center gap-3 text-neutral-300 hover:text-white py-2 text-sm"
+                  className="flex items-center gap-3 text-neutral-300 hover:text-[#00E5FF] py-2 text-sm"
                 >
                   <Search size={18} />
                   <span>Search Content</span>
                 </Link>
 
+                {/* ORDER SERVICES DIRECT BASE44 PORTAL ACTION */}
+                <a 
+                  href={BASE44_ORDER_PORTAL_URL}
+                  className="bg-gradient-to-r from-[#0066FF] to-[#00C2FF] text-white py-3.5 px-6 rounded-[12px] font-bold tracking-wider text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,194,255,0.3)] mt-2"
+                >
+                  <span>ORDER SERVICES (CLIENT PORTAL)</span>
+                  <ExternalLink size={16} />
+                </a>
+
                 {/* ACCOUNT or LOGIN button at the bottom */}
                 {user ? (
                   <Link 
                     to="/account" 
-                    className="bg-accent hover:bg-accent-bright text-white py-4 px-6 rounded-[12px] font-bold tracking-wider text-center flex items-center justify-center gap-2 transition-all duration-200 shadow-md group mt-2"
+                    className="bg-white/10 text-white py-3.5 px-6 rounded-[12px] font-medium tracking-wider text-center flex items-center justify-center gap-2 transition-all duration-200"
                   >
-                    <User size={18} />
-                    <span>ACCOUNT PORTAL</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform duration-200" />
+                    <User size={18} className="text-[#00E5FF]" />
+                    <span>MY ACCOUNT</span>
                   </Link>
                 ) : (
                   <Link 
                     to="/login" 
-                    className="bg-accent hover:bg-accent-bright text-white py-4 px-6 rounded-[12px] font-bold tracking-wider text-center flex items-center justify-center gap-2 transition-all duration-200 shadow-md group mt-2"
+                    className="bg-white/10 text-white py-3.5 px-6 rounded-[12px] font-medium tracking-wider text-center flex items-center justify-center gap-2 transition-all duration-200"
                   >
-                    <LogIn size={18} />
-                    <span>LOGIN / SIGNUP</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform duration-200" />
+                    <LogIn size={18} className="text-[#00E5FF]" />
+                    <span>LOGIN / REGISTER</span>
                   </Link>
                 )}
               </div>
