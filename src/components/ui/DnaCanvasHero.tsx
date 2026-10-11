@@ -82,7 +82,7 @@ export const DnaCanvasHero: React.FC<{ className?: string }> = ({ className = ''
         // Particle circle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = gba(0, 229, 255, );
+        ctx.fillStyle = `rgba(0, 229, 255, ${p.alpha * 0.6})`;
         ctx.fill();
 
         // Connect nearby particles with subtle cyan lines
@@ -95,7 +95,7 @@ export const DnaCanvasHero: React.FC<{ className?: string }> = ({ className = ''
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = gba(0, 150, 255, );
+            ctx.strokeStyle = `rgba(0, 150, 255, ${(1 - dist / 90) * 0.15})`;
             ctx.stroke();
           }
         }
@@ -166,9 +166,9 @@ export const DnaCanvasHero: React.FC<{ className?: string }> = ({ className = ''
 
         // Base-pair ladder gradient (Electric Blue -> Cyan)
         const ladderGrad = ctx.createLinearGradient(pair.x1, y1, pair.x2, y2);
-        ladderGrad.addColorStop(0, gba(0, 102, 255, ));
-        ladderGrad.addColorStop(0.5, gba(0, 229, 255, ));
-        ladderGrad.addColorStop(1, gba(0, 194, 255, ));
+        ladderGrad.addColorStop(0, `rgba(0, 102, 255, ${depthAlpha * 0.7})`);
+        ladderGrad.addColorStop(0.5, `rgba(0, 229, 255, ${depthAlpha * 0.9})`);
+        ladderGrad.addColorStop(1, `rgba(0, 194, 255, ${depthAlpha * 0.7})`);
 
         ctx.strokeStyle = ladderGrad;
         ctx.lineWidth = 1.6;
