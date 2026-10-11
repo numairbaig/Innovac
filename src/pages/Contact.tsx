@@ -183,9 +183,14 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-[#050505] mb-1">Call Representative</h4>
-                    <a href={`tel:${contactConfig.phone.replace(/[^0-9+]/g, '')}`} className="text-neutral-600 hover:text-[#FF4D00] transition-colors text-sm font-light">
-                      {contactConfig.phone}
-                    </a>
+                    <div className="flex flex-col gap-0.5">
+                      <a href={`tel:${contactConfig.phone.replace(/[^0-9+]/g, '')}`} className="text-neutral-600 hover:text-[#FF4D00] transition-colors text-sm font-light">
+                        {contactConfig.phone}
+                      </a>
+                      <a href={`tel:${contactConfig.landline.replace(/[^0-9+]/g, '')}`} className="text-neutral-600 hover:text-[#FF4D00] transition-colors text-sm font-light">
+                        LAN: {contactConfig.landline}
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -463,7 +468,9 @@ export default function Contact() {
               {contactConfig.phone !== "Phone details to be added" && (
                  <div className="flex items-center gap-3">
                   <Phone size={18} className="text-[#FF4D00]" />
-                  <span className="text-neutral-300 text-sm">{contactConfig.phone}</span>
+                  <span className="text-neutral-300 text-sm">
+                    {contactConfig.phone} {contactConfig.landline ? `• LAN: ${contactConfig.landline}` : ''}
+                  </span>
                 </div>
               )}
             </div>

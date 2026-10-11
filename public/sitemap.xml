@@ -186,6 +186,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://innovacbiotech.com/overview</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://innovacbiotech.com/permissions</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
